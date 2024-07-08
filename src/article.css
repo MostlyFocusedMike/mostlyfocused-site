@@ -1,3 +1,14 @@
+
+main:has(article) {
+  background-color: var(--background-primary);
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  font-family: sans-serif;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
 article {
   padding: 1rem 0.5rem;
 }
