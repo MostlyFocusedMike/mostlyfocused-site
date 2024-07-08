@@ -19,7 +19,7 @@ div#topic-side {
 }
 
 div#article-side {
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 p#explain-topics {
