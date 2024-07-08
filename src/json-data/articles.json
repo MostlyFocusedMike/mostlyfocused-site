@@ -1,0 +1,123 @@
+{
+  "articles": {
+    "explaining_this_site": {
+      "id": "explaining_this_site",
+      "title": "How (And Why) I Made This Site Entirely In Vanilla",
+      "description": "Hand writing HTML in 2024 because I am not well in the head",
+      "relativeUrl": "/pages/articles/explaining_this_site.html",
+      "image": "https://mostlyfocused.com/images/explaining_this_site/preview.png",
+      "level": 0,
+      "topics": [
+        "js",
+        "html",
+        "css",
+        "web-standards",
+        "updates"
+      ]
+    },
+    "getting_started_numpy": {
+      "id": "getting_started_numpy",
+      "title": "Getting Started With NumPy in Python",
+      "description": "Learn How To Use One of the Best Data Science Libraries",
+      "relativeUrl": "/pages/articles/getting_started_numpy.html",
+      "image": "https://mostlyfocused.com/images/getting_started_numpy/preview.png",
+      "level": 0,
+      "topics": [
+        "python",
+        "data-science",
+        "numpy",
+        "data-structures"
+      ]
+    },
+    "how_to_make_modals": {
+      "id": "how_to_make_modals",
+      "title": "How To Make Modals With The HTML Dialog Tag",
+      "description": "Use the new dialog tag to create accessible modals instantly",
+      "relativeUrl": "/pages/articles/how_to_make_modals.html",
+      "image": "https://mostlyfocused.com/images/how_to_make_modals/preview.png",
+      "level": 0,
+      "topics": [
+        "html",
+        "js",
+        "css",
+        "a11y",
+        "web-standards"
+      ]
+    },
+    "postgres_cheat_sheet": {
+      "id": "postgres_cheat_sheet",
+      "title": "Postgres Cheat Sheet Of Common SQL Queries",
+      "description": "Learn common terminal commands, queries, and a Docker quickstart",
+      "relativeUrl": "/pages/articles/postgres_cheat_sheet.html",
+      "image": "https://mostlyfocused.com/images/postgres_cheat_sheet/preview.png",
+      "level": 0,
+      "topics": [
+        "sql",
+        "postgres",
+        "docker",
+        "cheat-sheet"
+      ]
+    },
+    "reverse_linked_list": {
+      "id": "reverse_linked_list",
+      "title": "How To Reverse A Linked List With Animated Examples",
+      "description": "Understand how the algorithm works with code synced to animations",
+      "relativeUrl": "/pages/reverse_linked_list",
+      "image": "https://mostlyfocused.com/images/reverse_linked_list/preview.png",
+      "level": 0,
+      "topics": [
+        "data-structures",
+        "js",
+        "algos"
+      ]
+    },
+    "stop_controlling_react_forms": {
+      "id": "stop_controlling_react_forms",
+      "title": "Stop Controlling EVERY Form In React, Use FormData!",
+      "description": "The FormData API is available in all browsers and it simplifies everything.",
+      "relativeUrl": "/pages/articles/stop_controlling_react_forms.html",
+      "image": "https://mostlyfocused.com/images/stop_controlling_react_forms/preview.png",
+      "level": 0,
+      "topics": [
+        "html",
+        "js",
+        "forms",
+        "react",
+        "web-standards"
+      ]
+    },
+    "understanding_data_layers": {
+      "id": "understanding_data_layers",
+      "title": "Understanding Data Layers (Without Using Databases)",
+      "description": "Learn one of programmings most crucial concepts without touching SQL",
+      "relativeUrl": "/pages/understanding_data_layers",
+      "image": "https://mostlyfocused.com/images/understanding_data_layers/preview.png",
+      "level": 0,
+      "topics": [
+        "js",
+        "html",
+        "concept"
+      ]
+    }
+  },
+  "allTopics": [
+    "a11y",
+    "algos",
+    "cheat-sheet",
+    "concept",
+    "css",
+    "data-science",
+    "data-structures",
+    "docker",
+    "forms",
+    "html",
+    "js",
+    "numpy",
+    "postgres",
+    "python",
+    "react",
+    "sql",
+    "updates",
+    "web-standards"
+  ]
+}

@@ -1,0 +1,143 @@
+html, body {
+  scroll-behavior: smooth;
+  background-color: var(--background-primary);
+  margin: 0;
+  padding: 0;
+  color-scheme: dark;
+}
+
+:root{
+  /* --foreground-primary: #FAFAF9; */
+  --foreground-primary: #e6e6e6;
+  --foreground-hover: #c6c6c6;
+  /* --background-primary: #18181B; */
+  --background-primary: #252525;
+  --background-darkest: #0C0A09;
+  --background-secondary: #292524;
+  --background-purple: hsl(273.6, 40%, 30%);
+  --lighter-gray: #D1D5DB;
+  --purple-primary: #7C3AED;
+  --text-purple: #A78BFA;
+  --terminal-output: #020617; /* slate 950 */
+  --accent-primary: #FDE047; /* yellow 300 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main:has(article) {
+  background-color: var(--background-primary);
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  font-family: sans-serif;
+  margin: 0 auto;
+  max-width: 70rem;
+}
+
+#page-scrollers {
+  height: fit-content;
+  margin: 18rem 3rem 0 1rem;
+  position: sticky;
+  top: 2rem;
+}
+
+#page-scrollers::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  right: -1rem;
+  height: 80%;
+  border-right: 0.05rem solid var(--foreground-primary);
+}
+
+#page-scrollers h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#code-jump-buttons {
+  margin-top: 2rem;
+}
+
+article {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.basic-link,
+#article-links a {
+  display: inline-block;
+  padding: 0.2rem 0;
+  font-size: 1.2rem;
+  text-decoration-thickness: 0.05rem;
+  text-underline-offset: 0.1rem;
+  color: var(--text-purple)
+}
+
+.basic-link:visited,
+#article-links a:visited {
+  color: var(--text-purple)
+}
+
+.basic-link:hover,
+#article-links a:hover {
+  color: white;
+}
+
+.H2-link, .H3-link {
+  white-space: nowrap;
+}
+.H2-link::before {
+  content: '| ';
+}
+
+.H3-link {
+  padding-left: 1rem;
+}
+
+.H3-link::before {
+  content: '↪';
+  white-space: nowrap;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--foreground-primary);
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.preview {
+  width: 20rem;
+  display: block;
+}
+
+.flex-list {
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1050px) {
+  #page-scrollers {
+    display: none;
+  }
+  main:has(article) {
+    justify-content: center;
+  }
+}

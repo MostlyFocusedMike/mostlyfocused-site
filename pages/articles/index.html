@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <meta name="color-scheme" content="dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <site-heading></site-heading>
+  <main id="articles-page">
+    <h1>All Articles</h1>
+    <div id="article-split">
+      <div id="topic-side">
+        <topic-choices></topic-choices>
+        <p id="explain-topics">
+          Filter articles by selecting multiple topics above, <br> or click a topic in an article to see only that topic.
+        </p>
+      </div>
+      <div id="article-side">
+        <article-card-list is_interactive has_small_cards></article-card-list>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

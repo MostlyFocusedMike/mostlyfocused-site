@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stop Controlling EVERY Form In React, Use FormData!</title>
+  <meta property="og:title" content="Stop Controlling EVERY Form In React, Use FormData!" />
+
+  <meta property = "article:published_time" content = "2023-11-15T07:35:40+03:00" />
+  <meta property = "article:modified_time" content = "2023-11-15T07:35:40+03:00" />
+  <meta name="description" property="og:description" content="The FormData API is available in all browsers and it simplifies everything." />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/stop_controlling_react_forms.html/" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/stop_controlling_react_forms.html" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/stop_controlling_react_forms/preview.png" />
+
+  <meta property="article:tag" content="html" />
+  <meta property="article:tag" content="js" />
+  <meta property="article:tag" content="forms" />
+  <meta property="article:tag" content="react" />
+  <meta property="article:tag" content="web-standards" />
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#111827" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+  <meta name="color-scheme" content="dark">
+</head>
+<body>
+<site-heading></site-heading>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+</div>
+<article>
+<h1>Stop Controlling EVERY Form In React</h1>
+<p>Use the FormData API instead!</p>
+<hr>
+<by-line></by-line>
+<audio controls preload="auto">
+  <source src="/audio/stop_controlling_react_forms.mp3" type="audio/mpeg">
+</audio>
+<img id="cover" src="/images/stop_controlling_react_forms/cover.png" alt="" srcset="" style="visibility: hidden;">
+
+<div id="article-body"> <!-- ARTICLE BODY -->
+
+<p>
+  One of the first things people learn in React is how to control a form. But unfortunately they never learn to answer a crucial question: should they? In most cases the answer is no. Let's learn what we can do instead of controlling our forms and the few cases when we should control.
+</p>
+
+<h2>What is a controlled form?</h2>
+<p>
+  Just so we're all clear, a controlled form is really just a form with controlled inputs. And a controlled input is when the value of the input comes from state and there is an onChange handler that continuously updates the state with each change. It looks like this:
+</p>
+
+<my-code file="/src/App.js"><!--
+export default function App() {
+  const initForm = { name: '', age: '' };
+  const [formInfo, setFormInfo] = useState(initForm);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFormInfo((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formInfo);
+    setFormInfo(initForm); // reset the form
+  };
+
+  const { name, age } = formInfo;
+
+  return (
+    <form onSubmit={onSubmit}>
+      <label>
+        Name:
+        <input type="text" name='name' value={name} onChange={onChange} />
+      </label>
+      <label>
+        Age:
+        <input type="number" name='age' value={age} onChange={onChange} />
+      </label>
+      <button>Submit</button>
+    </form>
+  );
+}
+--><pre>
+</pre></my-code>
+
+<h2>What's the problem?</h2>
+
+<p>
+  In a word: boilerplate. There's just a lot of code to do the super simple task of submitting a form. Users of other frameworks are quick to point out the absurd number of lines to mimic default behavior of a form. Look at that exact same example in Svelte code:
+</p>
+
+<my-code file="/src/app.svelte"><!--
+<script>
+  let formInfo = { name: '', age: '' };
+
+  const handleSubmit = () => {
+    console.log(formInfo);
+    formInfo = { name: '', age: '' };
+  };
+</script>
+
+<form on:submit|preventDefault={handleSubmit}>
+  <label>
+    Name:
+    <input type="text" bind:value={formInfo.name} />
+  </label>
+  <label>
+    Age:
+    <input type="number" bind:value={formInfo.age} />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+--><pre>
+</pre></my-code>
+
+<p>
+  I'm a fan of the way React does a lot of things, but I will also admit this is not React's finest moment. But what if I told you that's because you aren't <em>supposed</em> to control forms like this?
+</p>
+
+<h2>Using FormData</h2>
+
+<p>
+  Crazy idea here, but controlled forms are for situations where you need to <em>control</em> the inputs. But those moments are rarer than you'd think. Instead we can use the browser's built in <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer">FormData API</a> to clean up and simplify our code. I'll explain it in a minute but just look how much simpler our React code is:
+</p>
+
+<my-code file="/src/App.js"><!--
+export default function App() {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target));
+    console.log(data);
+    e.target.reset();
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <label>Name: <input type="text" name='name' /></label>
+      <label>Age: <input type="number" name='age' /></label>
+      <button>Submit</button>
+    </form>
+  );
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  Unsurprisingly, losing the change handlers, initial values, and state hooks really simplifies our code.
+</p>
+
+<h3>Getting form data</h3>
+
+<p>
+  Previously, we had to use a state hook to track our form data, but that's overkill. If you are applying <code>name</code> fields to the inputs, then the form is always aware of the key-value pairs of the form. The key is the name, and the value is the input's value itself. This even works for things like checkboxes and radio buttons. Never use a for loop to find the value of radio or checkboxes again!
+</p>
+
+<p>
+  And just like a click handler set's the <code>e.target</code> to the clicked button, a submit handler will give you the form as the <code>e.target</code>. So we simply grab any data we need in our handler. No need for any sort of DOM selection methods, a big anti-pattern in React, all we need is provided by the event.
+</p>
+
+<h3>No more state and change handlers</h3>
+
+<p>
+  Before we talk more about what we added, let's discuss what we removed. Since we only care about the value of the inputs on the submit event and not before, there's no need for the change handler to update state. The “state” is just the form itself. Our JSX is now shorter since we don't need the <code>value</code> and <code>onChange</code> attributes.
+</p>
+
+<h3>Converting form data to an object</h3>
+
+<p>
+  This is the piece that uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer">FormData API</a>. This new line is really the only tricky part:
+</p>
+
+<my-code file=""><!--
+const data = Object.fromEntries(new FormData(e.target));
+--><pre></pre>
+</my-code>
+
+<p>
+  We can make that more readable by doing it like this:
+</p>
+
+<my-code file=""><!--
+const form = e.target;
+const formDataInstance = new FormData(form);
+const inputKeyValuesObject = Object.fromEntries(formDataInstance);
+--><pre></pre>
+</my-code>
+
+<p>
+  I wouldn't recommend writing it that way in your application, but there it is for now. Our first task is simply getting access to our form from e.target like we discussed earlier. Then, we need to convert it into a new instance of a formData object. So we call new FormData and pass in our form element.
+</p>
+
+<p>
+  Of course, this formDataObject has a lot of cool methods on it that we aren't using, but for now we just want to make a plain JS object so we can shoot it to our server. In order to do that, use the Object.fromEntries method to convert it. That's it! For a form as simple as this, you're done.
+</p>
+
+<h3>Resetting the form</h3>
+
+<p>
+  No need for something like initForm object from before, all we need to do is call the reset method that's native to form elements. It wipes the form inputs to whatever the default values were.
+</p>
+
+<hr>
+
+<h2>When should you control forms?</h2>
+<p>
+  There are of course valid reasons to control forms. The most obvious cases are when you need more rigorous validation or formatting. Like if you want to automatically uppercase every letter or apply a very limited set of phone number patterns. Though there again, heads up that you can apply automatic validation on form submission in HTML. Here's an email input that only allows the form to submit if the email has the proper domain:
+</p>
+
+<my-code file=""><!--
+<input type="email" name='name' pattern=".+@my-site\.com" />
+--><pre></pre>
+</my-code>
+
+<p>
+  The other obvious reason to control a form is if that data is needed elsewhere in your application. Like if you're lifting up the state, or running some debounce function on inputs. And of course, if there's ever some weird edge case that pops up where controlling is the answer: do it!
+</p>
+
+<h2>Think before you code</h2>
+<p>
+  The point is, sometimes you'll want to control a form, but it shouldn't just be the default. Think about the state of your application and always ask yourself if a form needs controlling. It will save your app a lot of time and complexity if you wait before adding all those hooks and state.
+</p>
+
+<p>
+  Examples like form submission truly show the power of <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/The_web_and_web_standards" target="_blank" rel="noopener noreferrer">web standards</a>. The FormData API has been in all major browsers for years now, which means no matter what framework you use, this technique will work. For all the Jrs. out there wondering what skills they should learn, web standard APIs can't really ever go out of style.
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+</div> <!-- END ARTICLE BODY -->
+<chimp-form></chimp-form>
+</article>
+</main>
+<recommended-articles
+  article_names="how_to_make_modals,postgres_cheat_sheet,getting_started_numpy"
+></recommended-articles>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

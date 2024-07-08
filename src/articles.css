@@ -1,0 +1,43 @@
+main#articles-page h1 {
+  text-align: center;
+  margin: 1rem;
+}
+
+div#article-split {
+  display: flex;
+  gap: 1rem;
+}
+
+div#topic-side {
+  padding: 1rem;
+  width: 17rem;
+  position: sticky;
+  height: fit-content;
+  top: 2rem;
+  flex-shrink: 0;
+  border-right: 0.05rem solid var(--foreground-primary);
+}
+
+div#article-side {
+  margin-right: auto;
+}
+
+p#explain-topics {
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+}
+
+@media (max-width: 1250px) {
+  div#article-split {
+    display: block;
+  }
+
+  div#topic-side {
+    width: 100%;
+    margin: -2rem auto 1.5rem;
+    position: relative;
+    border: none;
+    border-bottom: 0.05rem solid var(--foreground-primary);
+  }
+}

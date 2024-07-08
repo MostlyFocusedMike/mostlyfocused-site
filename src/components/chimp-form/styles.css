@@ -1,0 +1,82 @@
+div#newsletter-container {
+  border-top: 0.05rem solid var(--foreground-primary);
+  width: 22rem;
+  height: 10rem;
+  margin: 0 auto;
+}
+
+form#newsletter-form {
+  font-family: sans-serif;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: .8rem 0.5rem;
+}
+
+h2#signup-heading {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+label[for="EMAIL"] {
+  display: block;
+  padding-bottom: 0.3rem;
+  color: var(--foreground-primary);
+}
+
+input#EMAIL {
+  width: 18rem;
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.25rem 0 0 0.25rem;
+  border: 0.1rem solid gray;
+}
+
+#newsletter-form button {
+  padding: 0.2rem 0.5rem;
+  background: var(--background-purple);
+  font-size: 1rem;
+  border: 0.1rem solid gray;
+  border-left: 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-color: gray gray gray var(--background-purple);
+  transition: all 0.2s ease-in-out;
+}
+
+#newsletter-form button:hover {
+  background: var(--foreground-primary);
+  border-color: var(--foreground-primary);
+  color: var(--background-primary)
+}
+
+#newsletter-form button:active,
+#newsletter-form button.disabled {
+  background: var(--background-primary);
+  border-color: var(--background-primary);
+  color: var(--foreground-primary)
+}
+
+p#EMAIL-error {
+  font-size: 0.8rem;
+  font-family: sans-serif;
+  margin: 0;
+  text-align: center;
+  padding-top: 0.5rem;
+  visibility: hidden;
+}
+
+p#chimp-results {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0.5rem 0 0;
+}
+
+#chimp-results.jsonp-success {
+  color: var(--foreground-primary);
+}
+
+#chimp-results.jsonp-error {
+  color: red;
+}
