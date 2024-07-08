@@ -62,7 +62,7 @@
       "id": "reverse_linked_list",
       "title": "How To Reverse A Linked List With Animated Examples",
       "description": "Understand how the algorithm works with code synced to animations",
-      "relativeUrl": "/pages/reverse_linked_list",
+      "relativeUrl": "/pages/articles/reverse_linked_list.html",
       "image": "https://mostlyfocused.com/images/reverse_linked_list/preview.png",
       "level": 0,
       "topics": [
@@ -90,7 +90,7 @@
       "id": "understanding_data_layers",
       "title": "Understanding Data Layers (Without Using Databases)",
       "description": "Learn one of programmings most crucial concepts without touching SQL",
-      "relativeUrl": "/pages/understanding_data_layers",
+      "relativeUrl": "/pages/articles/understanding_data_layers.html",
       "image": "https://mostlyfocused.com/images/understanding_data_layers/preview.png",
       "level": 0,
       "topics": [
