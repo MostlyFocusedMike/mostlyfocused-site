@@ -34,11 +34,6 @@ export default class TopicChoices extends HTMLElement {
     }
 
     this.form.onreset = () => this.articleCardList.topics = Object.values(allTopics).join(',');
-
-    this.clearButton.onclick = (e) => {
-      document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false)
-      this.articleCardList.topics = '';
-    };
   }
 
   render() {
@@ -49,13 +44,12 @@ export default class TopicChoices extends HTMLElement {
         <h2 id="topic-header">Topic Choices</h2>
         <div id="all-topics">
           ${$m(allTopics, (topic) => /*html*/`
-            <input type="checkbox" id="${topic}" name="${topic}" checked/>
+            <input type="checkbox" id="${topic}" name="${topic}" />
             <label for="${topic}">${topic}</label>
           `)}
         </div>
         <div id="multi-topic-buttons">
-          <button class="multi-topic" type="reset">Select All</button>
-          <button class="multi-topic" type="button" id="clear">Unselect All</button>
+          <button class="multi-topic" type="reset">Reset</button>
         </div>
 
       </form>
