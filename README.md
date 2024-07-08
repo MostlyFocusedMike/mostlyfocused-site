@@ -50,9 +50,9 @@ this was the prism test page https://prismjs.com/test.html#language=jsx
 this is the endpoint
 
 ```
-https://gmail.us14.list-manage.com/subscribe/post-json?u=dc0ab9e42e4956a8c83d4579e&id=35a27f3003&f_id=0035f9e0f0&c=jQuery19009417234251593101_1720232200691&EMAIL=mikecronin92%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&subscribe=Subscribe&_=1720232200692
+https://gmail.us14.list-manage.com/subscribe/post-json?u=dc0ab9e42e4956a8c83d4579e&id=35a27f3003&f_id=0035f9e0f0&c=jQuery19009417234251593101_1720232200691&EMAIL=mn%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&subscribe=Subscribe&_=1720232200692
 
-https://gmail.us14.list-manage.com/subscribe/post-json?u=dc0ab9e42e4956a8c83d4579e&id=35a27f3003&f_id=0035f9e0f0&c=jQuery19009417234251593101_1720232200691&EMAIL=mikecronin92%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&subscribe=Subscribe&_=1720232200693
+https://gmail.us14.list-manage.com/subscribe/post-json?u=dc0ab9e42e4956a8c83d4579e&id=35a27f3003&f_id=0035f9e0f0&c=jQuery19009417234251593101_1720232200691&EMAIL=mn%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&subscribe=Subscribe&_=1720232200693
 ```
 
 ```
@@ -61,14 +61,14 @@ https://gmail.us14.list-manage.com/subscribe/post-json?
   &id=35a27f3003                                 // STATIC // user id?
   &f_id=0035f9e0f0
   &c=jQuery19009417234251593101_1720232200691    // VAR    // This is the JSONP wrapper function name
-  &EMAIL=mikecronin92%2Btest%40gmail.com         // VAR    // email value url encoded
+  &EMAIL=mn%2Btest%40gmail.com         // VAR    // email value url encoded
   &b_dc0ab9e42e4956a8c83d4579e_35a27f3003=       // STATIC // This is the name of the hidden input
   &subscribe=Subscribe                           // STATIC // Literally just a "subscribe"
   &_=1720232200692                               // VAR    // Date.now()
 ```
 
 ```
-EMAIL=mikecronin92%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&id=35a27f3003&u=dc0ab9e42e4956a8c83d4579e&f_id=0035f9e0f0&subscribe=Subscribe&c=jsonpHandle&_=1720329408909
+EMAIL=mn%2Btest%40gmail.com&b_dc0ab9e42e4956a8c83d4579e_35a27f3003=&id=35a27f3003&u=dc0ab9e42e4956a8c83d4579e&f_id=0035f9e0f0&subscribe=Subscribe&c=jsonpHandle&_=1720329408909
 ```
 
 ```
@@ -85,7 +85,7 @@ heres the error state
 ```
 jQuery19005070817989352252_1720240207734({
     "result": "error",
-    "msg": "Recipient \"mikecronin92+test@gmail.com\" has too many recent signup requests"
+    "msg": "Recipient \"mn+test@gmail.com\" has too many recent signup requests"
 })
 ```
 
