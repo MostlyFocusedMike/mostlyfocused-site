@@ -35,6 +35,7 @@ input#EMAIL {
 }
 
 #newsletter-form button {
+  color: var(--foreground-primary);
   padding: 0.2rem 0.5rem;
   background: var(--background-purple);
   font-size: 1rem;

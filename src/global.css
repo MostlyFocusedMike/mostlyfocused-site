@@ -16,7 +16,7 @@ html, body {
   --background-secondary: #292524;
   --background-purple: hsl(273.6, 40%, 30%);
   --lighter-gray: #D1D5DB;
-  --purple-primary: #7C3AED;
+  --purple-primary: #A78BFA; /* #7C3AED; */
   --text-purple: #A78BFA;
   --terminal-output: #020617; /* slate 950 */
   --accent-primary: #FDE047; /* yellow 300 */
