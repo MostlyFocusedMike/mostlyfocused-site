@@ -9,9 +9,10 @@ export default class CodeJumpButtons extends HTMLElement {
   handleJumpToElement = (e) => {
     if (!e.target.dataset.direction) return;
     const direction = Number(e.target.dataset.direction);
+    const slideHeaderOffsetPx = 50;
 
     const distanceToTopPixelOfCodeSnippets = [...document.querySelectorAll('my-code')]
-      .map(snippet => snippet.getBoundingClientRect().top);
+      .map(snippet => snippet.getBoundingClientRect().top - slideHeaderOffsetPx);
     if (direction === -1) distanceToTopPixelOfCodeSnippets.reverse();
 
     for (const px of distanceToTopPixelOfCodeSnippets) {
