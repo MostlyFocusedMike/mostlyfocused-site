@@ -14,7 +14,7 @@ pre[class*=language-] {
   margin: 0 auto !important;
   padding: 0.75rem !important;
   border-radius: 0 0 0.3rem 0.3rem;
-  font-size: clamp(10px, 1vw, 14px) !important;
+  font-size: clamp(10px, 1vw, 12px) !important;
 }
 
 div.code-meta-shadow {
