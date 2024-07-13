@@ -4,6 +4,11 @@ html, body {
   margin: 0;
   padding: 0;
   color-scheme: dark;
+  background-image: linear-gradient(to bottom right, var(--background-darkest), var(--background-primary));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
 }
 
 :root{
@@ -116,11 +121,6 @@ ul {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-}
-
-code[class*="language-"],
-pre[class*="language-"] {
-  font-size: 0.8rem;
 }
 
 @media (max-width: 1050px) {

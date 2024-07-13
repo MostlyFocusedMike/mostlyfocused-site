@@ -191,3 +191,5 @@ document.querySelector('form').addEventListener('submit', async function(e) {
 
 
 https://stackoverflow.com/questions/65257333/svg-inside-h1-tag
+
+https://www.linkedin.com/post-inspector/inspect/https:%2F%2Fmostlyfocused.com

@@ -2,7 +2,7 @@ pre code {
   display: inline-block;
   padding: 0.1rem;
   color: white;
-  font-size: .7rem !important;
+  font-size: clamp(10px, 1vw, 14px) !important;
 }
 
 .code-container {

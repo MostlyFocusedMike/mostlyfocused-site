@@ -1,6 +1,5 @@
 
 main:has(article) {
-  background-color: var(--background-primary);
   display: flex;
   position: relative;
   justify-content: flex-start;

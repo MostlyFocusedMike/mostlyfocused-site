@@ -9,17 +9,18 @@
 }
 
 .article-card.small-card {
-  width: 18rem;
-  height: 21rem;
+  padding: 1rem 1.5rem;
+  width: 20rem;
+  height: 24rem;
 }
 
 
 .article-card.small-card .preview-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .article-card.small-card p {
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .preview-title {
@@ -65,6 +66,7 @@ p.topic-badge {
 
 button.topic-badge {
   display: inline-block;
+  font-size: 0.9rem;
   padding: 0.2rem 1rem;
   background-color: var(--background-purple);
   border: none;

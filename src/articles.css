@@ -6,6 +6,7 @@ main#articles-page h1 {
 div#article-split {
   display: flex;
   gap: 1rem;
+  min-height: 55rem;
 }
 
 div#topic-side {
