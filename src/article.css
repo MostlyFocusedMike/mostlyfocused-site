@@ -9,7 +9,9 @@ main:has(article) {
 }
 
 article {
-  padding: 1rem 0.5rem;
+  padding: 3rem 0.5rem 1rem;
+  align-self: flex-end;
+  width: 100%;
 }
 
 h1.article-heading {

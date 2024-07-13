@@ -14,5 +14,14 @@ export default class SiteLinks extends HTMLElement {
       </nav>
     </header>
     `;
+
+    let prevScrollY = window.scrollY;
+    const headerEl = document.querySelector('header');
+    const handleSlidInAndOutHeader = () => {
+      headerEl.style.top = prevScrollY > window.scrollY ? "0" : "-50px";
+      prevScrollY = window.scrollY;
+    }
+
+    window.addEventListener('scroll', handleSlidInAndOutHeader);
   }
 }

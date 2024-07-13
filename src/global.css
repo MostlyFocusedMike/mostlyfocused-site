@@ -8,7 +8,7 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-attachment: fixed; */
+  scroll-padding-top: 50px;
 }
 
 :root{
@@ -56,10 +56,6 @@ html, body {
   margin-top: 2rem;
 }
 
-article {
-  align-self: flex-end;
-  width: 100%;
-}
 
 .basic-link,
 #article-links a {
