@@ -18,7 +18,8 @@ export default class SiteLinks extends HTMLElement {
     let prevScrollY = window.scrollY;
     const headerEl = document.querySelector('header');
     const handleSlidInAndOutHeader = () => {
-      headerEl.style.top = prevScrollY > window.scrollY ? "0" : "-50px";
+      const doShowHeader = prevScrollY > window.scrollY || window.scrollY < 30;
+      headerEl.style.top = doShowHeader ? "0" : "-50px";
       prevScrollY = window.scrollY;
     }
 
