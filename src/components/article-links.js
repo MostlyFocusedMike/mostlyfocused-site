@@ -5,6 +5,7 @@ export default class ArticleLinks extends HTMLElement {
     this.headings = [
       ...document.querySelector('article').querySelectorAll('h1, h2, h3, h4')
     ];
+    this.setHeadingIds();
     this.render();
   }
 
@@ -13,12 +14,12 @@ export default class ArticleLinks extends HTMLElement {
       headingEl.classList.add('article-heading');
       headingEl.id = headingEl.textContent.trim()
         .toLocaleLowerCase()
+        .replace(/[\?\!\,\.\"\']/g, '')
         .replace(/\s/g, '-');
     });
   }
 
   render() {
-    this.setHeadingIds();
     this.innerHTML = /*html*/`
       <nav aria-labelledby="article-links-header" id="article-links">
         <h2 id="article-links-header">Jump To Section</h2>
