@@ -16,8 +16,9 @@ pre[class*=language-] {
   border-radius: 0 0 0.3rem 0.3rem;
 }
 
-code[class*=language-], pre[class*=language-] {
-  font-size: 0.7rem !important;
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 12px !important;
 }
 
 div.code-meta-shadow {
