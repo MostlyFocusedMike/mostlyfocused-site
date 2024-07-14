@@ -25,7 +25,7 @@ export default class CodeSnippet extends HTMLElement {
     const code = this.childNodes[0].textContent;
     const output = this.querySelector('pre')?.innerText;
     const file = this.getAttribute('file');
-    const style = "font-size: 1rem !important;";
+    const style = "font-size: 0.7rem !important;";
     this.innerHTML = /*html*/`
       <div class="code-container">
         <div class="code-meta-shadow">
