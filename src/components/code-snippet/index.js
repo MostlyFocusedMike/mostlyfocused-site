@@ -25,7 +25,6 @@ export default class CodeSnippet extends HTMLElement {
     const code = this.childNodes[0].textContent;
     const output = this.querySelector('pre')?.innerText;
     const file = this.getAttribute('file');
-    const style = "font-size: 0.7rem !important;";
     this.innerHTML = /*html*/`
       <div class="code-container">
         <div class="code-meta-shadow">
@@ -34,7 +33,7 @@ export default class CodeSnippet extends HTMLElement {
           <button class="code-copy">${COPY_CODE}</button>
         </div>
         </div>
-        <pre style="${style}"><code style="${style}" class="language-jsx">${escapeText(code.trim())}</code></pre>
+        <pre><code class="language-jsx">${escapeText(code.trim())}</code></pre>
       </div>
       ${ output ? /*html*/`<pre class="code-output">${output}</pre>` : '' }
     `;
