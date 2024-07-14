@@ -10,11 +10,15 @@ pre code {
   margin: 0 auto;
 }
 /* override the okaida inbuilt css */
-pre[class*=language-] {
+code[class*=language-], pre[class*=language-] {
   margin: 0 auto !important;
   padding: 0.75rem !important;
   border-radius: 0 0 0.3rem 0.3rem;
-  font-size: clamp(10px, 1vw, 12px) !important;
+}
+
+code[class*=language-], pre[class*=language-]
+code[class*=language-] span, pre[class*=language-] span {
+  font-size: 0.7rem !important;
 }
 
 div.code-meta-shadow {
