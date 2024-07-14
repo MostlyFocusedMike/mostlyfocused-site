@@ -2,6 +2,7 @@ pre code {
   display: inline-block;
   padding: 0.1rem;
   color: white;
+  font-size: .7rem !important;
 }
 
 .code-container {
@@ -10,14 +11,10 @@ pre code {
   margin: 0 auto;
 }
 /* override the okaida inbuilt css */
-code[class*=language-] {
+pre[class*=language-] {
   margin: 0 auto !important;
   padding: 0.75rem !important;
   border-radius: 0 0 0.3rem 0.3rem;
-}
-
-pre {
-  font-size: 0.7rem !important;
 }
 
 div.code-meta-shadow {
