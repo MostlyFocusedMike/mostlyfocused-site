@@ -17,7 +17,9 @@ pre[class*=language-] {
 }
 
 code[class*="language-"],
-pre[class*="language-"] {
+pre[class*="language-"],
+code[class*="language-"] span,
+pre[class*="language-"] span {
   font-size: 12px !important;
 }
 
