@@ -2,6 +2,8 @@ pre code {
   display: inline-block;
   padding: 0.1rem;
   color: white;
+  width: 99%;
+  font-size: .7rem !important;
 }
 
 .code-container {
@@ -14,10 +16,6 @@ pre[class*=language-] {
   margin: 0 auto !important;
   padding: 0.75rem !important;
   border-radius: 0 0 0.3rem 0.3rem;
-}
-
-code[class*=language-], pre[class*=language-] {
-  font-size: 12px;
 }
 
 div.code-meta-shadow {
