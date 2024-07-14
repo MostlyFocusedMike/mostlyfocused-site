@@ -16,6 +16,7 @@ pre[class*=language-] {
   border-radius: 0 0 0.3rem 0.3rem;
 }
 
+pre[class*="language-"] > code[class*="language-"]
 code[class*="language-"],
 pre[class*="language-"],
 code[class*="language-"] span,
