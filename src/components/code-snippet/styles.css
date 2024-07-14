@@ -16,7 +16,7 @@ pre[class*=language-] {
   border-radius: 0 0 0.3rem 0.3rem;
 }
 
-pre[class*=language-] > code[class*=language-]
+/* pre[class*=language-] > code[class*=language-]
 code[class*=language-],
 pre[class*=language-],
 code[class*=language-] span.token,
@@ -24,7 +24,7 @@ pre[class*=language-] span.token,
 code[class*=language-] > span.token,
 pre[class*=language-] > span.token {
   font-size: 12px !important;
-}
+} */
 
 div.code-meta-shadow {
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, .5);
