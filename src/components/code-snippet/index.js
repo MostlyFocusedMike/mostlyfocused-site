@@ -33,7 +33,11 @@ export default class CodeSnippet extends HTMLElement {
           <button class="code-copy">${COPY_CODE}</button>
         </div>
         </div>
-        <pre><code class="language-jsx">${escapeText(code.trim())}</code></pre>
+        <pre style="font-size: 10px;">
+          <code style="font-size: 10px;" class="language-jsx">
+            ${escapeText(code.trim())}
+          </code>
+        </pre>
       </div>
       ${ output ? /*html*/`<pre class="code-output">${output}</pre>` : '' }
     `;
