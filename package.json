@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node create-articles-metadata.js && vite",
-    "build": "vite build",
-    "work": "nodemon --no-deprecation create-articles-metadata.js --ignore './src'",
+    "dev": "npm run set-json && vite",
+    "build": "npm run set-json && vite build",
+    "set-json": "node --no-deprecation ./scripts/create-articles-metadata.js --ignore './src'",
+    "new": "node ./scripts/new-article.js",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@inquirer/prompts": "^5.1.2",
     "jsdom": "^24.1.0",
     "nodemon": "^3.1.4",
     "vite": "^4.3.0"

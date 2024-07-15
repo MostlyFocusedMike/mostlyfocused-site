@@ -6,18 +6,19 @@
 
   <title>[TITLE]</title>
   <meta property="og:title" content="[TITLE]" />
-  <meta name="description" property="og:description" content="The FormData API is available in all browsers and it simplifies everything." />
+  <meta name="description" property="og:description" content="[DESCRIPTION]" />
 
   <meta property = "article:published_time" content = "[TIME]" />
   <meta property = "article:modified_time" content = "[TIME]" />
 
   <link rel="canonical" href="https://mostlyfocused.com/pages/[PAGE]" />
-  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/[PAGE]" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/[PAGE]" />
   <meta name="image" property="og:image" content="https://mostlyfocused.com/images/[PAGE]/preview.png" />
   <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/[PAGE]/preview.png" />
   <meta property="og:image:type" content="image/png" />
 
-  <meta property="article:tag" content="html" />
+  [TOPICS]
+
   <meta property="level" content="0" />
 
   <meta property="og:site_name" content="Mostly Focused" />
@@ -25,6 +26,7 @@
   <meta property="article:author" content="Mike Cronin" />
   <meta property="article:section" content="Coding" />
   <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -43,7 +45,6 @@
     media="none"
     onload="this.media='all'"
   />
-  <meta name="color-scheme" content="dark">
 </head>
 <body>
 <site-heading></site-heading>
@@ -57,14 +58,15 @@
 <p>[SUBTITLE]</p>
 <hr>
 <by-line></by-line>
-<audio controls preload="auto">
-  <source src="/audio/[PAGE].mp3" type="audio/mpeg">
-</audio>
-<img id="cover" src="/images/[PAGE]/cover.png" alt="" srcset="">
+<audio controls preload="auto"><source src="/audio/[PAGE].mp3" type="audio/mpeg"></audio>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
 
-<div id="article-body"> <!-- ARTICLE BODY -->
+</svg>
 
-</div> <!-- END ARTICLE BODY -->
+<!-- ARTICLE BODY -->
+<div id="article-body">
+
+</div><!-- END ARTICLE BODY -->
 </article>
 </main>
 <recommended-articles
