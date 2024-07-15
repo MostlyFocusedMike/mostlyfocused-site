@@ -1,7 +1,24 @@
-import { resolve } from 'path'
+import { join, extname, resolve } from 'path'
 import { defineConfig } from 'vite'
 import articles from './src/json-data/articles.json'
+import fs from 'fs'
 
+const prettyUrlHandler = (options) => (req, res, next) => {
+  if (req.originalUrl === '/') return next();
+
+  const maybeHtmlPath = join(options.rootDir, `${req.originalUrl}.html`);
+  const htmlFileExists = fs.existsSync(maybeHtmlPath);
+
+  if (!extname(req.originalUrl) && htmlFileExists) req.url += '.html';
+  next();
+};
+
+const HtmlExtFallbackPlugin = (options) => ({
+  name: 'html-ext-fallback',
+  configureServer(server) {
+    server.middlewares.use(prettyUrlHandler(options))
+  },
+})
 
 const createPageEntryPoints = () => {
   const setEntryPoints = (entryPoints, articleName, idx) => {
@@ -23,6 +40,9 @@ const opts = {
       },
     },
   },
+  plugins: [
+    HtmlExtFallbackPlugin({ rootDir: __dirname })
+  ]
 };
 
 export default defineConfig(opts)

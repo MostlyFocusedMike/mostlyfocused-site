@@ -29,7 +29,6 @@ const getDataFromFile = (articleFileName) => {
     title: document.querySelector('meta[property="og:title"]')?.content,
     description: document.querySelector('meta[name="description"]')?.content,
     relativeUrl: document.querySelector('meta[property="og:url"]')?.content.replace(siteUrl, ''),
-    prettyUrl: document.querySelector('meta[property="og:url"]')?.content.replace(siteUrl, '').replace('.html', ''),
     image: document.querySelector('meta[property="og:image"]')?.content,
     level: Number(document.querySelector('meta[property="level"]')?.content),
     publishedAt: document.querySelector('meta[property="article:published_time"]')?.content,

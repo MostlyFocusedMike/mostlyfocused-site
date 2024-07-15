@@ -11,6 +11,10 @@ html, body {
   scroll-padding-top: 50px;
 }
 
+main {
+  margin: 3.5rem auto 0; /* handling the sliding header */
+}
+
 :root{
   /* --foreground-primary: #FAFAF9; */
   --foreground-primary: #e6e6e6;

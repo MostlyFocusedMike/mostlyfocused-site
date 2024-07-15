@@ -9,7 +9,7 @@ export default class SiteLinks extends HTMLElement {
       <a id="logo" href="/">mostlyFOCUSED</a>
       <nav id="primary-nav">
         <ul>
-          <li><a class="primary-link" href="/pages/articles/index.html">Articles</a></li>
+          <li><a class="primary-link" href="/pages/articles/">Articles</a></li>
         </ul>
       </nav>
     </header>
