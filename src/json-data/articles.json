@@ -4,86 +4,18 @@
       "id": "explaining_this_site",
       "title": "How (And Why) I Made This Site Entirely In Vanilla",
       "description": "Hand writing HTML in 2024 because I am not well in the head",
-      "relativeUrl": "/pages/articles/explaining_this_site.html",
+      "relativeUrl": "/pages/articles/explaining_this_site",
       "prettyUrl": "/pages/articles/explaining_this_site",
       "image": "https://mostlyfocused.com/images/explaining_this_site/preview.png",
       "level": 0,
-      "publishedAt": "2023-11-15T07:35:40+03:00",
-      "modifiedAt": "2023-11-15T07:35:40+03:00",
+      "publishedAt": "2024-11-16T07:35:40+03:00",
+      "modifiedAt": "2024-11-16T07:35:40+03:00",
       "topics": [
         "js",
         "html",
         "css",
         "web-standards",
         "updates"
-      ]
-    },
-    "getting_started_numpy": {
-      "id": "getting_started_numpy",
-      "title": "Getting Started With NumPy in Python",
-      "description": "Learn How To Use One of the Best Data Science Libraries",
-      "relativeUrl": "/pages/articles/getting_started_numpy.html",
-      "prettyUrl": "/pages/articles/getting_started_numpy",
-      "image": "https://mostlyfocused.com/images/getting_started_numpy/preview.png",
-      "level": 0,
-      "publishedAt": "2024-06-15T05:23:23.989Z",
-      "modifiedAt": "2024-06-15T05:23:23.989Z",
-      "topics": [
-        "python",
-        "data-science",
-        "numpy",
-        "data-structures"
-      ]
-    },
-    "how_to_make_modals": {
-      "id": "how_to_make_modals",
-      "title": "How To Make Modals With The HTML Dialog Tag",
-      "description": "Use the new dialog tag to create accessible modals instantly",
-      "relativeUrl": "/pages/articles/how_to_make_modals.html",
-      "prettyUrl": "/pages/articles/how_to_make_modals",
-      "image": "https://mostlyfocused.com/images/how_to_make_modals/preview.png",
-      "level": 0,
-      "publishedAt": "2019-11-15T07:35:40+03:00",
-      "modifiedAt": "2019-11-15T07:35:40+03:00",
-      "topics": [
-        "html",
-        "js",
-        "css",
-        "a11y",
-        "web-standards"
-      ]
-    },
-    "postgres_cheat_sheet": {
-      "id": "postgres_cheat_sheet",
-      "title": "Postgres Cheat Sheet Of Common SQL Queries",
-      "description": "Learn common terminal commands, queries, and a Docker quickstart",
-      "relativeUrl": "/pages/articles/postgres_cheat_sheet.html",
-      "prettyUrl": "/pages/articles/postgres_cheat_sheet",
-      "image": "https://mostlyfocused.com/images/postgres_cheat_sheet/preview.png",
-      "level": 0,
-      "publishedAt": "2024-06-15T16:10:07.161Z",
-      "modifiedAt": "2024-06-15T16:10:07.161Z",
-      "topics": [
-        "sql",
-        "postgres",
-        "docker",
-        "cheat-sheet"
-      ]
-    },
-    "reverse_linked_list": {
-      "id": "reverse_linked_list",
-      "title": "How To Reverse A Linked List With Animated Examples",
-      "description": "Understand how the algorithm works with code synced to animations",
-      "relativeUrl": "/pages/articles/reverse_linked_list.html",
-      "prettyUrl": "/pages/articles/reverse_linked_list",
-      "image": "https://mostlyfocused.com/images/reverse_linked_list/preview.png",
-      "level": 0,
-      "publishedAt": "2023-11-15T07:35:40+03:00",
-      "modifiedAt": "2023-11-15T07:35:40+03:00",
-      "topics": [
-        "data-structures",
-        "js",
-        "algos"
       ]
     },
     "stop_controlling_react_forms": {
@@ -103,51 +35,19 @@
         "react",
         "web-standards"
       ]
-    },
-    "understanding_data_layers": {
-      "id": "understanding_data_layers",
-      "title": "Understanding Data Layers (Without Using Databases)",
-      "description": "Learn one of programmings most crucial concepts without touching SQL",
-      "relativeUrl": "/pages/articles/understanding_data_layers.html",
-      "prettyUrl": "/pages/articles/understanding_data_layers",
-      "image": "https://mostlyfocused.com/images/understanding_data_layers/preview.png",
-      "level": 0,
-      "publishedAt": "2023-11-15T07:35:40+03:00",
-      "modifiedAt": "2023-11-15T07:35:40+03:00",
-      "topics": [
-        "js",
-        "html",
-        "concept"
-      ]
     }
   },
   "allTopics": [
-    "a11y",
-    "algos",
-    "cheat-sheet",
-    "concept",
     "css",
-    "data-science",
-    "data-structures",
-    "docker",
     "forms",
     "html",
     "js",
-    "numpy",
-    "postgres",
-    "python",
     "react",
-    "sql",
     "updates",
     "web-standards"
   ],
   "publishOrder": [
-    "how_to_make_modals",
-    "explaining_this_site",
-    "reverse_linked_list",
-    "understanding_data_layers",
     "stop_controlling_react_forms",
-    "getting_started_numpy",
-    "postgres_cheat_sheet"
+    "explaining_this_site"
   ]
 }

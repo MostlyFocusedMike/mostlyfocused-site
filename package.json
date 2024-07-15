@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm run set-json && vite",
-    "build": "npm run set-json && vite build",
+    "build": "vite build",
     "set-json": "node --no-deprecation ./scripts/create-articles-metadata.js --ignore './src'",
     "new": "node ./scripts/new-article.js",
     "preview": "vite preview"

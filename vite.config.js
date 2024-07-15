@@ -1,5 +1,16 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import articles from './src/json-data/articles.json'
+
+
+const createPageEntryPoints = () => {
+  const setEntryPoints = (entryPoints, articleName, idx) => {
+    entryPoints['a' + idx + 1] = `/pages/articles/${articleName}.html`;
+    return entryPoints;
+  };
+
+  return articles.publishOrder.reduce(setEntryPoints, {})
+}
 
 const opts = {
   build: {
@@ -7,14 +18,8 @@ const opts = {
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        a0: resolve(__dirname, 'pages/articles/index.html'),
-        a1: resolve(__dirname, 'pages/articles/explaining_this_site.html'),
-        a2: resolve(__dirname, 'pages/articles/how_to_make_modals.html'),
-        a3: resolve(__dirname, 'pages/articles/postgres_cheat_sheet.html'),
-        a4: resolve(__dirname, 'pages/articles/reverse_linked_list.html'),
-        a5: resolve(__dirname, 'pages/articles/stop_controlling_react_forms.html'),
-        a6: resolve(__dirname, 'pages/articles/understanding_data_layers.html'),
-        a7: resolve(__dirname, 'pages/articles/getting_started_numpy.html'),
+        a0: resolve(__dirname, '/pages/articles/index.html'),
+        ...createPageEntryPoints(),
       },
     },
   },
