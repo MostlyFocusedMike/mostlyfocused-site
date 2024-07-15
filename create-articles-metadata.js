@@ -20,7 +20,7 @@ const scanForMissingProps = (articleMetadata, fileName) => {
   });
 }
 
-const getDataFromFile = articleFileName => {
+const getDataFromFile = (articleFileName) => {
   const html = readFileSync(`${articlesPath}/${articleFileName}`, 'utf-8');
   const { document } = (new JSDOM(html)).window
 
@@ -29,8 +29,11 @@ const getDataFromFile = articleFileName => {
     title: document.querySelector('meta[property="og:title"]')?.content,
     description: document.querySelector('meta[name="description"]')?.content,
     relativeUrl: document.querySelector('meta[property="og:url"]')?.content.replace(siteUrl, ''),
+    prettyUrl: document.querySelector('meta[property="og:url"]')?.content.replace(siteUrl, '').replace('.html', ''),
     image: document.querySelector('meta[property="og:image"]')?.content,
     level: Number(document.querySelector('meta[property="level"]')?.content),
+    publishedAt: document.querySelector('meta[property="article:published_time"]')?.content,
+    modifiedAt: document.querySelector('meta[property="article:modified_time"]')?.content,
   };
   articleMetadata.topics = getTopics(document);
 
@@ -48,7 +51,9 @@ readdirSync(articlesPath)
   .forEach(getDataFromFile);
 
 articlesData.allTopics = [...topicSet].sort()
-
+articlesData.publishOrder = Object.values(articlesData.articles)
+  .toSorted((a,b) => new Date(a.publishedAt) - new Date(b.publishedAt))
+  .map(({ id }) => id);
 
 writeFileSync('./src/json-data/articles.json', JSON.stringify(articlesData, null, 2));
 

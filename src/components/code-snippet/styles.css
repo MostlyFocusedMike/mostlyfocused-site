@@ -3,7 +3,7 @@ pre code {
   padding: 0.1rem;
   color: white;
   width: 99%;
-  font-size: .7rem !important;
+  font-size: .7rem !important; /* never touch this again. otherwise all the code will have wrong sizes */
 }
 
 .code-container {
