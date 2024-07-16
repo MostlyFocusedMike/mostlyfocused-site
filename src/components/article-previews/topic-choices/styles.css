@@ -15,7 +15,7 @@
   -moz-appearance: none;
   appearance: none;
   position: absolute;
-  left: 1000000000;
+  left: 1000000px;
 }
 
 /* Style the labels as buttons */
