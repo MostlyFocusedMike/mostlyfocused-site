@@ -17,6 +17,24 @@
         "updates"
       ]
     },
+    "html_dialog_tags": {
+      "id": "html_dialog_tags",
+      "title": "How To Make Modals With The HTML Dialog Tag",
+      "description": "Use the HTML dialog tag to make modals, with a11y features built in, in any framework!",
+      "relativeUrl": "/pages/articles/html_dialog_tags",
+      "image": "https://mostlyfocused.com/images/html_dialog_tags/preview.png",
+      "level": 0,
+      "publishedAt": "2024-07-15T19:21:15.248Z",
+      "modifiedAt": "2024-07-15T19:21:15.248Z",
+      "topics": [
+        "html",
+        "css",
+        "js",
+        "react",
+        "web-standards",
+        "a11y"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -36,6 +54,7 @@
     }
   },
   "allTopics": [
+    "a11y",
     "css",
     "forms",
     "html",
@@ -46,6 +65,7 @@
   ],
   "publishOrder": [
     "stop_controlling_react_forms",
-    "explaining_this_site"
+    "explaining_this_site",
+    "html_dialog_tags"
   ]
 }

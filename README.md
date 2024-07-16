@@ -13,15 +13,14 @@ The other issue that wasn't SUPER clear is how to get prism to read JSX, that is
 ```html
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css"
-    integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     media="none"
     onload="this.media='all'"
   />
 ```
-That's the actual style sheet, and it goes in the head, that seems to be the only style you need, and notice that you're using the okaidia theme appended.
+That's the actual style sheet, and it goes in the head, that seems to be the only style you need, and notice that you're using the tomorrow night theme appended.
 
 Then, for the actual execution, you need to put these two scripts at the bottom of the page.
 ```html
@@ -193,3 +192,5 @@ document.querySelector('form').addEventListener('submit', async function(e) {
 https://stackoverflow.com/questions/65257333/svg-inside-h1-tag
 
 https://www.linkedin.com/post-inspector/inspect/https:%2F%2Fmostlyfocused.com
+
+https://www.xml-sitemaps.com/validate-xml-sitemap.html

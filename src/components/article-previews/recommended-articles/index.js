@@ -12,7 +12,7 @@ export default class RecommendedArticles extends HTMLElement {
         <h2 id="recommended-heading">Recommended Articles</h2>
         <div id="background">
           <article-card-list articles='${this.article_names}'></article-card-list>
-          <a id="all-articles" class="basic-link" href="/pages/articles/index.html">See more articles</a>
+          <a id="all-articles" class="basic-link" href="/pages/articles/">See more articles</a>
         </div>
       </section>`;
   }

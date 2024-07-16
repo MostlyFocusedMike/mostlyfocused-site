@@ -206,3 +206,16 @@ h3.article-heading {
 #article-body p a:hover {
   color: white;
 }
+
+blockquote {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.75rem;
+  color: var(--text-purple);
+  font-style: italic;
+  text-align: center;
+}
+
+aside {
+  border-right: 0.1rem solid var(--text-purple);
+  border-top: 0.1rem solid var(--text-purple);
+}

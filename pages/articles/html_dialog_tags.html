@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Make Modals With The HTML Dialog Tag</title>
+  <meta property="og:title" content="How To Make Modals With The HTML Dialog Tag" />
+  <meta name="description" property="og:description" content="Use the HTML dialog tag to make modals, with a11y features built in, in any framework!" />
+
+  <meta property = "article:published_time" content = "2024-07-15T19:21:15.248Z" />
+  <meta property = "article:modified_time" content = "2024-07-15T19:21:15.248Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/html_dialog_tags" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/html_dialog_tags" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/html_dialog_tags/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/html_dialog_tags/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="html" />
+	<meta property="article:tag" content="css" />
+	<meta property="article:tag" content="js" />
+	<meta property="article:tag" content="react" />
+	<meta property="article:tag" content="web-standards" />
+	<meta property="article:tag" content="a11y" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+</div>
+<article>
+<h1>How To Make Modals With The HTML Dialog Tag</h1>
+<p>Examples with vanilla js and React</p>
+<hr>
+<by-line></by-line>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1720" height="965" fill="#C3C3BD"/>
+  <g filter="url(#d)">
+  <text fill="black" font-family="Roboto Condensed" font-size="90" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="46.4629" y="177.262">Your Cool Site Header</tspan></text>
+  </g>
+  <g filter="url(#c)">
+  <text fill="black" font-family="Roboto Condensed" font-size="60" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="46.2559" y="543.508">Some other heading that</tspan></text>
+  </g>
+  <g filter="url(#b)">
+  <text fill="black" font-family="Roboto Condensed" font-size="40" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="44" y="314.172">A “modal” is a pop up that a site can use to display more information or interactivity. Usually, if we need
+  </tspan><tspan x="44" y="361.172"> one, we build it ourselves. But that can be tricky; the biggest pain points about modals are making sure
+  </tspan><tspan x="44" y="408.172">to show/close them at the right times, the CSS, and blocking interactions from happening outside of it.
+  </tspan><tspan x="44" y="455.172">And they must be accessible of course!</tspan></text>
+  </g>
+  <g filter="url(#a)">
+  <text fill="black" font-family="Roboto Condensed" font-size="40" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="44" y="690.172">A “modal” is a pop up that a site can use to display more information or interactivity. Usually, if we need
+  </tspan><tspan x="44" y="737.172"> one, we build it ourselves. But that can be tricky; the biggest pain points about modals are making sure
+  </tspan><tspan x="44" y="784.172">to show/close them at the right times, the CSS, and blocking interactions from happening outside of it.
+  </tspan><tspan x="44" y="831.172">And they must be accessible of course!</tspan></text>
+  </g>
+  <rect x="341" y="190" width="1038" height="617" rx="50" fill="#0C0A09"/>
+  <text fill="#FAFAF9" font-family="Roboto Condensed" font-size="125" font-weight="bold" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="388.088" y="415.725">Wanna Make Some
+  </tspan><tspan x="486.232" y="561.725">HTML Modals?</tspan></text>
+  <rect x="869" y="653" width="374" height="95" rx="47.5" fill="#A78BFA"/>
+  <text fill="#0C0A09" font-family="Roboto Condensed" font-size="80" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="924" y="728.344">Read On</tspan></text>
+  <rect x="480" y="653" width="374" height="95" rx="47.5" fill="#D9D9D9"/>
+  <text fill="#464646" font-family="Roboto Condensed" font-size="80" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="559" y="727.344">Cancel</tspan></text>
+  <path d="M1318.31 227.05L1348 277" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+  <path d="m1318 277 30-50" stroke="#fff" stroke-linecap="round" stroke-width="5"/>
+  <defs>
+  <filter id="d" x="27.781" y="89.5" width="812.82" height="108.38" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+  <feGaussianBlur result="effect1_foregroundBlur_161_84" stdDeviation="10"/>
+  </filter>
+  <filter id="c" x="28.746" y="479" width="615.71" height="97.51" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+  <feGaussianBlur result="effect1_foregroundBlur_161_84" stdDeviation="10"/>
+  </filter>
+  <filter id="b" x="24.449" y="263.59" width="1662.2" height="219.94" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+  <feGaussianBlur result="effect1_foregroundBlur_161_84" stdDeviation="10"/>
+  </filter>
+  <filter id="a" x="24.449" y="639.59" width="1662.2" height="219.94" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+  <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+  <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+  <feGaussianBlur result="effect1_foregroundBlur_161_84" stdDeviation="10"/>
+  </filter>
+  </defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  A “modal” is a pop up that a site can use to display more information or interactivity. Usually, if we need one, we build it ourselves. But that can be tricky; the biggest pain points about modals are making sure to show/close them at the right times, the CSS, and blocking interactions from happening outside of it. And they must be accessible of course!
+</p>
+
+<p>
+  But, did you know that HTML has a tag to make modals for you? The <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement#examples" target="_blank" rel="noopener noreferrer">dialog tag</a> is a super handy element that does everything we need, it's got a bunch of features and accessibility controls built right in for us. I'm going to explain everything in vanilla JS/HTML/CSS and then show how to seamlessly incorporate it into any framework like React at the end.
+</p>
+
+<h2>The basics of making a modal</h2>
+<p>
+  Here's our starting code:
+</p>
+
+<my-code lang='html' file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id="open">Open Modal</button>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  It's so few lines of JS I'm just going to use a script tag to keep it all in once place. All we need is a button to open our modal for now. Next, we need the <code>dialog</code> tag. By the way, <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" target="_blank" rel="noopener noreferrer">it's called dialog</a> because its a window we can use to tell our users them something. Anyway, let's add the modal right below our button:
+</p>
+
+<my-code lang="html" file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id="open">Open Modal</button>
+
+  <dialog>
+    <h2>I'm a modal!</h2>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  Ok now if you're following along…nothing happened. That's because, by default, a dialog is <code>display: none</code>. We need some way to show it. Don't worry, it couldn't be easier: use the new <code>showModal()</code> method whenever we click the button:
+</p>
+
+<my-code file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id="open">Open Modal</button>
+
+  <dialog id="modal">
+    <h2>I'm a modal!</h2>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+
+  // now just showModal when we click the open button
+  openBtn.addEventListener('click', () => modal.showModal());
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  That's it! You just grab the <code>modal</code> element, and then call <code>.showModal()</code>. Note that I just added an <code>id</code> to our <code>dialog</code> tag to make the link between "modal" and "dialog" super clear.
+</p>
+
+<h3>Closing our modal</h3>
+<p>
+  This is honestly one of the neatest parts. Power users know that hitting the <b>escape</b> key is usually how you can exit menus and things. Well guess what? That functionality comes <em>built in</em> to <code>dialogs</code>. Nothing you need to do at all! This is the power of web standards! But, obviously we do want some way to close our model with a button.
+</p>
+
+<p>
+  So, here's another cool thing about <code>dialog</code> elements: we don't need any JS to close them. If you include a <code>form</code> in a modal and set the method attribute to “dialog” it will automatically close the <code>dialog</code> for you! That <code>aria-label</code> attribute on the button is required for screen readers to work properly, make sure you include it!
+</p>
+
+<my-code lang="html" file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id="open">Open Modal</button>
+
+  <dialog id="modal">
+    <form method="dialog"><button aria-label="close">X</button></form>
+    <h2>I'm a modal!</h2>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+
+  openBtn.addEventListener('click', () => modal.showModal());
+</script>
+--><pre></pre>
+</my-code>
+
+
+<p>
+  To clarify, <i>any</i> <code>form</code> inside a <code>dialog</code> with a method of <code>dialog</code> will not <code>GET</code> or <code>POST</code>, but will instead have its default behavior be to close the dialog. There is a JS way to close forms as well, <code>modal.close()</code> which we'll cover later on when we use more in depth forms, so don't panic!
+</p>
+
+<blockquote>
+  The point is, we can do a lot of stuff with <code>dialogs</code> before we need to bother much with JS.
+</blockquote>
+
+<h3>The <code>open</code> attribute</h3>
+<p>
+  And before we move on, you should know there's an <code>open</code> attribute that will be added onto our dialog tag every time we open it (it'll look like: <code>&lt;dialog open&gt;</code>). It's an attribute that has no value, it just exists. You can edit this yourself, but that will actually trigger a <i>slightly</i> different behavior. This article <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/show" target="_blank" rel="noopener noreferrer"> teaches the <code>showModal()</code> logic</a> instead. I (and MDN) <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#open" target="_blank" rel="noopener noreferrer">don't recommend manipulating the <code>open</code> property directly</a>, I'm only bringing it up because it can be useful for CSS stuff.
+</p>
+
+<p>Speaking of styling...</p>
+
+<h2>Understanding and styling the backdrop</h2>
+
+<p>
+  Now that we have a functional modal, let's take a second to talk about the overlay behind it that covers our page. It's officially called the "backdrop", and it's what allows us to block interaction with our page while our modal is open. So if a user hits tab or tries to click any link or button outside, it won't work. Your keyboard focus should be locked, and every other element on the page will be in an <code>inert</code> state.
+</p>
+
+<p>
+  Go ahead, add this interaction button to our site and see that you can't tab over to it or click on it when the modal is open:
+</p>
+
+<my-code lang="html" file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id="open">Open Modal</button>
+
+  <dialog id="modal">
+    <form method="dialog"><button aria-label="close">X</button></form>
+    <h2>I'm a modal!</h2>
+  </dialog>
+
+  <p>Untouchable when modal is open!</p>
+  <button onclick="alert('!')">Interact!</button>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+
+  openBtn.addEventListener('click', () => modal.showModal());
+</script>
+--><pre></pre>
+</my-code>
+
+<h3>Backdrop styles</h3>
+<p>
+  By default, the backdrop pseudo element has a really simple, transparent, gray style. But we can alter this to be anything we want. Me personally, I like to add a blur and darker color:
+</p>
+
+<my-code lang="css" file=""><!--
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(0.1rem);
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  That should give a really nice look to it. Now, by default you can still scroll under a modal. Again, personally this doesn't bother me. You can control this by using classes added to the body with JS or you can use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank" rel="noopener noreferrer">new <code>has</code> function</a> in CSS to do this super cool one liner that takes advantage of the open attribute that only appears when the backdrop is visible:
+</p>
+
+<my-code lang="css" file=""><!--
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+--><pre></pre>
+</my-code>
+
+<h3>Clicking the backdrop to fire <code>modal.close</code></h3>
+<p>
+  Lastly, a behavior that a lot of people are used to but does <i>not</i> come standard with this modal is the ability to close the it by clicking the backdrop. To accomplish this, you just need to add a simple function:
+</p>
+
+<my-code file=""><!--
+const modal = document.querySelector('#modal');
+
+const handleBackdropClick = (e) => {
+  if (!e.target.matches('dialog')) return;
+  const { top, bottom, left, right } = e.target.getBoundingClientRect();
+  const { clientX: mouseX, clientY: mouseY } = e;
+
+  // Ignore radio button arrow movement "clicks"
+  // https://github.com/facebook/react/issues/7407
+  if (mouseX === 0 && mouseY === 0) return;
+
+  const clickedOutsideOfModalBox = (
+    mouseX <= left || mouseX >= right ||
+    mouseY <= top || mouseY >= bottom
+  );
+
+  if (clickedOutsideOfModalBox) modal.close();
+}
+
+modal.addEventListener('click', handleBackdropClick);
+--><pre></pre>
+</my-code>
+
+<p>
+  We're adding a click listener to our modal and looking at the coordinates of the event. Which, even if you click the backdrop pseudo element, will still only give the coordinates of the actual modal box itself. Then we figure out where the mouse clicked, and if it's outside of the box, we close the modal. We close by calling the <code>close</code> method on our modal element. Oh and that little check for 0 on <code>x</code> and <code>y</code> handles certain inputs triggering click events when a user uses a keyboard to select them.
+</p>
+
+<p>
+  It's a cool little function, I'll leave it out of the next examples to keep things clean for this tutorial, but I recommend adding it to your modals.
+</p>
+
+<h2>Using REAL forms in our modal</h2>
+
+<p>
+  It's true that we have a small form for our “X” button, but It's a super common use case to have a modal pop up with a real form inside of it to get some information. So let's make one ourselves!
+</p>
+
+<h3>Simple form with the <code>close</code> event</h3>
+<p>
+  Admittedly, I've never bothered with this technique. However, if you just want a super simple form with a few options, there's a neat way you can handle it: the <code>close</code> event. Unlike traditional forms, when you use <code>method="dialog"</code> there's a <code>returnValue</code> that you can access on the <code>close</code> event, which is of course fired whenever we close a modal.
+</p>
+
+<my-code lang="html" file=""><!--
+  <main>
+  <h1>Modal Practice</h1>
+  <button id='open'>Open Modal</button>
+
+  <dialog id="modal">
+    <form method="dialog"><button aria-label='close'>X</button></form>
+    <h2>Do you accept?</h2>
+
+    <form method="dialog">
+      <p>Here are our different buttons with values</p>
+      <button value="yes">Yes</button>
+      <button value="no">No</button>
+    </form>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+
+  openBtn.addEventListener('click', () => modal.showModal());
+
+  // Here's our new listener
+  modal.addEventListener('close', (e) => {
+    console.log('Return value:', e.target.returnValue)
+  });
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  Now, when they click "yes" or "no" that button's value gets set to the close event's <code>e.target.returnValue</code>. That value can only be set by a submit button, and it must be a string. So, using a few buttons and a close event listener is a perfect way to get simple answers. You could also tell if the “X” button was clicked as well, since we didn't give that button an explicit value.
+</p>
+
+<aside>
+
+  <p>
+    <b>Note:</b> the <code>close</code> event is <b>not</b> cancelable and doesn't bubble, so no event delegation here, you have to attach the listener directly to the modal.
+  </p>
+  <p>
+    And despite <code>e.target.returnValue</code> coming from the <code>button</code>, the <code>target</code> is the <code>dialog</code> itself.
+  </p>
+</aside>
+
+<h3>Traditional form submission event</h3>
+
+<p>
+  If you need to collect some real data in the form, I recommend sticking with the <code>submit</code> event. Here's the only weird thing: don't <code>e.preventDefault</code>, use the <code>method="dialog"</code>. That <code>method</code> will make the default behavior into closing the modal, which is what we want! Don't forget to reset the form though (unless you want to save answers, I guess).
+</p>
+
+<my-code lang="html" file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id='open'>Open Modal</button>
+
+  <dialog id="modal">
+    <form method="dialog"><button aria-label="Close">X</button></form>
+
+    <h2>New User</h2>
+    <form id="modal-form" method="dialog">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+
+      <fieldset>
+        <legend>Skill Level</legend>
+        <label>
+          <input type="radio" name="skill" value="beginner" checked />
+          Beginner
+        </label>
+        <label>
+          <input type="radio" name="skill" value="proficient" />
+          Proficient
+        </label>
+      </fieldset>
+
+      <button>Create New User</button>
+    </form>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+  const modalForm = document.querySelector('#modal-form');
+
+  openBtn.addEventListener('click', () => modal.showModal());
+
+  modalForm.addEventListener('submit', (e) => {
+    const form = e.target;
+    const formData = new FormData(form);
+    console.log(Object.fromEntries(formData));
+
+    form.reset();
+  });
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  Notice that still we have our first form with the close button, that's fine! No rule about the number of forms in a modal. Also, I took out the <code>close</code> event because I don't need it, but <code>submit</code> events happen first. Not having that <code>e.preventDefault()</code> feels so freeing, and I can't really explain why.
+</p>
+
+<h3>A cancel button</h3>
+
+<p>
+  Sometimes you'll see modal forms with a “cancel” button next to submit. Just use a non-submitting button, add a click listener to it, and then close the modal on click:
+</p>
+
+
+<my-code lang="html" file=""><!--
+<main>
+  <h1>Modal Practice</h1>
+
+  <button id='open'>Open Modal</button>
+
+  <dialog id="modal">
+    <form method="dialog"><button aria-label="Close">X</button></form>
+
+    <h2>New User</h2>
+    <form id="modal-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" />
+
+      <fieldset>
+
+      </fieldset>
+
+      <button type="button" id='cancel'>Cancel</button>
+      <button>Create New User</button>
+    </form>
+  </dialog>
+</main>
+
+<script>
+  const openBtn = document.querySelector('#open');
+  const modal = document.querySelector('#modal');
+  const modalForm = document.querySelector('#modal-form');
+  const cancelBtn = document.querySelector('#cancel');
+
+  openBtn.addEventListener('click', () => modal.showModal());
+
+  modalForm.addEventListener('submit', (e) => {
+    const form = e.target;
+    const formData = new FormData(form);
+    console.log(Object.fromEntries(formData));
+
+    form.reset();
+  });
+
+  // All this does is fire close modal!
+  cancelBtn.addEventListener('click', () => modal.close());
+</script>
+--><pre></pre>
+</my-code>
+
+<p>
+  And that's it! There are a few little minor details and extra features you can read about in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog" target="_blank" rel="noopener noreferrer">the dialog docs</a>, but this is like 99% of all you'll need to know about modals and forms!
+</p>
+
+<h2>React example</h2>
+<p>
+  The best thing about web standards is how standard they are. That means they <i>super</i> easily integrate with frameworks. React is the one I know so lets show that, but seriously any web framework can use <code>dialog</code> because any browser can.
+</p>
+
+<p>
+  For React, the biggest thing is that you need to use the <code>useRef</code> hook. Other than that, everything is the same. You can of course control your forms, but I'm not going to bother here so it's super clear everything is the same. Of course, if this is new to you, check out <a href="https://mostlyfocused.com/pages/articles/stop_controlling_react_forms" target="_blank" rel="noopener noreferrer">this article about non-controlled forms</a>.
+</p>
+
+<my-code lang="" file=""><!--
+function App() {
+  const dialogRef = useRef(null);
+
+  const openModal = () => dialogRef.current.showModal();
+  const closeModal = () => dialogRef.current.close();
+
+  const handleBackdropClick = (e) => {
+    if (!e.target.matches('dialog')) return;
+    const { top, bottom, left, right } = e.target.getBoundingClientRect();
+    const { clientX: mouseX, clientY: mouseY } = e;
+
+    if (mouseX === 0 && mouseY === 0) return;
+
+    const clickedOutsideOfModalBox = (
+      mouseX <= left || mouseX >= right ||
+      mouseY <= top || mouseY >= bottom
+    );
+
+    if (clickedOutsideOfModalBox) closeModal();
+  }
+
+  const handleSubmit = (e) => {
+    const form = e.target;
+    const formData = new FormData(form);
+    console.log(Object.fromEntries(formData));
+    form.reset();
+  }
+
+  const handleClose = () => console.log('Closed!');
+
+  return <main>
+    <h1>Modal Practice</h1>
+
+    <button onClick={openModal}>Open Modal</button>
+
+    <dialog
+      ref={dialogRef}
+      onClick={handleBackdropClick}
+      onClose={handleClose}
+    >
+      <form method="dialog"><button aria-label="Close">X</button></form>
+
+      <h2>New User</h2>
+      <form method="dialog" onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input type="text" id="username" name="username" />
+
+        <fieldset>
+          <legend>Skill Level</legend>
+          <label>
+            <input type="radio" name="skill" value="beginner" defaultChecked />
+            Beginner
+          </label>
+          <label>
+            <input type="radio" name="skill" value="proficient" />
+            Proficient
+          </label>
+        </fieldset>
+
+        <button type="button" onClick={closeModal}>Cancel</button>
+        <button>Create New User</button>
+      </form>
+    </dialog>
+  </main>
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  And there you have it! See how easily it incorporates into React? There's even an <code>onClose</code> event and everything. So, there's really no reason not to start using web standard modals on your next project!
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+
+
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names=""
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

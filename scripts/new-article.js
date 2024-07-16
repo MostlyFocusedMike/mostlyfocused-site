@@ -26,7 +26,7 @@ const topicTags = answers.topics.trim()
   .map(topic => /*html*/`<meta property="article:tag" content="${topic}" />`)
   .join('\n\t')
 
-const id = answers.id.trim().replace(/\s/, '_');
+const id = answers.id.trim().replace(/\s/g, '_');
 
 template = template.replace(/\[PAGE\]/g, id)
   .replace(/\[TITLE\]/g, makeTitle(answers.title.trim()))

@@ -1,7 +1,7 @@
 
 // remember, in order for this to work, you need this style sheet in the head
 /*
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer" media="none" onload="this.media='all'" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="crossorigin="anonymous" referrerpolicy="no-referrer" media="none" onload="this.media='all'" />
 */
 
 // and this script at the end of the file
@@ -25,6 +25,7 @@ export default class CodeSnippet extends HTMLElement {
     const code = this.childNodes[0].textContent;
     const output = this.querySelector('pre')?.innerText;
     const file = this.getAttribute('file');
+    const lang = this.getAttribute('lang') || 'jsx';
     this.innerHTML = /*html*/`
       <div class="code-container">
         <div class="code-meta-shadow">
@@ -33,7 +34,7 @@ export default class CodeSnippet extends HTMLElement {
           <button class="code-copy">${COPY_CODE}</button>
         </div>
         </div>
-        <pre><code class="language-jsx">${escapeText(code.trim())}</code></pre>
+        <pre><code class="language-${lang}">${escapeText(code.trim())}</code></pre>
       </div>
       ${ output ? /*html*/`<pre class="code-output">${output}</pre>` : '' }
     `;
