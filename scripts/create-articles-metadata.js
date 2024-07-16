@@ -51,7 +51,7 @@ readdirSync(articlesPath)
 
 articlesData.allTopics = [...topicSet].sort()
 articlesData.publishOrder = Object.values(articlesData.articles)
-  .toSorted((a,b) => new Date(a.publishedAt) - new Date(b.publishedAt))
+  .toSorted((a,b) => new Date(b.publishedAt) - new Date(a.publishedAt))
   .map(({ id }) => id);
 
 writeFileSync('./src/json-data/articles.json', JSON.stringify(articlesData, null, 2));

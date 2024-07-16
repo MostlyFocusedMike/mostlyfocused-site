@@ -1,4 +1,4 @@
-import { articles, allTopics } from '../../../json-data/articles.json'
+import { articles, allTopics, publishOrder } from '../../../json-data/articles.json'
 import { TOPIC_CLASS } from '../article-card';
 import { $m, $s } from '../../utils';
 import './styles.css';
@@ -41,7 +41,7 @@ export default class ArticleCardList extends HTMLElement {
 
   render(afterBrowserRendersWebComponentsCallback) {
     // TODO add published at date and allow for sorting by date or listed articles
-    const sortedArticles = Object.values(articles);
+    const sortedArticles = publishOrder.map(name => articles[name]);
     this.innerHTML = /*html*/`<ul class="flex-list">
       ${$m(sortedArticles, (article) => /*html*/`<li>
         <article-card

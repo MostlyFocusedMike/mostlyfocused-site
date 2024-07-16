@@ -24,8 +24,8 @@
       "relativeUrl": "/pages/articles/html_dialog_tags",
       "image": "https://mostlyfocused.com/images/html_dialog_tags/preview.png",
       "level": 0,
-      "publishedAt": "2024-07-15T19:21:15.248Z",
-      "modifiedAt": "2024-07-15T19:21:15.248Z",
+      "publishedAt": "2024-07-13T18:21:15.248Z",
+      "modifiedAt": "2024-07-13T18:21:15.248Z",
       "topics": [
         "html",
         "css",
@@ -35,6 +35,21 @@
         "a11y"
       ]
     },
+    "postgres_cheat_sheet": {
+      "id": "postgres_cheat_sheet",
+      "title": "Postgres Cheat Sheet Of Common SQL Queries",
+      "description": "The most common queries (CRUD included) for Postgres, plus a Docker start up guide!",
+      "relativeUrl": "/pages/articles/postgres_cheat_sheet",
+      "image": "https://mostlyfocused.com/images/postgres_cheat_sheet/preview.png",
+      "level": 0,
+      "publishedAt": "2024-04-03T12:39:04.998Z",
+      "modifiedAt": "2024-07-15T12:39:04.998Z",
+      "topics": [
+        "sql",
+        "cheat-sheet",
+        "docker"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -42,8 +57,8 @@
       "relativeUrl": "/pages/articles/stop_controlling_react_forms",
       "image": "https://mostlyfocused.com/images/stop_controlling_react_forms/preview.png",
       "level": 0,
-      "publishedAt": "2024-04-09T07:35:40+03:00",
-      "modifiedAt": "2024-04-09T07:35:40+03:00",
+      "publishedAt": "2024-07-13T12:35:40+03:00",
+      "modifiedAt": "2024-07-13T12:35:40+03:00",
       "topics": [
         "html",
         "js",
@@ -55,17 +70,21 @@
   },
   "allTopics": [
     "a11y",
+    "cheat-sheet",
     "css",
+    "docker",
     "forms",
     "html",
     "js",
     "react",
+    "sql",
     "updates",
     "web-standards"
   ],
   "publishOrder": [
-    "stop_controlling_react_forms",
     "explaining_this_site",
-    "html_dialog_tags"
+    "html_dialog_tags",
+    "stop_controlling_react_forms",
+    "postgres_cheat_sheet"
   ]
 }

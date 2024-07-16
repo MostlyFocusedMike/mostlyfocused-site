@@ -58,6 +58,10 @@ h1 + p {
   margin-top: 2rem;
 }
 
+#article-links ul {
+  max-height: 25rem;
+  overflow: scroll;
+}
 
 .basic-link,
 #article-links a {

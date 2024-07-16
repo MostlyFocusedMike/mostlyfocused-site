@@ -8,19 +8,18 @@ export default class ArticleCard extends HTMLElement {
   get article() { return $p(this.getAttribute('article')) }
 
   connectedCallback() {
-    const { relativeUrl, title, image, description, topics } = this.article;
+    const { relativeUrl, title, description, topics } = this.article;
 
     const isInteractive = this.hasAttribute('is_interactive');
     const isSmall = this.closest('article-card-list').hasAttribute('has_small_cards');
-    const url = new URL(image);
-    const { pathname } = url;
+    const imgUrl = `/images/${this.id}/preview.webp`;
 
     // TODO: reformat to use classList
     this.innerHTML = /*html*/`
       <div class="${ARTICLE_CARD} ${isSmall ? 'small-card' : ''}">
         <a href="${relativeUrl}">
           <p class="preview-title">${title}</p>
-          <img class="preview-image" src="${pathname}" alt="" />
+          <img class="preview-image" src="${imgUrl}" alt="" />
         </a>
 
         <p>${description}</p>
