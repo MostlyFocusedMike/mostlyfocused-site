@@ -2,7 +2,7 @@ div#newsletter-container {
   border-top: 0.05rem solid var(--foreground-primary);
   width: 22rem;
   height: 10rem;
-  margin: 0 auto;
+  margin: 2rem auto 0;
 }
 
 form#newsletter-form {
@@ -20,6 +20,13 @@ h2#signup-heading {
   margin-bottom: 1rem;
 }
 
+h2#signup-heading.tiny {
+  font-size: 1.2rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
 label[for="EMAIL"] {
   display: block;
   padding-bottom: 0.3rem;
@@ -27,7 +34,7 @@ label[for="EMAIL"] {
 }
 
 input#EMAIL {
-  width: 18rem;
+  width: 16rem;
   padding: 0.2rem 0.5rem;
   font-size: 1rem;
   border-radius: 0.25rem 0 0 0.25rem;
@@ -80,4 +87,18 @@ p#chimp-results {
 
 #chimp-results.jsonp-error {
   color: red;
+}
+
+div#newsletter-container {
+  display: none;
+}
+
+div#newsletter-container.side-bar {
+  display: block;
+}
+
+@media (max-width: 1050px) {
+  div#newsletter-container {
+    display: block;
+  }
 }

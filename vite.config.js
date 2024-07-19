@@ -22,7 +22,7 @@ const HtmlExtFallbackPlugin = (options) => ({
 
 const createPageEntryPoints = () => {
   const setEntryPoints = (entryPoints, articleName, idx) => {
-    entryPoints['a' + idx + 1] = `/pages/articles/${articleName}.html`;
+    entryPoints[`a${idx + 1}`] = `/pages/articles/${articleName}.html`;
     return entryPoints;
   };
 

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Reverse A Linked List With Animated Examples</title>
+  <meta property="og:title" content="How To Reverse A Linked List With Animated Examples" />
+  <meta name="description" property="og:description" content="Visually see the linked list algorithm code synced up to an animated example" />
+
+  <meta property = "article:published_time" content="2024-07-18T22:12:31.444Z" />
+  <meta property = "article:modified_time" content="2024-07-18T22:08:31.444Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/how_to_reverse_linked_list" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/how_to_reverse_linked_list" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/how_to_reverse_linked_list/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/how_to_reverse_linked_list/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="algos" />
+	<meta property="article:tag" content="data-structures" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<h1>How To Reverse A Linked List With Animated Examples</h1>
+<p>Understand the algorithm with gifs</p>
+<hr>
+<by-line></by-line>
+
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="url(#a)"/><circle cx="412" cy="407" r="81" stroke="#FAFAF9" stroke-width="20"/><circle cx="765" cy="407" r="81" stroke="#FAFAF9" stroke-width="20"/><circle cx="1118" cy="407" r="81" stroke="#FAFAF9" stroke-width="20"/><circle cx="1471" cy="407" r="81" stroke="#FAFAF9" stroke-width="20"/><path d="m518.46 403.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm136.54-1.464h-133v10h133v-10z" fill="#fff"/><path d="m165.46 403.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm136.54-1.464h-133v10h133v-10z" fill="#fff"/><path d="m1224.5 403.46c-1.95 1.953-1.95 5.119 0 7.072l31.82 31.819c1.96 1.953 5.12 1.953 7.08 0 1.95-1.952 1.95-5.118 0-7.071l-28.29-28.284 28.29-28.284c1.95-1.953 1.95-5.119 0-7.071-1.96-1.953-5.12-1.953-7.08 0l-31.82 31.819zm136.54-1.464h-133v10h133v-10z" fill="#fff"/><path d="m871.46 403.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm136.54-1.464h-133v10h133v-10z" fill="#A78BFA"/><text transform="matrix(-1 0 0 1 1580 498)" fill="#A78BFA" font-family="Roboto Condensed" font-size="130" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="120.434">It all makes sense in motion</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="140" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="377" y="454.852">1</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="140" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="730" y="454.852">2</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="140" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="1083" y="454.852">3</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="140" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="1436" y="454.852">4</tspan></text><defs><linearGradient id="a" x1="860" x2="860" y2="965" gradientUnits="userSpaceOnUse"><stop stop-color="#020617" offset="0"/><stop stop-color="#0F172A" offset=".89934"/></linearGradient></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  The linked list reversal algorithm can be difficult to understand without visuals. So…here are some visuals. First I'll show only the algorithm's raw logic, and then I'll sync the animation to actual code. Finally, after we fully understand everything, we'll add it as a class method to a real example.
+</p>
+
+<h2>What is a reversed linked list?</h2>
+<p>
+  Reversing a list means taking each node's <code>next</code> pointer and swapping it from the node to the right, to the node on the left.
+</p>
+
+<svg fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="#202124"/><circle cx="554" cy="673" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="849" cy="673" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="1143" cy="673" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="1438" cy="673" r="71" stroke="#FAFAF9" stroke-width="10"/><path d="m642.46 669.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm114.54-1.464h-111v10h111v-10z" fill="#fff"/><path d="m347.46 669.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm114.54-1.464h-111v10h111v-10z" fill="#fff"/><path d="m1231.5 669.46c-1.95 1.953-1.95 5.119 0 7.072l31.82 31.819c1.96 1.953 5.12 1.953 7.08 0 1.95-1.952 1.95-5.118 0-7.071l-28.29-28.284 28.29-28.284c1.95-1.953 1.95-5.119 0-7.071-1.96-1.953-5.12-1.953-7.08 0l-31.82 31.819zm114.54-1.464h-111v10h111v-10z" fill="#fff"/><path d="m936.46 669.46c-1.952 1.953-1.952 5.119 0 7.072l31.82 31.819c1.953 1.953 5.119 1.953 7.071 0 1.953-1.952 1.953-5.118 0-7.071l-28.284-28.284 28.284-28.284c1.953-1.953 1.953-5.119 0-7.071-1.952-1.953-5.118-1.953-7.071 0l-31.82 31.819zm115.54-1.464h-112v10h112v-10z" fill="#FAFAF9"/><text transform="translate(532 638)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">1</tspan></text><text transform="translate(826 637)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">2</tspan></text><text transform="translate(1121 638)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">3</tspan></text><text transform="translate(1409 638)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">4</tspan></text><circle cx="295" cy="343" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="590" cy="343" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="884" cy="343" r="71" stroke="#FAFAF9" stroke-width="10"/><circle cx="1179" cy="343" r="71" stroke="#FAFAF9" stroke-width="10"/><path d="m1093.5 346.54c1.95-1.953 1.95-5.119 0-7.071l-31.82-31.82c-1.96-1.953-5.12-1.953-7.08 0-1.95 1.952-1.95 5.118 0 7.071l28.29 28.284-28.29 28.284c-1.95 1.953-1.95 5.119 0 7.071 1.96 1.953 5.12 1.953 7.08 0l31.82-31.819zm-114.54 1.464h111v-10h-111v10z" fill="#fff"/><path d="m1388.5 346.54c1.95-1.953 1.95-5.119 0-7.072l-31.82-31.819c-1.96-1.953-5.12-1.953-7.08 0-1.95 1.952-1.95 5.118 0 7.071l28.29 28.284-28.29 28.284c-1.95 1.953-1.95 5.119 0 7.071 1.96 1.953 5.12 1.953 7.08 0l31.82-31.819zm-114.54 1.464h111v-10h-111v10z" fill="#fff"/><path d="m504.54 346.54c1.952-1.953 1.952-5.119 0-7.071l-31.82-31.82c-1.953-1.953-5.119-1.953-7.071 0-1.953 1.952-1.953 5.118 0 7.071l28.284 28.284-28.284 28.284c-1.953 1.953-1.953 5.119 0 7.071 1.952 1.953 5.118 1.953 7.071 0l31.82-31.819zm-114.54 1.464h111v-10h-111v10z" fill="#fff"/><path d="m799.54 346.54c1.952-1.953 1.952-5.119 0-7.071l-31.82-31.82c-1.953-1.953-5.119-1.953-7.071 0-1.953 1.952-1.953 5.118 0 7.071l28.284 28.284-28.284 28.284c-1.953 1.953-1.953 5.119 0 7.071 1.952 1.953 5.118 1.953 7.071 0l31.82-31.819zm-115.54 1.464h112v-10h-112v10z" fill="#FAFAF9"/><text transform="translate(273 308)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">1</tspan></text><text transform="translate(567 307)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">2</tspan></text><text transform="translate(862 308)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">3</tspan></text><text transform="translate(1150 308)" fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="0" y="71.0938">4</tspan></text><text fill="#A78BFA" font-family="Roboto Condensed" font-size="80" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="1400" y="364.875">null</tspan></text><text fill="#A78BFA" font-family="Roboto Condensed" font-size="80" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="223" y="700.875">null</tspan></text><text fill="#A78BFA" font-family="Roboto Condensed" font-size="72" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="213" y="247.188">HEAD</tspan></text><text fill="#A78BFA" font-family="Roboto Condensed" font-size="72" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="1356" y="577.188">HEAD</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="679" y="865.094">Reversed</tspan></text><text fill="white" font-family="Roboto Condensed" font-size="100" letter-spacing="0em" style="white-space:pre" xml:space="preserve"><tspan x="708" y="161.094">Original</tspan></text>
+</svg>
+
+<p>
+  Essentially the head becomes the tail and the tail becomes the head. To be <code>extra</code> clear I'm not talking about doubly linked lists in this article.
+</p>
+
+<h2>Flipping without orphaning</h2>
+
+<p>
+  The trick to the algorithm is saving a reference to the next node in the sequence <i>before</i> we flip the pointer. If we flip the pointer too soon, we'd break the chain and have nowhere to jump for the next iteration of the loop.
+</p>
+
+<div class="code-jump-point" style="width:99.5%;height:0;padding-bottom:56%;position:relative; ">
+  <iframe src="https://giphy.com/embed/yyHjGlxcCJfpTUudHk" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
+
+<p>
+  This animation is the crux of it all. If you understand the sequence here logically, the code is just a simple translation. Make sure to watch it a few times before moving on.
+</p>
+
+<h3>The code</h3>
+<p>
+  This code links exactly to the animation above, check it out and then look at the next gif that syncs them.
+</p>
+
+<my-code lang="" file=""><!--
+const reverse = (node) => {
+  let curr = node;
+  let prev = null;
+
+  while (curr) {
+    let next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  We're given a node, the <code>head</code> of a linked list, and we immediately set it as our <code>curr</code> node. In your code, you can call it <code>current</code>, I only called it <code>curr</code> so it would be legible in a gif. Anyway, the only other node we know prior to the loop is <code>prev</code>, which is <code>null</code>. Our loop will keep going as long as <code>curr</code> is a node and not <code>null</code>. The first step of each loop is assigning out the <code>next</code> node while <code>curr.next</code> still points to it.
+</p>
+
+<p>
+  And don't forget we must return our <code>previous</code> at the end, because if we don't save that pointer somewhere, we'll have no way to access the new <code>head</code> of our linked list.
+</p>
+
+<aside>
+  <p>Don't confuse the <code>next</code> node, with the <code>.next</code> property.</p>
+</aside>
+
+
+<h2>Syncing the code to the animation</h2>
+
+<p>
+  The real way to understand it is to see it in action:
+</p>
+
+<div class="code-jump-point" style="width:99.5%;height:0;padding-bottom:56%;position:relative;">
+  <iframe src="https://giphy.com/embed/d7q6dOBu0gN0NMe3J0" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</div>
+
+<p>
+  I can't speak for you, but I only really understood this algorithm once I drew it out. I hope that seeing it next to the code really helps things click. I think that visually understanding these algorithms is so important. Otherwise, you only remember what to write, but not why you wrote it.
+</p>
+
+<h3>One quick refactor</h3>
+
+<p>
+  Before we actually apply this code to a Linked List class, let's make one small change. The code above works, but it's a little wasteful. Visually, it makes a lot of sense to hold off on declaring the <code>next</code> node until the loop starts. However, that means we are recreating a variable over and over again for no reason. We should declare it once outside of the loop with the rest of the nodes. To convey that it doesn't really exist yet, we could leave it <code>undefined</code>. This differentiates it from <code>prev</code> which we know always starts as <code>null</code> by design.
+</p>
+
+<my-code lang="" file=""><!--
+const reverse = (node) => {
+  let curr = node;
+  let prev = null;
+  let next;
+  // the rest is unchanged
+--><pre></pre>
+</my-code>
+
+<p>
+  However, you'll almost always see it set to <code>null</code>. It's functionally the same as leaving it <code>undefined</code>, but it looks more visually consistent. With that change, this is the final code that most people use:
+</p>
+
+<my-code lang="" file=""><!--
+const reverse = (node) => {
+  let current = node;
+  let previous = null;
+  let next = null;
+
+  while (current) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+
+  return previous;
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  Now that you know how the code truly works, you'll never forget it.
+</p>
+
+<h2>A class example</h2>
+<p>
+  Alright, with the core concept out of the way, let's plug it into some code. Here's a simple <code>Node</code> and <code>LinkedList</code> class:
+</p>
+
+<my-code lang="" file=""><!--
+class Node {
+  constructor(data) {
+      this.data = data;
+      this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor(data) {
+    this.head = isNaN(data) ? null : new Node(data);
+    this.size = 0;
+  }
+
+  append(data) {
+    const newNode = new Node(data);
+    this.size++;
+    if (!this.head) {
+      this.head = newNode;
+      return this.head;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+    return current.next;
+  }
+
+  print() {
+    let current = this.head;
+    let result = [];
+    while (current) {
+      result.push(current.data);
+      current = current.next;
+    }
+    console.log(result.join('-> '));
+  }
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  Obviously, we could get more complex with it, but these two methods are really all we need. Here's our starting code:
+</p>
+
+<my-code lang="" file=""><!--
+const myList = new LinkedList(1);
+myList.append(2)
+myList.append(3)
+myList.append(4)
+myList.print();
+--><pre>1-> 2-> 3-> 4</pre>
+</my-code>
+
+
+<p>
+  Now, we could use our code as is would be a little clunky:
+</p>
+
+<my-code lang="" file=""><!--
+const reverse = (node) => {
+  let current = node;
+  let previous = null;
+  let next = null;
+
+  while (current) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+
+  return previous;
+}
+
+myList.head = reverse(myList.head);
+myList.print();
+--><pre>4-> 3-> 2-> 1</pre>
+</my-code>
+
+<p>
+  Let's streamline it a bit. Instead of padding in a head <code>node</code>, let's use <code>this.head</code> directly. I'll still return it too, because why not. Ok, so here's the whole thing:
+</p>
+
+<my-code lang="" file=""><!--
+class Node {
+  constructor(data) {
+      this.data = data;
+      this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor(data) {
+    this.head = isNaN(data) ? null : new Node(data);
+    this.size = 0;
+  }
+
+  append(data) {
+    const newNode = new Node(data);
+    this.size++;
+    if (!this.head) {
+      this.head = newNode;
+      return this.head;
+    }
+
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+    return current.next;
+  }
+
+  print() {
+    let current = this.head;
+    let result = [];
+    while (current) {
+      result.push(current.data);
+      current = current.next;
+    }
+    console.log(result.join('-> '));
+  }
+
+  reverse() {
+    let current = this.head;
+    let previous = null;
+    let next = null;
+
+    while (current) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+
+    this.head = previous;
+    return previous;
+  }
+}
+
+const myList = new LinkedList(1);
+myList.append(2)
+myList.append(3)
+myList.append(4)
+myList.print();
+
+console.log('Reverse it!')
+myList.reverse();
+myList.print();
+
+--><pre>1-> 2-> 3-> 4
+Reverse it!
+4-> 3-> 2-> 1</pre>
+</my-code>
+
+
+<p>
+  And there you have it! Now, in an interview, they probably won't bother with the whole class, but like always, I think it's helpful to see things in action. Algorithms are so tricky, but by breaking them down logically, I hope you got a better understanding of them.
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names="explaining_this_site,stop_controlling_react_forms,html_dialog_tags"
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

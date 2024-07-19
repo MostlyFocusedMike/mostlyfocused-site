@@ -68,8 +68,10 @@ pre {
 
 pre.code-output {
   display: block;
-  border-radius: 0 0 1rem 1rem;
-  margin: 0rem 1rem 1rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  min-width: 16rem;
+  width: fit-content;
   padding: 1rem;
   color: #ECFCCB;
   background: var(--terminal-output)

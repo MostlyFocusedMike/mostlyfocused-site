@@ -27,7 +27,7 @@ export default class CodeSnippet extends HTMLElement {
     const file = this.getAttribute('file');
     const lang = this.getAttribute('lang') || 'jsx';
     this.innerHTML = /*html*/`
-      <div class="code-container">
+      <div class="code-jump-point code-container">
         <div class="code-meta-shadow">
           <div class="code-meta">
           ${file ? `<p class='filename'>${file}</p>` : ''}
@@ -36,7 +36,7 @@ export default class CodeSnippet extends HTMLElement {
         </div>
         <pre><code class="language-${lang}">${escapeText(code.trim())}</code></pre>
       </div>
-      ${ output ? /*html*/`<pre class="code-output">${output}</pre>` : '' }
+      ${ output ? /*html*/`<pre class="code-output">OUTPUTS:\n${output}</pre>` : '' }
     `;
 
     this.querySelector('button').onclick = this.handleCopy(code);

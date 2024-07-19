@@ -72,10 +72,13 @@ export default class ChimpForm extends HTMLElement {
 
   // HTML does not require the \\ to escape, but remember, this is all a template string, which DOES
   render() {
+    const isSideBar = this.hasAttribute('side_bar');
     this.innerHTML = /*html*/`
-      <div id="newsletter-container">
+      <div id="newsletter-container" class="${isSideBar ? 'side-bar' : ''}" >
         <form id="newsletter-form" aria-labelledby="signup-heading">
-          <h2 id="signup-heading">Get The Monthly Newsletter</h2>
+          <h2 id="signup-heading" class="${isSideBar ? 'tiny' : ''}">
+            Get The Monthly Newsletter
+          </h2>
           <div aria-hidden="true" style="position: absolute; left: -5000px;">
             <!-- real people should not fill this in and expect good things - do not remove this or risk form bots -->
             <input type="text" name="b_dc0ab9e42e4956a8c83d4579e_35a27f3003" tabindex="-1" value="">

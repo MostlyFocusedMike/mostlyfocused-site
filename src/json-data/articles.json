@@ -3,7 +3,7 @@
     "explaining_this_site": {
       "id": "explaining_this_site",
       "title": "How (And Why) I Made This Site Entirely In Vanilla",
-      "description": "Hand writing HTML in 2024 because I am not well in the head",
+      "description": "Hand writing HTML in 2024 because I am not well in the head.",
       "relativeUrl": "/pages/articles/explaining_this_site",
       "image": "https://mostlyfocused.com/images/explaining_this_site/preview.png",
       "level": 0,
@@ -15,6 +15,21 @@
         "css",
         "web-standards",
         "updates"
+      ]
+    },
+    "how_to_reverse_linked_list": {
+      "id": "how_to_reverse_linked_list",
+      "title": "How To Reverse A Linked List With Animated Examples",
+      "description": "Visually see the linked list algorithm code synced up to an animated example",
+      "relativeUrl": "/pages/articles/how_to_reverse_linked_list",
+      "image": "https://mostlyfocused.com/images/how_to_reverse_linked_list/preview.png",
+      "level": 0,
+      "publishedAt": "2024-07-18T22:12:31.444Z",
+      "modifiedAt": "2024-07-18T22:08:31.444Z",
+      "topics": [
+        "js",
+        "algos",
+        "data-structures"
       ]
     },
     "html_dialog_tags": {
@@ -70,8 +85,10 @@
   },
   "allTopics": [
     "a11y",
+    "algos",
     "cheat-sheet",
     "css",
+    "data-structures",
     "docker",
     "forms",
     "html",
@@ -82,6 +99,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "how_to_reverse_linked_list",
     "explaining_this_site",
     "html_dialog_tags",
     "stop_controlling_react_forms",
