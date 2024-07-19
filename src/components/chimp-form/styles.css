@@ -1,11 +1,11 @@
-div#newsletter-container {
+div.newsletter-container {
   border-top: 0.05rem solid var(--foreground-primary);
   width: 22rem;
   height: 10rem;
   margin: 2rem auto 0;
 }
 
-form#newsletter-form {
+form.newsletter-form {
   font-family: sans-serif;
   margin: 0 auto;
   width: 100%;
@@ -15,25 +15,25 @@ form#newsletter-form {
   padding: .8rem 0.5rem;
 }
 
-h2#signup-heading {
+.newsletter-form h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
-h2#signup-heading.tiny {
-  font-size: 1.2rem;
+.newsletter-form h2.tiny {
+  font-size: 1.3rem !important;
   text-align: center;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem !important;
 }
 
-label[for="EMAIL"] {
+label[for] {
   display: block;
   padding-bottom: 0.3rem;
   color: var(--foreground-primary);
 }
 
-input#EMAIL {
+.newsletter-form input{
   width: 16rem;
   padding: 0.2rem 0.5rem;
   font-size: 1rem;
@@ -41,7 +41,7 @@ input#EMAIL {
   border: 0.1rem solid gray;
 }
 
-#newsletter-form button {
+.newsletter-form button {
   color: var(--foreground-primary);
   padding: 0.2rem 0.5rem;
   background: var(--background-purple);
@@ -53,20 +53,21 @@ input#EMAIL {
   transition: all 0.2s ease-in-out;
 }
 
-#newsletter-form button:hover {
+.newsletter-form button:hover {
   background: var(--foreground-primary);
   border-color: var(--foreground-primary);
   color: var(--background-primary)
 }
 
-#newsletter-form button:active,
-#newsletter-form button.disabled {
+.newsletter-form button:active,
+.newsletter-form button.disabled {
   background: var(--background-primary);
   border-color: var(--background-primary);
   color: var(--foreground-primary)
 }
 
-p#EMAIL-error {
+p#email-error,
+p#email-side-error {
   font-size: 0.8rem;
   font-family: sans-serif;
   margin: 0;
@@ -75,30 +76,30 @@ p#EMAIL-error {
   visibility: hidden;
 }
 
-p#chimp-results {
+p.chimp-results {
   font-family: sans-serif;
   text-align: center;
-  margin: 0.5rem 0 0;
+  margin: 0;
 }
 
-#chimp-results.jsonp-success {
+.chimp-results.jsonp-success {
   color: var(--foreground-primary);
 }
 
-#chimp-results.jsonp-error {
+.chimp-results.jsonp-error {
   color: red;
 }
 
-div#newsletter-container {
+div.newsletter-container {
   display: none;
 }
 
-div#newsletter-container.side-bar {
+div.newsletter-container.side-bar {
   display: block;
 }
 
 @media (max-width: 1050px) {
-  div#newsletter-container {
+  div.newsletter-container {
     display: block;
   }
 }

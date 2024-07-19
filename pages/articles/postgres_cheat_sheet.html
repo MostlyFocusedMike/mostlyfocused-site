@@ -73,7 +73,7 @@
   <b><i>Setup with docker is at the end.</i></b>
 </p>
 <h2>Postgres terminal commands</h2>
-<my-code lang="text" file=""><!--
+<my-code snip_lang="text"><!--
 \c  -- connect to database
 \l  -- list all databases
 \q  -- quit
@@ -84,7 +84,7 @@
 </my-code>
 
 <h2>Comments</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 -- Just put two dashes for single lines
 /* There are also multi lines
  * but I feel like I never use them
@@ -93,7 +93,7 @@
 </my-code>
 
 <h2>Create, Drop database, table</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 CREATE DATABASE practice_pg;
 DROP DATABASE practice_pg;
 --><pre></pre>
@@ -101,7 +101,7 @@ DROP DATABASE practice_pg;
 
 <p>I'm going to use an auto incrementing primary key, and so should you.</p>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username text NOT NULL, -- example constraint
@@ -115,14 +115,14 @@ DROP TABLE IF EXISTS users;
 
 <h2>Delete all data without dropping table</h2>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 TRUNCATE users;
 --><pre></pre>
 </my-code>
 
 <h2>Add, Modify, Delete a column</h2>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 ALTER TABLE users ADD bio char(50);
 ALTER TABLE users ALTER COLUMN bio TYPE text;
 ALTER TABLE users RENAME COLUMN bio TO description;
@@ -131,7 +131,7 @@ ALTER TABLE users DROP COLUMN bio;
 </my-code>
 
 <h2>Insert values</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 INSERT INTO users (username, age, is_cool) VALUES
 ('tom', 2, true),
 ('jerry', 5, false),
@@ -143,7 +143,7 @@ INSERT INTO users (username, age, is_cool) VALUES
 </my-code>
 
 <h2>Selections</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 SELECT * from users;
 SELECT username age, is_cool from users;
 -- using "as" for aliases
@@ -158,7 +158,7 @@ SELECT * FROM users WHERE age > 10 OR is_cool = true;
 </my-code>
 
 <h3>Order By</h3>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 SELECT * FROM users ORDER BY age;
 SELECT * FROM users ORDER BY age DESC;
 SELECT * FROM users ORDER BY age ASC; -- default
@@ -166,7 +166,7 @@ SELECT * FROM users ORDER BY age ASC; -- default
 </my-code>
 
 <h3>Count, In, Limit</h3>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 SELECT COUNT(id) FROM users;
 SELECT COUNT(id) as "Number of users" FROM users;
 
@@ -177,7 +177,7 @@ SELECT * FROM users LIMIT 1;
 </my-code>
 
 <h2>Update Values</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 UPDATE users
 SET username = 'Tommy Boy'
 WHERE id = 1;s
@@ -185,14 +185,14 @@ WHERE id = 1;s
 </my-code>
 
 <h2>Delete Values</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 DELETE FROM users
 WHERE id = 2;
 --><pre></pre>
 </my-code>
 
 <h2>Foreign Keys and Joins</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 -- Create a table with a Foreign key in it
 CREATE TABLE articles
 (
@@ -213,7 +213,7 @@ REFERENCES users;
 
 <p>Here are the 4 types of joins you can do:</p>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 SELECT * FROM users
 JOIN articles
 ON users.id = articles.user_id;
@@ -234,7 +234,7 @@ ON users.id = articles.user_id;
 
 <h2>Subqueries</h2>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 SELECT * FROM USERS
 WHERE id IN
 (
@@ -246,21 +246,21 @@ WHERE id IN
 </my-code>
 
 <h2>Create an Index</h2>
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 CREATE INDEX articles_user_id_idx ON articles (user_id);
 --><pre></pre>
 </my-code>
 
 <h3>Analyze Query Performance</h3>
 
-<my-code lang="sql" file=""><!--
+<my-code snip_lang="sql"><!--
 EXPLAIN ANALYZE -- add this in front of any query
 SELECT * FROM users WHERE id IN (1,3);
 --><pre></pre>
 </my-code>
 
 <h2>Backup/Restore Database</h2>
-<my-code lang="text" file=""><!--
+<my-code snip_lang="text"><!--
 $ pg_dump -d practice_pg -U postgres -Fc > backup.sql
 # Then to make sure this works, drop our practice_pg database
 
@@ -278,7 +278,7 @@ $ pg_restore -C -d postgres -U postgres backup.sql
   If you just want a little container to play around with make a <code>docker-compose.yml</code> file and then copy this in:
 </p>
 
-<my-code lang="text" file=""><!--
+<my-code snip_lang="text"><!--
 version: "3"
   services:
     practice_pg:
@@ -295,7 +295,7 @@ version: "3"
   That will create a default db with a user and database of "postgres" and you can start playing with it by running these from the command line:
 </p>
 
-<my-code lang="text" file=""><!--
+<my-code snip_lang="text"><!--
 docker compose up -d
 docker compose exec practice_pg psql -U postgres
 --><pre></pre>

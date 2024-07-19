@@ -82,7 +82,7 @@
   Here's our starting code:
 </p>
 
-<my-code lang='html' file=""><!--
+<my-code lang='html' ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -99,7 +99,7 @@
   It's so few lines of JS I'm just going to use a script tag to keep it all in once place. All we need is a button to open our modal for now. Next, we need the <code>dialog</code> tag. By the way, <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/" target="_blank" rel="noopener noreferrer">it's called dialog</a> because its a window we can use to tell our users them something. Anyway, let's add the modal right below our button:
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -120,7 +120,7 @@
   Ok now if you're following along…nothing happened. That's because, by default, a dialog is <code>display: none</code>. We need some way to show it. Don't worry, it couldn't be easier: use the new <code>showModal()</code> method whenever we click the button:
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -154,7 +154,7 @@
   So, here's another cool thing about <code>dialog</code> elements: we don't need any JS to close them. If you include a <code>form</code> in a modal and set the method attribute to “dialog” it will automatically close the <code>dialog</code> for you! That <code>aria-label</code> attribute on the button is required for screen readers to work properly, make sure you include it!
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -201,7 +201,7 @@
   Go ahead, add this interaction button to our site and see that you can't tab over to it or click on it when the modal is open:
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -230,7 +230,7 @@
   By default, the backdrop pseudo element has a really simple, transparent, gray style. But we can alter this to be anything we want. Me personally, I like to add a blur and darker color:
 </p>
 
-<my-code lang="css" file=""><!--
+<my-code snip_lang="css" ><!--
 dialog::backdrop {
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(0.1rem);
@@ -242,7 +242,7 @@ dialog::backdrop {
   That should give a really nice look to it. Now, by default you can still scroll under a modal. Again, personally this doesn't bother me. You can control this by using classes added to the body with JS or you can use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank" rel="noopener noreferrer">new <code>has</code> function</a> in CSS to do this super cool one liner that takes advantage of the open attribute that only appears when the backdrop is visible:
 </p>
 
-<my-code lang="css" file=""><!--
+<my-code snip_lang="css" ><!--
 body:has(dialog[open]) {
   overflow: hidden;
 }
@@ -254,7 +254,7 @@ body:has(dialog[open]) {
   Lastly, a behavior that a lot of people are used to but does <i>not</i> come standard with this modal is the ability to close the it by clicking the backdrop. To accomplish this, you just need to add a simple function:
 </p>
 
-<my-code file=""><!--
+<my-code ><!--
 const modal = document.querySelector('#modal');
 
 const handleBackdropClick = (e) => {
@@ -297,7 +297,7 @@ modal.addEventListener('click', handleBackdropClick);
   Admittedly, I've never bothered with this technique. However, if you just want a super simple form with a few options, there's a neat way you can handle it: the <code>close</code> event. Unlike traditional forms, when you use <code>method="dialog"</code> there's a <code>returnValue</code> that you can access on the <code>close</code> event, which is of course fired whenever we close a modal.
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
   <main>
   <h1>Modal Practice</h1>
   <button id='open'>Open Modal</button>
@@ -348,7 +348,7 @@ modal.addEventListener('click', handleBackdropClick);
   If you need to collect some real data in the form, I recommend sticking with the <code>submit</code> event. Here's the only weird thing: don't <code>e.preventDefault</code>, use the <code>method="dialog"</code>. That <code>method</code> will make the default behavior into closing the modal, which is what we want! Don't forget to reset the form though (unless you want to save answers, I guess).
 </p>
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -408,7 +408,7 @@ modal.addEventListener('click', handleBackdropClick);
 </p>
 
 
-<my-code lang="html" file=""><!--
+<my-code snip_lang="html" ><!--
 <main>
   <h1>Modal Practice</h1>
 
@@ -467,7 +467,7 @@ modal.addEventListener('click', handleBackdropClick);
   For React, the biggest thing is that you need to use the <code>useRef</code> hook. Other than that, everything is the same. You can of course control your forms, but I'm not going to bother here so it's super clear everything is the same. Of course, if this is new to you, check out <a href="https://mostlyfocused.com/pages/articles/stop_controlling_react_forms" target="_blank" rel="noopener noreferrer">this article about non-controlled forms</a>.
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 function App() {
   const dialogRef = useRef(null);
 

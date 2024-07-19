@@ -110,7 +110,7 @@ export default function App() {
   In a word: boilerplate. That's a lot of code for the simple task of submitting a form. Users of other frameworks are quick to point out the absurd number of lines needed to mimic default behavior of a form. Look at that exact same example in Svelte code:
 </p>
 
-<my-code lang="html" file="/src/app.svelte"><!--
+<my-code snip_lang="html" file="/src/app.svelte"><!--
 <script>
   let formInfo = { name: '', age: '' };
 
@@ -173,7 +173,7 @@ export default function App() {
 <p>
   Previously, we had to use a state hook to track our form data, but that's overkill. Simply apply <code>name</code> fields to the inputs, then the form is always aware of the key-value pairs. The key is the <code>name</code> property and the <code>value</code> is the input's value. This even works for things like checkboxes and radio buttons. Never use a for loop to find the value of radio or checkboxes again!
 </p>
-<my-code file=""><!--
+<my-code ><!--
 <input type="number" name="age" value="10" >
 // that's all you need!
 --><pre></pre>
@@ -181,7 +181,7 @@ export default function App() {
 <p>
   And just like a click handler sets the <code>e.target</code> to the clicked button, a submit handler will give you the form as the <code>e.target</code>. So we simply grab any data we need in our handler. No need for any sort of DOM selection methods, a big anti-pattern in React, all we need is provided by the event.
 </p>
-<my-code file=""><!--
+<my-code ><!--
 const handleSubmit = (e) => {
   // that's the <form> element!
   console.log(e.target);
@@ -203,7 +203,7 @@ myForm.addEventListener('submit', handleSubmit);
   This is the piece that uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/FormData" target="_blank" rel="noopener noreferrer">FormData API</a>. This new line is really the only tricky part:
 </p>
 
-<my-code file=""><!--
+<my-code ><!--
 const data = Object.fromEntries(new FormData(e.target));
 --><pre></pre>
 </my-code>
@@ -212,7 +212,7 @@ const data = Object.fromEntries(new FormData(e.target));
   We can make that more readable by doing it like this:
 </p>
 
-<my-code file=""><!--
+<my-code ><!--
 const form = e.target;
 const formDataInstance = new FormData(form);
 const inputKeyValuesObject = Object.fromEntries(formDataInstance);
@@ -240,7 +240,7 @@ const inputKeyValuesObject = Object.fromEntries(formDataInstance);
   There are of course valid reasons to control forms. The most obvious cases are when you need more rigorous validation or formatting. Like if you want to automatically uppercase every letter or apply a very limited set of phone number patterns. Though there again, heads up that you can apply automatic validation on form submission in HTML. Here's an email input that only allows the form to submit if the email has the proper domain:
 </p>
 
-<my-code file=""><!--
+<my-code ><!--
 <input type="email" name='name' pattern=".+@my-site\.com" />
 --><pre></pre>
 </my-code>

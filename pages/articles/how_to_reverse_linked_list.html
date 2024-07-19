@@ -103,7 +103,7 @@
   This code links exactly to the animation above, check it out and then look at the next gif that syncs them.
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 const reverse = (node) => {
   let curr = node;
   let prev = null;
@@ -153,7 +153,7 @@ const reverse = (node) => {
   Before we actually apply this code to a Linked List class, let's make one small change. The code above works, but it's a little wasteful. Visually, it makes a lot of sense to hold off on declaring the <code>next</code> node until the loop starts. However, that means we are recreating a variable over and over again for no reason. We should declare it once outside of the loop with the rest of the nodes. To convey that it doesn't really exist yet, we could leave it <code>undefined</code>. This differentiates it from <code>prev</code> which we know always starts as <code>null</code> by design.
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 const reverse = (node) => {
   let curr = node;
   let prev = null;
@@ -166,7 +166,7 @@ const reverse = (node) => {
   However, you'll almost always see it set to <code>null</code>. It's functionally the same as leaving it <code>undefined</code>, but it looks more visually consistent. With that change, this is the final code that most people use:
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 const reverse = (node) => {
   let current = node;
   let previous = null;
@@ -193,7 +193,7 @@ const reverse = (node) => {
   Alright, with the core concept out of the way, let's plug it into some code. Here's a simple <code>Node</code> and <code>LinkedList</code> class:
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 class Node {
   constructor(data) {
       this.data = data;
@@ -240,7 +240,7 @@ class LinkedList {
   Obviously, we could get more complex with it, but these two methods are really all we need. Here's our starting code:
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 const myList = new LinkedList(1);
 myList.append(2)
 myList.append(3)
@@ -254,7 +254,7 @@ myList.print();
   Now, we could use our code as is would be a little clunky:
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 const reverse = (node) => {
   let current = node;
   let previous = null;
@@ -279,7 +279,7 @@ myList.print();
   Let's streamline it a bit. Instead of padding in a head <code>node</code>, let's use <code>this.head</code> directly. I'll still return it too, because why not. Ok, so here's the whole thing:
 </p>
 
-<my-code lang="" file=""><!--
+<my-code ><!--
 class Node {
   constructor(data) {
       this.data = data;

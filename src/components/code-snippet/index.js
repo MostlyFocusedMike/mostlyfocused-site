@@ -25,7 +25,7 @@ export default class CodeSnippet extends HTMLElement {
     const code = this.childNodes[0].textContent;
     const output = this.querySelector('pre')?.innerText;
     const file = this.getAttribute('file');
-    const lang = this.getAttribute('lang') || 'jsx';
+    const lang = this.getAttribute('snip_lang') || 'jsx';
     this.innerHTML = /*html*/`
       <div class="code-jump-point code-container">
         <div class="code-meta-shadow">
