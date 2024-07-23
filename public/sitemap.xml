@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mostlyfocused.com/</loc>
-    <lastmod>2024-07-15</lastmod>
+    <lastmod>2024-07-22</lastmod>
   </url>
   <url>
     <loc>https://mostlyfocused.com/pages/articles/</loc>
@@ -27,5 +27,9 @@
   <url>
     <loc>https://mostlyfocused.com/pages/articles/how_to_reverse_linked_list</loc>
     <lastmod>2024-07-18</lastmod>
+  </url>
+  <url>
+    <loc>https://mostlyfocused.com/pages/articles/promisify_timeouts</loc>
+    <lastmod>2024-07-22</lastmod>
   </url>
 </urlset>

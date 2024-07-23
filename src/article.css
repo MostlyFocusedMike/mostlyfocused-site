@@ -162,9 +162,10 @@ article #article-body {
 
 
 #article-body > p {
-  color: var(--foreground-primary);
-  font-family: serif;
-  font-size: 1.25rem;
+  font-family: "ui-sans-serif", "system-ui", "sans-serif";
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 245, .86);
   line-height: 1.7rem;
 }
 
@@ -220,6 +221,7 @@ blockquote {
 }
 
 aside {
+  padding: 0.5rem;
   border-right: 0.1rem solid var(--text-purple);
   border-top: 0.1rem solid var(--text-purple);
 }

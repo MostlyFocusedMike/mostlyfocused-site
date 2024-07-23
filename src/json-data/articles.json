@@ -65,6 +65,21 @@
         "docker"
       ]
     },
+    "promisify_timeouts": {
+      "id": "promisify_timeouts",
+      "title": "How To Turn SetTimeout And SetInterval Into Promises",
+      "description": "Create your own sleep function and waitFor function that you can await",
+      "relativeUrl": "/pages/articles/promisify_timeouts",
+      "image": "https://mostlyfocused.com/images/promisify_timeouts/preview.png",
+      "level": 0,
+      "publishedAt": "2024-07-23T01:48:31.135Z",
+      "modifiedAt": "2024-07-23T01:48:31.135Z",
+      "topics": [
+        "js",
+        "async",
+        "web-standards"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -86,6 +101,7 @@
   "allTopics": [
     "a11y",
     "algos",
+    "async",
     "cheat-sheet",
     "css",
     "data-structures",
@@ -99,6 +115,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "promisify_timeouts",
     "how_to_reverse_linked_list",
     "explaining_this_site",
     "html_dialog_tags",

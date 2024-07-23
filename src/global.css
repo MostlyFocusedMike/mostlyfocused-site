@@ -4,10 +4,11 @@ html, body {
   margin: 0;
   padding: 0;
   color-scheme: dark;
-  background-image: linear-gradient(to bottom right, var(--background-darkest), var(--background-primary));
+  /* background-image: linear-gradient(to bottom right, var(--background-darkest), var(--background-primary));
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  background: #1A1A1D;
   scroll-padding-top: 50px;
 }
 
@@ -17,7 +18,7 @@ main {
 
 :root{
   /* --foreground-primary: #FAFAF9; */
-  --foreground-primary: #e6e6e6;
+  --foreground-primary: #e1e1e1;
   --foreground-hover: #c6c6c6;
   /* --background-primary: #18181B; */
   --background-primary: #252525;

@@ -56,7 +56,6 @@ export default class ChimpForm extends HTMLElement {
 
     const searchParams = new URLSearchParams(formData);
     const fullUrl = `${baseUrl}?${searchParams.toString()}`
-    console.log('fullUrl:', fullUrl);
     const jsonpCallbackName = searchParams.get('c');
 
     const script = document.createElement('script');

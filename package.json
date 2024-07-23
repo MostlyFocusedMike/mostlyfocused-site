@@ -8,7 +8,8 @@
     "build": "vite build",
     "set-json": "node --no-deprecation ./scripts/create-articles-metadata.js --ignore './src'",
     "new": "node ./scripts/new-article.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "play": "nodemon playground.js"
   },
   "devDependencies": {
     "@inquirer/prompts": "^5.1.2",
