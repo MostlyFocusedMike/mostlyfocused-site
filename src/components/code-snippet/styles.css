@@ -62,8 +62,9 @@ button.code-copy:hover {
 pre {
   display: block !important;
   overflow-x: scroll;
-  background: #222;
+  background: var(--terminal-output);
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, .5);
+  padding: 1rem;
 }
 
 pre.code-output {

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How Code Splitting Works With React Lazy And Suspense</title>
+  <meta property="og:title" content="How Code Splitting Works With React Lazy And Suspense" />
+  <meta name="description" property="og:description" content="Understand how React's lazy and Suspense APIs are used for code splitting" />
+
+  <meta property = "article:published_time" content="2024-07-30T10:37:01.831Z" />
+  <meta property = "article:modified_time" content="2024-07-30T10:37:01.831Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/react_lazy_suspense" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/react_lazy_suspense" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/react_lazy_suspense/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/react_lazy_suspense/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="react" />
+	<meta property="article:tag" content="async" />
+	<meta property="article:tag" content="vite" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<h1>How Code Splitting Works With React Lazy And Suspense</h1>
+<p>Understand how to decrease your initial bundle size</p>
+<hr>
+<by-line></by-line>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="url(#paint0_linear_214_8)"/><rect x="1167" y="877" width="542" height="87" transform="rotate(-180 1167 877)" fill="#FAFAF9"/><rect x="590" y="809" width="87" height="267" transform="rotate(-180 590 809)" fill="#FECACA"/><rect x="765.159" y="629.795" width="262.159" height="87.3864" transform="rotate(-180 765.159 629.795)" fill="#FECACA"/><rect x="1184.61" y="754.659" width="524.318" height="87.3864" transform="rotate(-180 1184.61 754.659)" fill="#FEE2E2"/><rect x="1185" y="695" width="263" height="115" transform="rotate(-180 1185 695)" fill="#FEE2E2"/><rect x="974.886" y="504.932" width="262.159" height="87.3864" transform="rotate(-180 974.886 504.932)" fill="#FCA5A5"/><rect x="887" y="592" width="87" height="132" transform="rotate(-180 887 592)" fill="#FCA5A5"/><rect x="1220" y="213" width="349" height="88" transform="rotate(90 1220 213)" fill="#F87171"/><rect x="1097.23" y="207.818" width="262.159" height="87.3864" transform="rotate(90 1097.23 207.818)" fill="#EF4444"/><rect x="1044" y="383" width="296" height="88" transform="rotate(-180 1044 383)" fill="#EF4444"/><rect x="675" y="507" width="175" height="174" transform="rotate(-180 675 507)" fill="#DC2626"/><rect x="1151" y="176" width="613" height="87" transform="rotate(-180 1151 176)" fill="#991B1B"/><rect x="975" y="263" width="350" height="110" transform="rotate(-180 975 263)" fill="#991B1B"/><rect width="87" height="88" transform="matrix(1 8.74228e-08 8.74228e-08 -1 503 298)" fill="#B91C1C"/><defs><linearGradient id="paint0_linear_214_8" x1="860" y1="0" x2="860" y2="965" gradientUnits="userSpaceOnUse"><stop stop-color="#3D0808"/><stop offset="1"/></linearGradient></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  If you care about your application's performance, you may want to try code splitting with <code>React.lazy</code> and the <code>Suspense</code> component. This can be a tricky topic to understand because there are the fundamental concepts, how libraries like React implement them, <i>and</i> how meta-frameworks abstract it away. Today we're primarily going to focus on the core concepts of code splitting and React's fundamental implementation. I'll talk a bit about <a href="https://reactrouter.com/en/main" target="_blank" rel="noopener noreferrer">React Router</a> as an example of some abstractions at the end.
+</p>
+
+<blockquote>
+  If you understand the core idea of code splitting, you can figure out how any framework implements it
+</blockquote>
+
+<h2>What is "code splitting"</h2>
+<p>
+  When you have a SPA application you write all your JS files and then use a bundler (we'll be using <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">Vite</a> today) to squash it down into a single file like <code>main-52298105.js</code>. When a user hits your site, the first thing you serve up to them is that file. This generates the entire application on the client, and from there it's history.
+</p>
+
+<p>
+  However, let's think about that for a second. Why are we sending over our whole application? A user can't hit every single page, every utility component, every modal all at once. So what if instead we only sent the bare minimum a user needed, and then brought in the rest later? All code splitting does is break up your bundle into "chunks."
+</p>
+<p>
+  There are lots of methods to do it, you can use manual entry points and tell your bundler explicitly how to break up your bundle, but with React we don't have to do that. Instead we go up to the logic layer, and say "Hey, load these components first, and these other ones later", and then React and your bundler take it from there. The most common ways of code splitting in React are by route and by component. We'll talk about both.
+</p>
+
+<h3>What are the tradeoffs?</h3>
+<p>
+  Code splitting affects load times. Without code splitting, you have a longer initial load, and then you don't need to request any more JS from the server. With code splitting, you will have a faster initial load, but then some minor load times at other points. There are however situations where you can have your cake and eat it too, where you have fast initial load times, <i>and</i> you can hide the other load times.
+</p>
+<p>
+  And remember, code splitting is not the same as pre-fetching data. There are of course similarities (both are trying to cut down on user load times) but we're not talking about data here, we're talking about the application's JavaScript.
+</p>
+
+<h2>Base Code</h2>
+<p>
+  That's enough talking, let's start coding. Create your project with <code>npm create vite</code> and select the React option. From there, let's make a <code>Toast</code> component:
+</p>
+
+<my-code file="/src/Toast.jsx"><!--
+export default function Toast({ msg = 'You did it!' }) {
+  return <p>{msg}</p>
+}
+-->
+</my-code>
+
+<p>
+  And then load it into our <code>App</code> with a standard import.
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import Toast from './Toast';
+
+export default function App() {
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <Toast />
+    </div>
+  );
+}
+-->
+</my-code>
+
+<p>
+  Now that we have an app, let's build it to see what it normally looks like, and then split it out.
+</p>
+
+<aside>
+  What's a <a href="https://getbootstrap.com/docs/5.1/components/toasts/" target="_blank" rel="noopener noreferrer">Toast</a>? It's a little message that pops in and out to tell you that you did or did not do something successfully (ours wont be animated for simplicity). It's something you would actually want to split out, since a user will never do anything the <i>second</i> they load up your site. This is a real world use case!
+</aside>
+
+<h3>The basic build</h3>
+<p>
+  Run <code>npm run build</code>, and then open up the newly created <code>dist</code> folder. You should see something like <code>dist/assets/index-5111e541.js</code>. That's gonna be a monster file because it's loading all of React, but the point is, there's only one file. Let's fix that with <code>React.lazy</code>.
+</p>
+
+<h2>Using the lazy function</h2>
+<p>
+  Instead of <code>import Toast from './Toast'</code>, we're going to do this instead:
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { lazy } from 'react';
+
+const AsyncToast = lazy(() => import('./Toast'));
+
+export default function App() {
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <AsyncToast />
+    </div>
+  );
+}
+-->
+</my-code>
+
+<p>
+  <a href="https://react.dev/reference/react/lazy" target="_blank" rel="noopener noreferrer">lazy</a> takes an asynchronous callback that must resolve a default export of a React component. Luckily for us <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import#importing_on-demand_in_response_to_user_action" target="_blank" rel="noopener noreferrer">the import function</a> is asynchronous, so it works perfectly. Just make sure that your component file has it's component as a default export and not a named export, otherwise it won't work. Also you can keep the file name the same, I'm swapping to <code>AsyncWhatever</code> to make it clear what is and isn't lazy loaded.
+</p>
+
+<p>
+  Ok, now that we have our first lazy loaded component, let's see what happened to our bundle. Run <code>npm run build</code> and check <code>dist/assets/</code>. In addition to our main index file, we now have a <code>Toast-493194.js</code> file. Cool huh?
+</p>
+
+<h3>Some explanations</h3>
+<p>
+  Real quick, if you're wondering what all those numbers after the name are, they're for caching. Don't worry about them, they won't always be the same and that's ok.
+</p>
+<p>
+  Also, if you've beaten me to the punch and looked at the Chrome network console while running your app, you may say "Hey, there was always a <code>Test.js</code> request even without <code>lazy</code>!" And that's correct. That's because Vite uses ESModules locally. That means that they always request by file. It's faster locally, but you wouldn't want <i>that</i> level of splitting in prod, as network requests aren't worth it. Your app may have dozens (or hundreds) of files by the end. Like all things, moderation is key. We don't want one, we don't want 100, we're looking for only a few, well-packed requests.
+</p>
+
+<h2>Loading a component on demand</h2>
+<p>
+  Breaking up our components like this is neat, but we can also load our components on demand. Like, what if a user never does anything that sets off a toast? Why bother loading it at all? Let's see if we can only load the toast after a user clicks a button. Replace your <code>App</code> file with this code:
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { useState, lazy } from 'react';
+
+const AsyncToast = lazy(() => import('./Toast'));
+
+export default function App() {
+  const [loadToast, setLoadToast] = useState(false);
+  const handleClick = () => setLoadToast(true);
+
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <button onClick={handleClick}>Load toast</button>
+      {
+        loadToast && <AsyncToast msg="Loaded!" />
+      }
+    </div>
+  );
+}
+-->
+</my-code>
+
+<p>
+  Run this with <code>npm run dev</code>, but before you actually click the button, check the Chrome network tab. Notice something missing? We're no longer loading <code>Toast.js</code>. That's because <code>lazy</code> knows the component wasn't ever actually <i>rendered</i> to the screen. That means our app isn't going to bother making the request. This is great because it will save you a ton of bandwidth for your application by ignoring unnecessary requests.
+</p>
+
+<p>
+  The problem with this is that it's completely broken our app.
+</p>
+
+<h2>Using Suspense with lazy</h2>
+
+<p>
+  If you click that button your page will go blank and you'll receive this weird error in the Chrome console:
+</p>
+
+<pre>
+Error: A component suspended while responding to synchronous input.
+This will cause the UI to be replaced with a loading indicator.
+To fix, updates that suspend should be wrapped with startTransition.
+</pre>
+
+<p>
+  That bit about "a component suspended" is the problem. See, React now has the ability to "suspend" pending components that are still mid-request. And the way to deal with suspensions is with the <code>Suspense</code> component.
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { useState, lazy, Suspense } from 'react';
+
+const AsyncToast = lazy(() => import('./Toast'));
+
+export default function App() {
+  const [loadToast, setLoadToast] = useState(false);
+  const handleClick = () => setLoadToast(true);
+
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <button onClick={handleClick}>Load toast</button>
+      <Suspense>
+        { loadToast && <AsyncToast msg="Loaded!" /> }
+      </Suspense>
+    </div>
+  );
+}
+-->
+</my-code>
+<p>
+  Click the button, now it works just fine! <a href="https://react.dev/reference/react/Suspense" target="_blank" rel="noopener noreferrer">Suspense</a> is pretty straightforward to use. You wrap it around any components that you want to lazy load. Whenever it detects that a child component goes into a suspended state, it will switch to rendering a fallback component. Right now, we haven't given it a fallback component, so the default is just to render nothing. But let's actually give it one!
+</p>
+
+<h2>Rendering a fallback component</h2>
+<p>
+  <code>Suspense</code> simply takes a <code>fallback</code> prop, and what you pass in is an actual React element (so JSX, not the component function). This makes it <i>super</i> easy to pass in props. Just make sure that your fallback component is light to load, and not lazy loaded itself (that would kind of defeat the point). Here's my simple loading component:
+</p>
+
+<my-code file="/src/LoadingMsg.jsx"><!--
+export default function LoadingMsg({ msg }) {
+  return <p>Loading: {msg}</p>
+}
+-->
+</my-code>
+
+<p>
+  In real life you'd probably want something a little nicer, like a CSS spinner or something, but for now this will do. To use it, you just pass it, and any props, right into <code>Suspense</code>:
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { useState, lazy, Suspense } from 'react';
+import LoadingMsg from './LoadingMsg';
+
+const AsyncToast = lazy(() => import('./Toast'));
+
+export default function App() {
+  const [loadToast, setLoadToast] = useState(false);
+  const handleClick = () => setLoadToast(true);
+
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <button onClick={handleClick}>Load toast</button>
+      <Suspense fallback={<LoadingMsg msg="Toast"/>}>
+        { loadToast && <AsyncToast msg="Loaded!" /> }
+      </Suspense>
+    </div>
+  );
+}
+-->
+</my-code>
+
+<p>
+  Click the button now and you'll see our loading message first. Well, actually your local app is probably too fast to see it. So let's slow our app down for a second.
+</p>
+
+<h3>Throttling our browser</h3>
+<p>
+  Refresh your app (don't click the button!), and then go to the Chrome console network tab, and then where it says "No Throttling" and a little arrow, click that, and then select "Slow 3G" from the options. Your browser is now going to simulate roughly 3G speeds for all network requests. Now when you click the button, you'll see the message!
+</p>
+<p>
+  <b>JUST REMEMBER TO SET IT BACK TO "No Throttling"</b>. I can't tell you how many times I've forgotten to do that. In fact, even before refreshing your page I would recommend turning it off.
+</p>
+
+<h3>Do you have to use suspense?</h3>
+<p>
+  The short answer is yes. Even though we started off without it and it seemed to work, there are just so many weird edge cases you may hit, that it's not worth it to skip it. HMR specifically hates when you don't have it, and honestly pretty much all the documentation written today about lazy loading assumes you'll use <code>Suspense</code> components as a wrapper. The fallback component is optional if you want to load something in the background, but the <code>Suspense</code> component itself is a must, at least for now.
+</p>
+
+<h2>Suspense nesting and children</h2>
+
+<p>
+  Be careful about the children of <code>Suspense</code>. If any one child suspends, <code>Suspense</code> will replace <em>all</em> children with the fallback. Look here:
+</p>
+
+<my-code file="/src/App.jsx"><!--
+// rest of code
+<Suspense fallback={<LoadingMsg msg="Toast"/>}>
+  <h2>Success message below</h2>
+  { loadToast && <AsyncToast msg="Loaded!" /> }
+</Suspense>
+-->
+</my-code>
+
+<p>
+  That <code>h2</code> will also disappear when we load in our toast. Think carefully about what you want to be in the component that you load vs what you want to always stay.
+</p>
+
+<p>
+  You can also nest <code>Suspenses</code>. Essentially the suspended element will trigger the first <code>Suspense</code> it happens upon. To demonstrate this, let's add another async component, this time a modal (<a href="https://mostlyfocused.com/pages/articles/html_dialog_tags" target="_blank" rel="noopener noreferrer">you can learn more about modals here</a>). Modals are another candidate for async loading because a user may never load one.
+</p>
+
+<my-code file="/src/Modal.jsx"><!--
+import { useEffect } from "react";
+
+export default function Modal({ modalRef }) {
+  useEffect(() => { modalRef.current.showModal(); }, [modalRef]);
+
+  return (
+    <dialog ref={modalRef}>
+      <form method="dialog"><button aria-label="Close">X</button></form>
+      <h2>Hello there!</h2>
+      <p>I'm a modal</p>
+    </dialog>
+  );
+}
+-->
+</my-code>
+
+<p>
+  And then let's add that into our cleaned up <code>App</code> code.
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { useState, lazy, Suspense, useRef } from 'react';
+import LoadingMsg from './LoadingMsg';
+
+const AsyncToast = lazy(() => import('./Toast'));
+const AsyncModal = lazy(() => import('./Modal'));
+
+export default function App() {
+  const [loadToast, setLoadToast] = useState(false);
+  const [loadModal, setLoadModal] = useState(false);
+  const modalRef = useRef(null);
+
+  const showToast = () => setLoadToast(true);
+  const openModal = () => {
+    if (!loadModal) setLoadModal(true);
+    modalRef?.current?.showModal();
+  }
+
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <button onClick={showToast}>Load toast</button>
+      <button onClick={openModal}>Open Modal</button>
+
+      <Suspense fallback={<LoadingMsg msg="Modal" />}>
+        <Suspense fallback={<LoadingMsg msg="Toast"/>}>
+          { loadToast && <AsyncToast msg="Loaded!" /> }
+        </Suspense>
+        { loadModal && <AsyncModal modalRef={modalRef} /> }
+      </Suspense>
+    </div>
+  );
+}
+-->
+</my-code>
+
+<aside>
+  Looks a little more complex right? Split apart the modal details from the <code>Suspense</code> details. A critical skill in coding is staying on the task at hand without getting distracted.
+</aside>
+
+<p>
+  As you can see here we now have 2 <code>Suspenses</code>. If we were to load the <code>Toast</code> then the nested <code>Suspense</code> will be hit. However, if you load the modal code, only the top <code>Suspense</code> is hit.
+</p>
+
+<details>
+  <summary>
+    What would happen if you load <code>Toast</code> and <i>then</i> the <code>Modal</code>?
+  </summary>
+  <p>
+    Remember if <i>any</i> child of a <code>Suspense</code> suspends, then it removes all children to render the fallback. So the loaded toast message would disappear while the modal loads in.
+  </p>
+</details>
+
+<p>
+  Nesting suspenses directly like this isn't super common, but in the course of your application you may have indirectly nested children. Keep an eye out for them!
+</p>
+
+<h2>Error boundaries</h2>
+
+<p>
+  Here's a question: what if your user loses their network connection mid-request? You would <i>think</i> that the component returns null or something, but no. It throws an error.
+</p>
+
+<h3>Seeing the problem</h3>
+<p>
+  It's pretty easy to fake a network outage, load up your app, and then open up the Chrome network tab again. This time select "Offline." Now, click one of the load buttons and watch the entire application crash! Awful! Now reset the network and refresh the page.
+</p>
+
+<h3>Making a boundary</h3>
+<p>
+  Error boundaries aren't a <code>Suspense</code> thing, you should use them anywhere React itself may crash. I mean, honestly, I know no one does, But you <i>should</i>. I think the reason they aren't more popular is because they use ... <i>classes</i>.
+</p>
+
+<my-code ile="/src/ErrorBoundary.jsx"><!--
+import { Component } from "react";
+
+export default class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    console.log('error:', error);
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.log('in catch error:', error);
+    console.log('info:', info);
+  }
+
+  render() {
+    const { fallback, children } = this.props;
+
+    return this.state.hasError ? fallback : children;
+  }
+}
+-->
+</my-code>
+
+<p>
+  That's not so bad right? <code>getDerivedStateFromError</code> and <code>componentDidCatch</code> don't have hooks (yet) so that's why we have to use a class. But this is all the code you need, so it's not a big deal.
+</p>
+
+<p>
+  To use it, stick it anywhere that could throw a React error. In our case that's the parent of the top <code>Suspense</code>. This single boundary will catch any non-caught errors all the way down.
+</p>
+
+<my-code lang="" file="/src/App.jsx"><!--
+import { useState, lazy, Suspense, useRef } from 'react';
+import LoadingMsg from './LoadingMsg';
+import ErrorBoundary from './ErrorBoundary';
+
+const AsyncToast = lazy(() => import('./Toast'));
+const AsyncModal = lazy(() => import('./Modal'));
+
+export default function App() {
+  const [loadToast, setLoadToast] = useState(false);
+  const [loadModal, setLoadModal] = useState(false);
+  const modalRef = useRef(null);
+
+  const showToast = () => setLoadToast(true);
+  const openModal = () => {
+    if (!loadModal) setLoadModal(true);
+    modalRef?.current?.showModal();
+  }
+
+  return (
+    <div>
+      <h1>Code Split Practice</h1>
+      <button onClick={showToast}>Load toast</button>
+      <button onClick={openModal}>Open Modal</button>
+
+      <ErrorBoundary fallback={<p>Something broke.</p>}>
+        <Suspense fallback={<LoadingMsg msg="Modal" />}>
+          <Suspense fallback={<LoadingMsg msg="Toast"/>}>
+            { loadToast && <AsyncToast msg="Loaded!" /> }
+          </Suspense>
+          { loadModal && <AsyncModal modalRef={modalRef} /> }
+        </Suspense>
+      </ErrorBoundary>
+    </div>
+  );
+}
+-->
+</my-code>
+
+<p>
+  Obviously the error fallback element can be a little more useful, this is just illustrative. The point is you pass in an element like you do with <code>Suspense</code>. Now if you shut down the network and click the button, the app itself is fine and the little warning pops up. Much better!
+</p>
+<p>
+  Again, this is a pretty unlikely error, so don't go too crazy handling retries or anything like that. Usually the fix for failed requests is the user refreshing the page.
+</p>
+
+<hr>
+
+<h2>Splitting by route</h2>
+
+<p>
+  OK! That's basically all of the core concepts taken care of. Congrats! Now let's try our hand at how a framework deals with lazy loading. For this example we'll be looking at React Router briefly, v5 and v6.
+</p>
+
+<h3>V5 Router</h3>
+
+<p>
+  Basically, throw a <code>Suspense</code> around your <code>Switch</code> and you're good to go. It would look something like this:
+</p>
+
+<my-code file="/src/App.jsx"><!--
+import { lazy, Suspense } from 'react';
+import { Switch, Route } from "react-router-dom";
+import LoadingRoutes from "./LoadingRoutes";
+import ErrorBoundary from './ErrorBoundary';
+
+const AsyncHome = lazy(() => import("./Home"));
+const AsyncTopics = lazy(() => import("./Topics"));
+const AsyncSettings = lazy(() => import("./Settings"));
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingRoutes />}>
+        <Switch>
+          <Route exact path="/" component={AsyncHome} />
+          <Route path="/topics" component={AsyncTopics} />
+          <Route path="/settings" component={AsyncSettings} />
+        </Switch>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+-->
+</my-code>
+
+<p>
+  Honestly I really like V5's API for my use cases, I get why they upgraded, but really, this was pretty much all I ever needed. Anyway, here you can see how we're taking advantage of <code>Suspense</code> checking for any suspended children. Since we only load one route at a time, we can catch them all with a single <code>Suspense</code> since the loading behavior is identical across the board.
+</p>
+
+<h3>V6 router</h3>
+<p>
+  V6 is when React Router decided to <i>directly</i> incorporate code splitting ideas into the framework itself. Please <a href="https://reactrouter.com/en/main/route/lazy" target="_blank" rel="noopener noreferrer">check the React Router lazy docs</a> for full syntax, but I'll go over the highlights here (and why I don't love it).
+</p>
+
+<p>
+  The biggest change is that <i>you</i> don't call <code>lazy</code> directly anymore, it's a prop on a <code>Route</code>. Also, the fallback component and error handling go inside the lazy loaded file now, not their own components.
+</p>
+
+<my-code lang="" file=""><!--
+let routes = createRoutesFromElements(
+  <Route path="/" element={<Layout />}>
+    <Route path="a" lazy={() => import("./a")} />
+    <Route path="b" lazy={() => import("./b")} />
+  </Route>
+);
+-->
+</my-code>
+
+<p>
+  Which seems helpful, but now, it's the exact opposite of React.lazy. React.lazy says you <i>have</i> to have a react component as the <code>default</code> export. But, React Router will break if you do that. instead, you must have named exports for <code>Component</code>, <code>ErrorBoundary</code>, and <code>loader</code>.
+</p>
+
+<p>
+  I'm not going to pretend it isn't less code to do that. But what's annoying (particularly with React Router) is <b>who knows how long that will be true</b>. React is pretty set and tries not to have too many fundamental shifts (keyword there being "tries").
+</p>
+
+<p>
+  React router on the other hand, it seems to drastically change every other year. It won't even exist soon, as <a href="https://remix.run/blog/merging-remix-and-react-router" target="_blank" rel="noopener noreferrer">it's merging with Remix</a>. That's why it's so important for you to understand fundamental ideas as opposed to syntax. Syntax can change across time and frameworks, but the ideas behind them stay solid.
+</p>
+
+<h2>Complexity vs Performance</h2>
+<p>
+  As you can see here, code splitting has some great benefits, but it comes at a cost. Complexity and dev time will increase, especially in a real world, non-toy app like all of these examples. Before you add in code splitting, really think about if you need it, and whether or not shifting load times makes sense for your users.
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names="html_dialog_tags,promisify_timeouts,stop_controlling_react_forms"
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

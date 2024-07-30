@@ -67,7 +67,7 @@ h1 + p {
 #article-links a {
   display: inline-block;
   padding: 0.2rem 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-decoration-thickness: 0.05rem;
   text-underline-offset: 0.1rem;
   color: var(--text-purple)
@@ -169,7 +169,8 @@ article #article-body {
   line-height: 1.7rem;
 }
 
-#article-body p > code {
+#article-body p > code,
+#article-body summary > code {
   display: inline-block;
   font-size: 0.9rem;
   line-height: 1.25rem;
@@ -179,6 +180,17 @@ article #article-body {
   color: var(--background-primary);
 }
 
+details {
+  font-weight: bold;
+  color: var(--background-primary);
+  background: var(--text-purple);
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+}
+
+details p {
+  margin: 1rem 0 0;
+}
 
 #article-body hr {
   width: 20%;
@@ -221,6 +233,7 @@ blockquote {
 }
 
 aside {
+  margin: 1rem 0;
   padding: 0.5rem;
   border-right: 0.1rem solid var(--text-purple);
   border-top: 0.1rem solid var(--text-purple);

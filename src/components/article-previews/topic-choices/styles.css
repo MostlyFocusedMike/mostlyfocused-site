@@ -4,6 +4,7 @@
 
 #all-topics {
   display: flex;
+  max-width: 40rem;
   flex-wrap: wrap;
   gap: 0.4rem;
   margin: 1rem auto;

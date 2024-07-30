@@ -80,6 +80,22 @@
         "web-standards"
       ]
     },
+    "react_lazy_suspense": {
+      "id": "react_lazy_suspense",
+      "title": "How Code Splitting Works With React Lazy And Suspense",
+      "description": "Understand how React's lazy and Suspense APIs are used for code splitting",
+      "relativeUrl": "/pages/articles/react_lazy_suspense",
+      "image": "https://mostlyfocused.com/images/react_lazy_suspense/preview.png",
+      "level": 0,
+      "publishedAt": "2024-07-30T10:37:01.831Z",
+      "modifiedAt": "2024-07-30T10:37:01.831Z",
+      "topics": [
+        "js",
+        "react",
+        "async",
+        "vite"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -112,9 +128,11 @@
     "react",
     "sql",
     "updates",
+    "vite",
     "web-standards"
   ],
   "publishOrder": [
+    "react_lazy_suspense",
     "promisify_timeouts",
     "how_to_reverse_linked_list",
     "explaining_this_site",
