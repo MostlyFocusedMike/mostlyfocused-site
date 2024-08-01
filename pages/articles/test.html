@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs 100px Apart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+          border: 2px solid black;
+          height: 2rem;
+          counter-reset: item;
+            position: relative;
+            display: flex;
+            max-width: 40rem;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 1rem auto;
+        }
+        .item {
+            /* position: absolute; */
+            counter-increment: item;
+            margin-left: calc(100px * (counter(item) - 1));
+            width: 100px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+        }
+        /* Add some visual distinction */
+        .item:nth-child(odd) {
+            background-color: #e0e0e0;
+        }
+        .item:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inputs 100px Apart</h1>
+    <div class="container">
+        <input type="checkbox" class="item" placeholder="Item 1">
+        <input type="checkbox" class="item" placeholder="Item 2">
+        <input type="checkbox" class="item" placeholder="Item 3">
+        <input type="checkbox" class="item" placeholder="Item 4">
+        <input type="checkbox" class="item" placeholder="Item 5">
+    </div>
+</body>
+</html>

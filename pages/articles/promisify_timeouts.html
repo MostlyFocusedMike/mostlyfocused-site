@@ -219,9 +219,9 @@ const asyncInterval = async (callback, ms = 250, triesLeft = 5) => {
   The default values for <code>ms</code> and <code>triesLeft</code> are up to you as well, I just found these to be handy for my usecases. You also don't have to <code>resolve</code> with the actual value, but I've found it's helpful. Especially when dealing with the DOM, it keeps us from having to make another query. <code>reject</code> should always pass <i>some</i> kind of error, but change the message to one that makes more sense for your code.
 </p>
 
-<aside>
+<div class="call-out">
   Make sure to use <code>clearInterval</code>, otherwise this code will run forever!
-</aside>
+</div>
 
 <h2>Promises all the way down</h2>
 <p>

@@ -332,15 +332,14 @@ modal.addEventListener('click', handleBackdropClick);
   Now, when they click "yes" or "no" that button's value gets set to the close event's <code>e.target.returnValue</code>. That value can only be set by a submit button, and it must be a string. So, using a few buttons and a close event listener is a perfect way to get simple answers. You could also tell if the “X” button was clicked as well, since we didn't give that button an explicit value.
 </p>
 
-<aside>
-
+<div class="call-out">
   <p>
     <b>Note:</b> the <code>close</code> event is <b>not</b> cancelable and doesn't bubble, so no event delegation here, you have to attach the listener directly to the modal.
   </p>
   <p>
     And despite <code>e.target.returnValue</code> coming from the <code>button</code>, the <code>target</code> is the <code>dialog</code> itself.
   </p>
-</aside>
+</div>
 
 <h3>Traditional form submission event</h3>
 

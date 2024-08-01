@@ -38,21 +38,18 @@ export default class TopicChoices extends HTMLElement {
 
   render() {
     this.form = document.createElement('form');
-
+    this.form.setAttribute('aria-labelledby', 'topic-header');
     this.form.innerHTML = /*html*/`
-      <form aria-labelledby="topic-header">
         <h2 id="topic-header">Topic Choices</h2>
         <div id="all-topics">
           ${$m(allTopics, (topic) => /*html*/`
-            <input type="checkbox" id="${topic}" name="${topic}" />
-            <label for="${topic}">${topic}</label>
+            <label for="${topic}">
+              ${topic}
+              <input type="checkbox" id="${topic}" name="${topic}" />
+            </label>
           `)}
         </div>
-        <div id="multi-topic-buttons">
-          <button class="multi-topic" type="reset">Reset</button>
-        </div>
-
-      </form>
+        <button id="reset-topics" type="reset">Reset</button>
     `;
     this.append(this.form);
 

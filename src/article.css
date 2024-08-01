@@ -232,7 +232,7 @@ blockquote {
   text-align: center;
 }
 
-aside {
+.call-out {
   margin: 1rem 0;
   padding: 0.5rem;
   border-right: 0.1rem solid var(--text-purple);
