@@ -11,12 +11,11 @@ export default class ArticleCard extends HTMLElement {
     const { relativeUrl, title, description, topics } = this.article;
 
     const isInteractive = this.hasAttribute('is_interactive');
-    const isSmall = this.closest('article-card-list').hasAttribute('has_small_cards');
     const imgUrl = `/images/${this.id}/preview.webp`;
 
     // TODO: reformat to use classList
     this.innerHTML = /*html*/`
-      <div class="${ARTICLE_CARD} ${isSmall ? 'small-card' : ''}">
+      <div class="${ARTICLE_CARD}">
         <a href="${relativeUrl}">
           <p class="preview-title">${title}</p>
           <img class="preview-image" src="${imgUrl}" alt="" />

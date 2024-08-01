@@ -1,35 +1,21 @@
 .article-card {
-  width: 22rem;
+  width: 20rem;
   height: 24rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   font-family: sans-serif;
   border-radius: 0 1rem 0 0;
   border-top: 0.07rem solid var(--foreground-primary);
   border-right: 0.07rem solid var(--foreground-primary);
 }
 
-.article-card.small-card {
-  padding: 1rem 1.5rem;
-  width: 20rem;
-  height: 24rem;
-}
 
-
-.article-card.small-card .preview-title {
-  font-size: 1.3rem;
-}
-
-.article-card.small-card p {
-  font-size: 1rem;
-}
 
 .preview-title {
   text-align: left;
   margin: 0.5rem 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: 'Roboto Condensed', sans-serif;
 }
-
 
 .article-card a,
 .article-card a:visited {
