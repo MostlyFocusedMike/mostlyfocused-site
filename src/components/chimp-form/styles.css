@@ -103,3 +103,7 @@ div.newsletter-container.side-bar {
     display: block;
   }
 }
+
+div.newsletter-container.always-visible {
+  display: block;
+}

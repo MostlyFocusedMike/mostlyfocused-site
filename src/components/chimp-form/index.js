@@ -76,9 +76,10 @@ export default class ChimpForm extends HTMLElement {
   render() {
     const isSideBar = this.hasAttribute('side_bar');
     const tinyClass = isSideBar ? 'tiny' : '';
+    const isAlways = this.hasAttribute('always_visible');
 
     this.innerHTML = /*html*/`
-      <div class="${isSideBar ? 'side-bar' : ''} newsletter-container" >
+      <div class="${isSideBar ? 'side-bar' : ''} ${isAlways ? "always-visible" : ""} newsletter-container" >
         <form class="newsletter-form" aria-label="Get the monthly newsletter ${isSideBar ? 'sidebar' : ''}">
           <h2 class="${tinyClass}">
             Get The Monthly Newsletter
