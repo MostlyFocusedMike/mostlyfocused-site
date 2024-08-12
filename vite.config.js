@@ -46,7 +46,7 @@ const opts = {
         main: resolve(__dirname, 'index.html'),
         a0: resolve(__dirname, '/pages/articles/index.html'),
         ...createPageEntryPoints(),
-        catCalculator:resolve(__dirname, '/projects/cat_calculator/index.html'),
+        catCalculator: resolve(__dirname, '/projects/cat_breed_calculator/index.html'),
       },
     },
   },
