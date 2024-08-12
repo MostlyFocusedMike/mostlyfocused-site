@@ -6,10 +6,19 @@ import fs from 'fs'
 const prettyUrlHandler = (options) => (req, res, next) => {
   if (req.originalUrl === '/') return next();
 
+  // Handle  /page/article => /page/article.html
   const maybeHtmlPath = join(options.rootDir, `${req.originalUrl}.html`);
   const htmlFileExists = fs.existsSync(maybeHtmlPath);
+  if (!extname(req.originalUrl) && htmlFileExists) {
+    req.url += '.html';
+    return next();
+  }
 
-  if (!extname(req.originalUrl) && htmlFileExists) req.url += '.html';
+  // handle /page/some_dir => /page/some_dir/ (the trailing slash gets added)
+  const maybeIndexPath = join(options.rootDir, `${req.originalUrl}/index.html`)
+  const indexFileExists = fs.existsSync(maybeIndexPath);
+  if (!extname(req.originalUrl) && indexFileExists) req.url += '/'
+
   next();
 };
 
@@ -37,6 +46,7 @@ const opts = {
         main: resolve(__dirname, 'index.html'),
         a0: resolve(__dirname, '/pages/articles/index.html'),
         ...createPageEntryPoints(),
+        catCalculator:resolve(__dirname, '/projects/cat_calculator/index.html'),
       },
     },
   },
