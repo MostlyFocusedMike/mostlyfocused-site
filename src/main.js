@@ -8,6 +8,7 @@ import ArticleCard, { ARTICLE_CARD } from "./components/article-previews/article
 import RecommendedArticles, { RECOMMENDED_ARTICLES } from "./components/article-previews/recommended-articles/";
 import ByLine from "./components/by-line.js";
 import ChimpForm from "./components/chimp-form/index.js";
+import TrafficAnalyzer from "./components/traffic-analyzer/index.js";
 import './global.css';
 import './article.css';
 import './articles.css';
@@ -23,5 +24,7 @@ customElements.define(ARTICLE_CARD, ArticleCard);
 customElements.define(RECOMMENDED_ARTICLES, RecommendedArticles);
 customElements.define('by-line', ByLine);
 customElements.define('chimp-form', ChimpForm);
+customElements.define('traffic-analyzer', TrafficAnalyzer);
+
 
 if (document.querySelector('#cover')) document.querySelector('#cover').style.visibility = 'visible';
