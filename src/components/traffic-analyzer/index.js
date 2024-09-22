@@ -1,3 +1,5 @@
+const headers = { 'Accept': 'application/json', 'Content-Type': 'application/json' };
+
 export default class TrafficAnalyzer extends HTMLElement {
   connectedCallback() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -14,19 +16,12 @@ export default class TrafficAnalyzer extends HTMLElement {
 
     if (window.location.hash) data.hash = window.location.hash;
 
-    const opts = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data),
-    };
-    const timeout = import.meta.env.DEV ? 0 : 3000;
+    const opts = { method: 'POST', headers, body: JSON.stringify(data) };
+
     const path = import.meta.env.DEV
       ? 'http://localhost:3000/traffic-analyzer'
       : 'https://traffic.mostlyfocused.com/traffic-analyzer';
 
-    setTimeout(() => fetch(path, opts).catch(console.error), timeout);
+    setTimeout(() => fetch(path, opts).catch(console.error), 500);
   }
 }
