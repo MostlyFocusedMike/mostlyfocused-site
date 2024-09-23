@@ -11,10 +11,10 @@ export default class TrafficAnalyzer extends HTMLElement {
     const referrer = urlParams.get('custom-refer') || document.referrer;
     if (referrer) data.referrer = referrer;
 
-    const query = Object.fromEntries(urlParams.entries());
-    if (Object.keys(query).length) data.query = query;
+    const queryParams = Object.fromEntries(urlParams.entries());
+    if (Object.keys(queryParams).length) data.queryParams = queryParams;
 
-    if (window.location.hash) data.hash = window.location.hash;
+    if (window.location.hash) data.routeHash = window.location.hash;
 
     const opts = { method: 'POST', headers, body: JSON.stringify(data) };
 
