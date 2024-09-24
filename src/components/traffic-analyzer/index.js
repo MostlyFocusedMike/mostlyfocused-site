@@ -3,8 +3,7 @@ const headers = { 'Accept': 'application/json', 'Content-Type': 'application/jso
 export default class TrafficAnalyzer extends HTMLElement {
   connectedCallback() {
     const urlParams = new URLSearchParams(window.location.search);
-    const now = new Date();
-    const timestamp = now.toUTCString();
+    const timestamp = (new Date()).toISOString();
 
     const data = { timestamp, route: window.location.pathname, };
 
