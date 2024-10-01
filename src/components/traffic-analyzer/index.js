@@ -7,7 +7,7 @@ export default class TrafficAnalyzer extends HTMLElement {
     const data = { timestamp, route: window.location.pathname, };
 
     const urlParams = new URLSearchParams(window.location.search);
-    const referrer = urlParams.get('custom-refer') || document.referrer;
+    const referrer = urlParams.get('ref') || document.referrer;
     if (referrer) data.referrer = referrer;
 
     const opts = { method: 'POST', headers, body: JSON.stringify(data) };
