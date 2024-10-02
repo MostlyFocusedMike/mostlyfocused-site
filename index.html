@@ -33,6 +33,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <style>
+      #hero-logo { width: 95%; max-width: 40rem; display: block; margin: 1rem auto; }
+      main#home > section { width: 100%; max-width: 45rem; margin: 1rem auto; padding: 0.5rem 1rem; }
+      #main-hr { width: 20%; margin: 1rem auto 2rem; border: 0.5px solid var(--purple-primary); }
+      #main-subtitle { font-size: 2rem; }
+      h1 + p { margin: 0.2rem; font-family: "Roboto Condensed", sans-serif; font-size: 1.5rem; text-align: center; }
+    </style>
 
   </head>
   <body>
@@ -51,15 +58,13 @@
 
       <section id="latest-section" aria-labelledby="latest-heading">
         <h2 id="latest-heading">Latest Piece</h2>
-        <a href="/pages/articles/react_lazy_suspense">
+        <a href="/pages/articles/understanding_data_layers">
           <svg fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
-            <rect width="1720" height="965" fill="url(#paint0_linear_214_8)"/><rect x="1167" y="877" width="542" height="87" transform="rotate(-180 1167 877)" fill="#FAFAF9"/><rect x="590" y="809" width="87" height="267" transform="rotate(-180 590 809)" fill="#FECACA"/><rect x="765.159" y="629.795" width="262.159" height="87.3864" transform="rotate(-180 765.159 629.795)" fill="#FECACA"/><rect x="1184.61" y="754.659" width="524.318" height="87.3864" transform="rotate(-180 1184.61 754.659)" fill="#FEE2E2"/><rect x="1185" y="695" width="263" height="115" transform="rotate(-180 1185 695)" fill="#FEE2E2"/><rect x="974.886" y="504.932" width="262.159" height="87.3864" transform="rotate(-180 974.886 504.932)" fill="#FCA5A5"/><rect x="887" y="592" width="87" height="132" transform="rotate(-180 887 592)" fill="#FCA5A5"/><rect x="1220" y="213" width="349" height="88" transform="rotate(90 1220 213)" fill="#F87171"/><rect x="1097.23" y="207.818" width="262.159" height="87.3864" transform="rotate(90 1097.23 207.818)" fill="#EF4444"/><rect x="1044" y="383" width="296" height="88" transform="rotate(-180 1044 383)" fill="#EF4444"/><rect x="675" y="507" width="175" height="174" transform="rotate(-180 675 507)" fill="#DC2626"/><rect x="1151" y="176" width="613" height="87" transform="rotate(-180 1151 176)" fill="#991B1B"/><rect x="975" y="263" width="350" height="110" transform="rotate(-180 975 263)" fill="#991B1B"/><rect width="87" height="88" transform="matrix(1 8.74228e-08 8.74228e-08 -1 503 298)" fill="#B91C1C"/><defs><linearGradient id="paint0_linear_214_8" x1="860" y1="0" x2="860" y2="965" gradientUnits="userSpaceOnUse"><stop stop-color="#3D0808"/><stop offset="1"/></linearGradient></defs>
+            <rect width="1720" height="965" fill="#27384E"/><rect x="127.528" y="114" width="526" height="191" transform="rotate(8.41198 127.528 114)" fill="#F26F3C"/><rect x="1013" y="384" width="526" height="191" fill="#F26F3C"/><rect x="902" y="67" width="748" height="191" fill="#EC494E"/><rect x="80" y="493.937" width="681" height="386" transform="rotate(-5.76405 80 493.937)" fill="#EC494E"/><rect x="242.668" y="530.372" width="395.381" height="177.401" transform="rotate(9.96177 242.668 530.372)" fill="#FFCE5A"/><rect x="1078" y="701" width="395.381" height="177.401" fill="#FFCE5A"/><rect x="291.414" y="368.999" width="65" height="85" transform="rotate(-18.2049 291.414 368.999)" fill="#FBFFFF"/><path d="M295.257 278.256L402.331 359.891L257.54 407.51L295.257 278.256Z" fill="#FBFFFF"/><rect x="399.398" y="489.284" width="65" height="85" transform="rotate(161.795 399.398 489.284)" fill="#FBFFFF"/>
+            <path d="M394.605 580.339L287.531 498.705L432.323 451.086L394.605 580.339Z" fill="#FBFFFF"/><path d="M1275.5 278L1316.64 342.5H1234.36L1275.5 278Z" fill="#FBFFFF"/><rect x="1257" y="315" width="37" height="49" fill="#FBFFFF"/><path d="M1202.5 595L1243.64 659.5H1161.36L1202.5 595Z" fill="#FBFFFF"/><rect x="1184" y="632" width="37" height="49" fill="#FBFFFF"/><path d="M1348.5 681L1307.36 616.5L1389.64 616.5L1348.5 681Z" fill="#FBFFFF"/><rect x="1367" y="644" width="37" height="49" transform="rotate(-180 1367 644)" fill="#FBFFFF"/><path d="M710 35L977 936" stroke="#FBFFFF" stroke-width="20" stroke-linecap="round"/>
           </svg>
-          How Code Splitting Works With React Lazy And Suspense
+          Understanding Data Layers (Without Databases)
         </a>
-        <p>
-          This piece contains pretty much everything you need to know about how to do code splitting in React. It's got all the core fundamental ideas so that no matter what meta-framework you choose, you'll be able to figure things out.
-        </p>
       </section>
       <section aria-labelledby="what-heading">
         <h2 id="what-heading">What is this site?</h2>
@@ -69,7 +74,6 @@
         <ul id="classic-list">
           <li>Syntax highlighting</li>
           <li>Code copy buttons</li>
-          <li>Narrated articles</li>
           <li>Section and code jumping</li>
           <li>Find articles by topics</li>
           <li>Faster load times</li>
@@ -95,7 +99,7 @@
         <p>
           I like all my articles, but here are some of my best. The ones I really think are worth a minute or two of your time.
         </p>
-        <article-card-list articles="stop_controlling_react_forms,html_dialog_tags,how_to_reverse_linked_list"></article-card-list>
+        <article-card-list articles="react_lazy_suspense,stop_controlling_react_forms,html_dialog_tags,how_to_reverse_linked_list"></article-card-list>
       </section>
 
       <section aria-labelledby="about-me-header">

@@ -112,6 +112,21 @@
         "react",
         "web-standards"
       ]
+    },
+    "understanding_data_layers": {
+      "id": "understanding_data_layers",
+      "title": "Understanding Data Layers (Without Databases)",
+      "description": "How to use presentation, logic, and data layers in your JS",
+      "relativeUrl": "/pages/articles/understanding_data_layers",
+      "image": "https://mostlyfocused.com/images/understanding_data_layers/preview.png",
+      "level": 0,
+      "publishedAt": "2024-10-01T21:44:57.605Z",
+      "modifiedAt": "2024-10-01T21:44:57.605Z",
+      "topics": [
+        "js",
+        "html",
+        "data-structures"
+      ]
     }
   },
   "allTopics": [
@@ -132,6 +147,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "understanding_data_layers",
     "react_lazy_suspense",
     "promisify_timeouts",
     "how_to_reverse_linked_list",

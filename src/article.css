@@ -112,8 +112,6 @@ ul {
   margin: 0;
 }
 
-
-
 @media (max-width: 1050px) {
   #page-scrollers {
     display: none;
@@ -160,13 +158,28 @@ article #article-body {
   max-width: 43rem;
 }
 
+#article-body ul {
+  list-style: circle;
+  padding-left: 1rem;
+}
 
-#article-body > p {
+#article-body ul li {
+  margin: 0.8rem;
+}
+
+#article-body > p,
+#article-body li {
   font-family: "ui-sans-serif", "system-ui", "sans-serif";
   font-size: 1rem;
   font-weight: 400;
   color: rgba(255, 255, 245, .86);
   line-height: 1.7rem;
+}
+
+figcaption {
+  text-align: center;
+  display: block;
+  margin: 0.2rem;
 }
 
 #article-body p > code,
