@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Readable Code Is Good Code, Here's How To Write It</title>
+  <meta property="og:title" content="Readable Code Is Good Code, Here's How To Write It" />
+  <meta name="description" property="og:description" content="Tips on how to write self documenting code so your teammates (and future-you) will like you" />
+
+  <meta property = "article:published_time" content="2024-10-07T02:35:33.897Z" />
+  <meta property = "article:modified_time" content="2024-10-07T02:35:33.897Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/readable_code" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/readable_code" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/readable_code/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/readable_code/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="tests" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<h1>Readable Code Is Good Code, Here's How To Write It</h1>
+<p>Learn the trick to writing self documenting code</p>
+<hr>
+<by-line></by-line>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_0_1)"><rect width="1720" height="965" fill="url(#paint0_linear_0_1)"/><path fill-rule="evenodd" clip-rule="evenodd" d="M1070.28 556.581L1006.33 634.366L1096.94 590.441L1551.59 232.426L1524.92 198.566L1070.28 556.581ZM1100.14 595.556L984.303 651.712L1066.06 552.269L1525.93 190.14L1560.01 233.428L1100.14 595.556Z" fill="#FBFFFF"/><rect x="1531.26" y="184.189" width="52.736" height="57.8541" transform="rotate(-38.2191 1531.26 184.189)" stroke="#FBFFFF" stroke-width="6"/><path d="M1583.5 149.444L1606.39 131.42C1609.43 129.028 1613.83 129.552 1616.22 132.589L1637.13 159.145C1639.53 162.183 1639 166.584 1635.97 168.975L1613.08 187L1583.5 149.444Z" fill="#FBFFFF" stroke="#FBFFFF" stroke-width="6"/><text fill="#60D3FF" xml:space="preserve" style="white-space: pre" font-family="monospace" font-size="120" letter-spacing="0em"><tspan x="483.719" y="661.867">isGood</tspan></text><text fill="#FBFFFF" xml:space="preserve" style="white-space: pre" font-family="monospace" font-size="120" letter-spacing="0em"><tspan x="915.438" y="661.867"> </tspan></text><text fill="#6194FF" xml:space="preserve" style="white-space: pre" font-family="monospace" font-size="120" letter-spacing="0em"><tspan x="52" y="661.867">const </tspan></text><rect x="951" y="608" width="58" height="11" fill="#FBFFFF"/><rect x="951" y="636" width="36" height="11" fill="#FBFFFF"/><path d="M5 395H1269" stroke="#FBFFFF" stroke-width="8" stroke-linecap="round"/><path d="M1351 395L1639 395" stroke="#FBFFFF" stroke-width="8" stroke-linecap="round"/><path d="M1639 395V967.5" stroke="#FBFFFF" stroke-width="8" stroke-linecap="round"/></g><defs><linearGradient id="paint0_linear_0_1" x1="5.49303" y1="4.89154e-05" x2="1714.51" y2="965" gradientUnits="userSpaceOnUse"><stop stop-color="#02011D"/><stop offset="0.46" stop-color="#08052E"/><stop offset="0.965" stop-color="#05011D"/></linearGradient><clipPath id="clip0_0_1"><rect width="1720" height="965" fill="white"/></clipPath></defs></svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  <b>Self-documenting</b> code is just a fancy way of saying “readable code,” and readable code is what keeps you from losing your mind at work. It's no replacement for real docs or a well placed comment, but it never hurts to write better code. Let's talk about some habits that will make your work easy to understand.
+</p>
+
+<h2>Don't use magic numbers</h2>
+<p>
+  Look at this and tell me what it means:
+</p>
+<my-code><!--
+if (students.length > 23) {
+-->
+</my-code>
+
+<p>
+  What is that 23? How am I supposed to know what that is, <a href="https://www.youtube.com/watch?v=TUTlOC4mVQ8" target="_blank" rel="noopener noreferrer">am I Jim Carrey?</a> That 23 is a <a href="https://en.wikipedia.org/wiki/Magic_number_(programming)" target="_blank" rel="noopener noreferrer">magic number,</a> which is a terrible name because it sounds fun, but it is not. It means that there's a number that looks important, but has no context. Always give a name for numbers:
+</p>
+
+<my-code><!--
+const maxClassSize = 23;
+if (students.length > maxClassSize) {
+-->
+</my-code>
+
+<p>
+  Now it reads: if we have more students than the maximum amount allowed, do a thing. Neato. This actually leads into my next point:
+</p>
+
+<h2>Use clear variable names</h2>
+<p>
+  I don't know why, but I used to get super self-conscious about writing long variable names. Which was dumb, because <code>rStuNms</code> and <code>fStuNms</code> are utterly terrible compared to <code>rawStudentNames</code> and <code>filteredStudentNames</code>. They seem too long, but I am telling you: after 2 weeks of not looking at the code you will not remember a single acronym. A variable name is extremely important because it's your chance to tell your reader what your code is doing:
+</p>
+
+<my-code><!--
+const fStuNms = stus.map(s => s.n)
+// vs
+const filteredStudentNames = students.map(student => {
+  return student.name;
+});
+-->
+</my-code>
+
+<h3>Common abbreviations</h3>
+<p>
+  Now because nothing in life is without caveats, there are a few common abbreviations that people use:
+</p>
+<ul class="compact-list">
+  <li><strong>e</strong>: event</li>
+  <li><strong>i, j, k</strong>: loop counters or indexes</li>
+  <li><strong>arr</strong>: array</li>
+  <li><strong>obj</strong>: object</li>
+  <li><strong>str</strong>: string</li>
+  <li><strong>num</strong>: number</li>
+  <li><strong>el</strong>: element (often used with DOM elements)</li>
+  <li><strong>params</strong>: parameters</li>
+  <li><strong>args</strong>: arguments</li>
+  <li><strong>req</strong>: request</li>
+  <li><strong>res</strong>: response</li>
+  <li><strong>err</strong>: error</li>
+  <li><strong>cb</strong>: callback</li>
+  <li><strong>temp</strong>: temporary</li>
+  <li><strong>prev</strong>: previous</li>
+  <li><strong>curr</strong>: current</li>
+  <li><strong>max</strong>: maximum</li>
+  <li><strong>min</strong>: minimum</li>
+  <li><strong>avg</strong>: average</li>
+  <li><strong>src</strong>: source</li>
+  <li><strong>util</strong>: utility</li>
+  <li><strong>ctx</strong>: context</li>
+  <li><strong>msg</strong>: message</li>
+  <li><strong>btn</strong>: button</li>
+  <li><strong>val</strong>: value</li>
+  <li><strong>prop</strong>: property</li>
+  <li><strong>len</strong>: length</li>
+  <li><strong>idx</strong>: index</li>
+</ul>
+<p>
+  Nothing quite like me saying "don't do something" and then giving you 25 examples when you should. I suppose the true rule is <i>you</i> shouldn't be making up abbreviations, but it's alright to use the standard ones.
+</p>
+
+<h3>Use naming conventions</h3>
+<p>
+  There are a lot of conventions when it comes to naming things.
+</p>
+
+<ul>
+  <li>If your value is a boolean, start with "is" or "has," like <code>isEnrolled</code></li>
+  <li>If your value is storing an array, the name should be plural</li>
+  <li>Numbers should start with min or max if possible</li>
+  <li>Use the singular noun for classes, eg. <code>User</code>, not <code>Users</code></li>
+  <li>For functions, there should be a verb in front, like <code>createSchedule</code> or <code>updateNickname</code></li>
+</ul>
+
+<p>
+  For booleans specifically, default to the affirmative whenever that's clearer. So if you only ever care of the class is empty, don't use <code>!isFilled</code>, use <code>isEmpty</code>. The rule of thumb is to use whatever variable names you need to in order to minimize the number of <code>!</code>s.
+</p>
+
+<my-code lang="" file=""><!--
+const isFilled = !!students.length;
+if (!isFilled) {
+
+// minimize the use of !
+const isEmpty = !students.length;
+if (isEmpty) {
+-->
+</my-code>
+
+<h2>Refactor with tiny, named functions</h2>
+<p>
+  Variables aren't the only places to add helpful explanations, function names are great too! When we first start writing code, we're taught that functions were mainly for <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener noreferrer">DRYing</a> out code, but I'll never forget when I had my mind blown I learned that functions really shine when they're used for <i>readability</i>. Look at this code for a second and tell me what's going on:
+</p>
+
+<my-code><!--
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const currentNote = await NoteAdapter.getCurrent();
+  setCurrentAlert('Saved!');
+  setIsAlertVisible(true);
+  setTimeout(() => setIsAlertVisible(false), 2000);
+  if (currentNote.hasTitleChanged) {
+    context.setRefreshTitles(true);
+    setHasTitleChanged(false);
+  }
+};
+-->
+</my-code>
+
+<p>
+  It's possible, but how about:
+</p>
+
+<my-code><!--
+const showSaveAlertFor = (milliseconds) => () => {
+  setCurrentAlert('Saved!');
+  setIsAlertVisible(true);
+  setTimeout(() => setIsAlertVisible(false), milliseconds);
+};
+
+const updateTitleIfNew = ({ hasTitleChange }) => {
+  if (hasTitleChanged) {
+    context.setRefreshTitles(true);
+    setHasTitleChanged(false);
+  }
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const currentNote = NoteAdapter.getCurrent();
+  showSaveAlertFor(2000);
+  updateTitleIfNew(currentNote);
+-->
+</my-code>
+
+<p>
+  I'm exaggerating for effect <i>a little</i>, but you get it. All we did was scoot a few lines of code into functions and it improved dramatically. <code>showSaveAlertFor</code> is even a function we can use elsewhere if we want to. The lines of code are scooted up and away into function definitions, but you don't need to read them directly unless there's a problem. At the high level, we have a human readable chain of events. Function definitions are also another great way to label variables. setTimeout takes a function and number of milliseconds, but now we've clearly added it ourselves to be extra helpful.
+</p>
+
+<h3>Locality of behavior</h3>
+<p>
+  But, be careful not to get carried away. I don't want you to think that every 3 lines or if check needs to be abstracted away. "Locality of behavior" is the idea that the closer your logic is together, the easier it is to read. The more experience you get, the better you'll be at deciding what to break out and what to leave. The biggest clue that you may have abstracted too far is how often you have to leave the file your reading to see what a function is doing. If you find yourself jumping all over the place, you can absolutely dial back the broken out functions. It's up to you and your team to decide!
+</p>
+
+<h2>Add useful test descriptions</h2>
+<p>
+  Probably the least talked about way of sneaking documentation into code is with tests. Suppose we have this function:
+</p>
+
+<my-code><!--
+const getDailySchedule = (student, dayOfWeek) => {
+-->
+</my-code>
+
+<p>
+  Let's pretend this is a runner function made up of a bunch of other functions, so it does a lot: It retrieves the daily schedule; if the day of the week is a weekend it returns an empty array; if the student has detention it sticks it onto the end of the schedule; and if the student isn't enrolled in the school, it prints a link to that Mean Girls Gif.
+</p>
+<p>
+  If you tried to put that paragraph as a comment, you're going to get some weird looks. But you know where that paragraph would look great? In tests:
+</p>
+
+<my-code><!--
+describe('getDailySchedule tests', () => {
+  it("retrieves the student's full schedule", () => {
+  it('returns an empty array if given a weekend day', () => {
+  it('adds detention if a student got one that day', () => {
+  it('prints a gif link if student not enrolled yet', () => {
+-->
+</my-code>
+
+<p>
+  This is hands down the easiest way to straight up put comments into code without actually adding any comments.
+</p>
+
+<h2>Bottom line: readable over clever</h2>
+<p>
+  Being a good developer doesn't mean writing the cleverest code, it means being a good teammate. Quality software is rarely developed alone, eventually other people will need to read your code. And even if you're working alone, you-right-now and you-in-two-weeks are almost different people when it comes to remembering code. There are lots more ways to write readable code, like adding good comments, but the most important thing you can do is just start thinking about it.
+</p>
+
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names=""
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

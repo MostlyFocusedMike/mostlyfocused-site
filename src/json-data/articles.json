@@ -96,6 +96,20 @@
         "vite"
       ]
     },
+    "readable_code": {
+      "id": "readable_code",
+      "title": "Readable Code Is Good Code, Here's How To Write It",
+      "description": "Tips on how to write self documenting code so your teammates (and future-you) will like you",
+      "relativeUrl": "/pages/articles/readable_code",
+      "image": "https://mostlyfocused.com/images/readable_code/preview.png",
+      "level": 0,
+      "publishedAt": "2024-10-07T02:35:33.897Z",
+      "modifiedAt": "2024-10-07T02:35:33.897Z",
+      "topics": [
+        "js",
+        "tests"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -142,11 +156,13 @@
     "js",
     "react",
     "sql",
+    "tests",
     "updates",
     "vite",
     "web-standards"
   ],
   "publishOrder": [
+    "readable_code",
     "understanding_data_layers",
     "react_lazy_suspense",
     "promisify_timeouts",
