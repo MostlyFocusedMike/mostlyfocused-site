@@ -213,6 +213,7 @@ const handleSubmit = async (e) => {
   const currentNote = NoteAdapter.getCurrent();
   showSaveAlertFor(2000);
   updateTitleIfNew(currentNote);
+};
 -->
 </my-code>
 
@@ -222,7 +223,7 @@ const handleSubmit = async (e) => {
 
 <h3>Locality of behavior</h3>
 <p>
-  But, be careful not to get carried away. I don't want you to think that every 3 lines or if check needs to be abstracted away. "Locality of behavior" is the idea that the closer your logic is together, the easier it is to read. The more experience you get, the better you'll be at deciding what to break out and what to leave. The biggest clue that you may have abstracted too far is how often you have to leave the file your reading to see what a function is doing. If you find yourself jumping all over the place, you can absolutely dial back the broken out functions. It's up to you and your team to decide!
+  Be careful not to get carried away. I don't want you to think that every 3 lines or if check needs to be abstracted away. "Locality of behavior" is the idea that the closer your logic is together, the easier it is to read. The more experience you get, the better you'll be at deciding what to break out and what to leave. The biggest clue that you may have abstracted too far is how often you have to leave the file your reading to see what a function is doing. If you find yourself jumping all over the place, you can absolutely dial back the broken out functions. It's up to you and your team to decide!
 </p>
 
 <h2>Add useful test descriptions</h2>
@@ -268,7 +269,7 @@ describe('getDailySchedule tests', () => {
 </article>
 </main>
 <recommended-articles
-  article_names=""
+  article_names="understanding_data_layers,html_dialog_tags,react_lazy_suspense"
 ></recommended-articles>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
