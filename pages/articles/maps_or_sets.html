@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Should You Use JavaScript Maps And Sets?</title>
+  <meta property="og:title" content="Should You Use JavaScript Maps And Sets?" />
+  <meta name="description" property="og:description" content="A deep dive into explaining the specific use cases of these new data types" />
+
+  <meta property = "article:published_time" content="2024-10-13T16:03:43.411Z" />
+  <meta property = "article:modified_time" content="2024-10-13T16:03:43.411Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/maps_or_sets" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/maps_or_sets" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/maps_or_sets/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/maps_or_sets/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="data-structures" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<h1>Should You Use JavaScript Maps And Sets?</h1>
+<p>Spoilers, but probably not.</p>
+<hr>
+<by-line></by-line>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="url(#paint0_linear_0_1)"/><rect x="672" y="449" width="446" height="411" fill="#DC2626"/><rect x="165" y="592" width="446" height="268" fill="white"/><rect x="1161" y="592" width="446" height="268" fill="white"/><text fill="#DC2626" xml:space="preserve" style="white-space: pre" font-family="Courier" font-size="300" letter-spacing="0em"><tspan x="727" y="328.157">{}</tspan></text><text fill="white" xml:space="preserve" style="white-space: pre" font-family="Courier" font-size="180" letter-spacing="0em"><tspan x="1222" y="541.694">Set</tspan></text><text fill="white" xml:space="preserve" style="white-space: pre" font-family="Courier" font-size="180" letter-spacing="0em"><tspan x="225" y="541.694">Map</tspan></text><text fill="black" xml:space="preserve" style="white-space: pre" font-family="Roboto Condensed" font-size="200" letter-spacing="0em"><tspan x="791" y="625.188">#1</tspan></text><text fill="#010101" xml:space="preserve" style="white-space: pre" font-family="Roboto Condensed" font-size="150" letter-spacing="0em"><tspan x="292" y="731.641">???</tspan></text><text fill="#010101" xml:space="preserve" style="white-space: pre" font-family="Roboto Condensed" font-size="150" letter-spacing="0em"><tspan x="1289" y="731.641">???</tspan></text><path d="M776.738 153.386L698.729 128.083L710.922 104.459L776.738 153.386Z" fill="#D9D9D9"/><path d="M730.531 245.704L649.044 254.95L650.368 228.398L730.531 245.704Z" fill="#D9D9D9"/><path d="M763.008 322.72L694.843 368.318L683.838 344.117L763.008 322.72Z" fill="#D9D9D9"/><path d="M1036.89 158.718L1113.73 124.699L1097.83 102.509L1036.89 158.718Z" fill="#D9D9D9"/><path d="M1085.09 245.704L1170.17 254.95L1168.79 228.398L1085.09 245.704Z" fill="#D9D9D9"/><path d="M1053.36 319.749L1120.28 369.486L1133.74 345.92L1053.36 319.749Z" fill="#D9D9D9"/><defs><linearGradient id="paint0_linear_0_1" x1="860" y1="4.89154e-05" x2="860" y2="965" gradientUnits="userSpaceOnUse"><stop stop-color="#330101"/><stop offset="0.965" stop-color="#1F0001"/></linearGradient></defs></svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set" target="_blank" rel="noopener noreferrer">Sets</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener noreferrer">Maps</a> have been around for a few years now (since 2015!), but I still get a lot of questions about them. My students wonder if they should be substituting traditional objects and arrays with these new data types. While there are some killer use cases for Sets and Maps, you should really look at them like specialized tools and not Swiss army knives.
+</p>
+
+<h2>When to use Sets</h2>
+<p>
+  A Set is a collection, like an array, except each value must be unique. They're like what would happen if objects and arrays had a baby. Here's a crash course:
+</p>
+
+<my-code><!--
+const mySet = new Set();
+// or const mySet = new Set(['a', 'b', 'c'])
+
+mySet.add('a'); // add item
+mySet.add('b');
+mySet.add('c');
+mySet // Set(2) {'a', 'b', 'c'}
+
+mySet.size; // 3
+mySet.delete('a')
+mySet.has('a'); // false
+
+mySet.has('b'); // true
+mySet[0] // does not work
+
+for (const item of mySet) {
+  console.log(item);
+}
+// b
+// c
+
+const arr = [...mySet];
+arr // ['b', 'c']
+
+mySet.clear(); // empties Set
+-->
+</my-code>
+
+<h3>You need to remove duplicates</h3>
+<p>
+  This is the main one I've actually seen Sets used in the wild. It's a handy one liner:
+</p>
+
+<my-code lang="" file=""><!--
+const arr = [1,2,3,4,4,5,6,7,7,7];
+const unique = [...new Set(arr)];
+// unique equals [1,2,3,4,5,6,7]
+-->
+</my-code>
+
+<h3>Checking a quick Set of options</h3>
+<p>
+  Sometimes you have a handful of options and you want to see if something is included. A lot of people make an array and then use <code>includes</code>. This is the definition of "just my opinion," but I think Sets read nicer:
+</p>
+
+<my-code><!--
+// old
+const options = ['thing 1', 'thing 2', 'thing 3'];
+if (options.includes('some choice')) doSomethingWithThat('some choice');
+
+// new
+const options = new Set(['thing 1', 'thing 2', 'thing 3']);
+if (options.has('some choice')) doSomethingWithThat('some choice');
+-->
+</my-code>
+
+<p>
+  At this size, they are identical on performance anyway (though more on that later), so it's only aesthetics. I'm forced to use prettier at work, and <code>.has</code> being short has helped keep my if-checks stay one line long.
+</p>
+
+<h3>You're doing algorithm challenges</h3>
+<p>
+  If you're using anything with <a href="https://en.wikipedia.org/wiki/Set_theory" target="_blank" rel="noopener noreferrer">Set theory</a> in an interview, Sets are obviously the go to. You can see on the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#implementing_basic_set_operations" target="_blank" rel="noopener noreferrer">Set docs how to implement the basic Set actions</a>. This stuff might come up when doing interviews, so it's worth it to take a look. If you're familiar with SQL, this is basically just another way of thinking about joins.
+</p>
+
+<hr>
+
+<h2>When to use Maps</h2>
+<p>
+  Maps are honestly something that I thought would take over the landscape, but then when you get down to it: they're not as much of an upgrade as you might think. They are another way to store key/value data, but they're more purpose-driven than objects, so they have some added benefits. Here's a crash course
+</p>
+
+<my-code><!--
+const myMap = new Map();
+
+myMap.set('a', 1);
+myMap.set('b', 2);
+myMap.set('c', 3);
+myMap // Map(3) {'a' => 1, 'b' => 2, 'c' => 3}
+
+myMap.size; // 3
+
+myMap.get('zzz') // undefined
+myMap.get('a'); // 1
+myMap.set('a', 'ok');
+myMap.get('a'); // 'ok'
+
+for (const [key, value] of myMap) {
+  console.log(`${key} = ${value}`);
+}
+// a = ok
+// b = 2
+// c = 3
+
+const obj = Object.fromEntries(myMap);
+obj // {a: 'ok', b: 2, c: 3}
+
+myMap.delete('b'); // removes b key/value
+myMap.clear() // empties Map
+-->
+</my-code>
+
+<h3>You care about insertion order</h3>
+<p>
+  Technically, objects do kind of maintain insertion order with modern JS. HOWEVER there seem to be <a href="https://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order" target="_blank" rel="noopener noreferrer">some caveats to maintaining key order</a>. If you really need to be sure that your key/value pairs maintain their order for iteration, use a Map. This use case is the only one I've ever actually hit upon. I'm pretty into <a href="https://mostlyfocused.com/pages/articles/readable_code" target="_blank" rel="noopener noreferrer">writing readable code</a> and Maps can convey meaning simply by existing.
+</p>
+<p>
+  If there's an object in your code that you iterate through, and the order MUST be maintained, think about using a Map. It tells the other developers that we aren't just iterating through all the keys however we want, we care about order. And, if you have a coworker like mine who couldn't be bothered to look up what a Map was and didn't care, I still know that the code is locked in to maintain insertion order and nothing they can do can break it.
+</p>
+
+<h3>You need non-string keys</h3>
+<p>
+  Objects will always stringify anything used as a key, but Maps don't do that. If you tried to use unique objects as object keys themselves, they would <i>all</i> get stringified into <code>'[Object object]'</code> and overwrite each other. Luckily with Maps, that's not a problem! Each object would function perfectly well as a unique key. And if you used the same object key with a new value, it would overwrite the original value, as you'd expect. It's not a super common scenario, but it's a good trick to know.
+</p>
+
+<h3>You have a truly massive dataset</h3>
+<p>
+  It varies by browser, but if you have over 10 million entries in an object, it may be worth it to to use a Map. The reason being is that some browsers allow about 5 million more entries in Maps than objects. But this is so browser specific, I'm not sure how long that will be the case. Also what are you doing with 15 million items in memory??
+</p>
+
+<hr>
+
+<h2>And that's about it!</h2>
+<p>
+  If you thought those seem like pretty specialized situations, you'd be right. I bet you that there are edge cases that I missed (please comment on this post in Reddit if you know of any), but those situations above are the good stuff. Which means that you're safe to keep using regular objects a vast majority of the time. If you really want to use Maps and Sets because you love them from other languages, go for it. Just don't feel like you're missing out if you don't.
+</p>
+
+<h2>JSON and Other gotchas</h2>
+<p>
+  JSON can't encode Maps and Sets properly yet, so that's something that you may want to consider if you're dealing with APIs. You'll need to convert each Map or Set back into a plain old JS object first. I'm sure this will change in the future.
+</p>
+
+<p>
+Also you might hear that some people say that Maps are worth it because they are iterable by default. However, since we're already using ES2015+ syntax to get Maps, then we'll also have the <code>Object.keys, values,</code> and <code>entries</code> iterator functions as well. Which, sort of steals that thunder a bit. And to my knowledge, Maps don't have any iteration speed bonus. Which leads me to my last point.
+</p>
+
+<h2>"But aren't Maps and Sets faster?"</h2>
+<p>
+  …Maybe? On MDN's Maps page it says that they, “Perform better in scenarios involving frequent additions and removals of key-value pairs.” However, I personally haven't seen that to be the case in my tests or research. It is true that the <code>Map.delete</code> function is faster than the object <code>delete</code> keyword, but there's a catch. The <code>Map.set</code> function is slower than the object's internal set method, so whatever bonus you might get from faster deletes would get a huge chunk taken out by slower inserts.
+</p>
+<p>
+  Also, certain browsers implement things differently, which means it's not a consistent boost. In my, albeit limited, testing, I found that <i>objects</i> not Maps were faster (though not by much). But the thing about JS performance is that as browsers and run time environments grow, they can choose to boost certain aspects. So in the future it may be absolutely true that Google optimized the heck out of Maps, so use those. I'm just saying that for now, that seems debatable, and not a reason to switch.
+</p>
+<p>
+  As for Sets, there can be no debate that <code>Set.has</code> is faster than <code>array.includes</code> (that's O(N) for arrays vs. O(1) for Sets). Unfortunately, <code>Set.add</code> seems much slower than <code>arr.push</code>. I think if you were searching hundreds or thousands of times on a list with a ton of items, then Sets might be worth it there. But I'd recommend actually performance testing before swapping.
+</p>
+<p>
+  All in all, I don't think Maps or Sets have a blanket performance advantage. So far, it seems like environments haven't prioritized performance with these new data types. Plus, they always show these benchmarks with operation counts in the "millions of ops a second", and even then the difference is small. Your objects have like...5 properties. No matter what data shape you pick, you're not going to be hurt by performance.
+</p>
+
+<h2>Final verdict</h2>
+<p>
+  JS devs LOVE shiny new things, but with the exception of those specialized use cases, there isn't much of a reason to use the new data types. They're new tools to add to your toolbox, not replacements.
+</p>
+
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names="readable_code,understanding_data_layers,react_lazy_suspense"
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

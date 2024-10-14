@@ -50,6 +50,20 @@
         "a11y"
       ]
     },
+    "maps_or_sets": {
+      "id": "maps_or_sets",
+      "title": "Should You Use JavaScript Maps And Sets?",
+      "description": "A deep dive into explaining the specific use cases of these new data types",
+      "relativeUrl": "/pages/articles/maps_or_sets",
+      "image": "https://mostlyfocused.com/images/maps_or_sets/preview.png",
+      "level": 0,
+      "publishedAt": "2024-10-13T16:03:43.411Z",
+      "modifiedAt": "2024-10-13T16:03:43.411Z",
+      "topics": [
+        "js",
+        "data-structures"
+      ]
+    },
     "postgres_cheat_sheet": {
       "id": "postgres_cheat_sheet",
       "title": "Postgres Cheat Sheet Of Common SQL Queries",
@@ -162,6 +176,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "maps_or_sets",
     "readable_code",
     "understanding_data_layers",
     "react_lazy_suspense",
