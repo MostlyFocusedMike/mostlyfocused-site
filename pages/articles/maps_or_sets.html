@@ -105,7 +105,7 @@ mySet.clear(); // empties Set
 
 <h3>You need to remove duplicates</h3>
 <p>
-  This is the main one I've actually seen Sets used in the wild. It's a handy one liner:
+  This is the main way I've actually seen Sets used in the wild. It's a handy one liner:
 </p>
 
 <my-code lang="" file=""><!--
@@ -179,15 +179,15 @@ myMap.clear() // empties Map
 
 <h3>You care about insertion order</h3>
 <p>
-  Technically, objects do kind of maintain insertion order with modern JS. HOWEVER there seem to be <a href="https://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order" target="_blank" rel="noopener noreferrer">some caveats to maintaining key order</a>. If you really need to be sure that your key/value pairs maintain their order for iteration, use a Map. This use case is the only one I've ever actually hit upon. I'm pretty into <a href="https://mostlyfocused.com/pages/articles/readable_code" target="_blank" rel="noopener noreferrer">writing readable code</a> and Maps can convey meaning simply by existing.
+  Technically, objects do kind of maintain insertion order with modern JS. HOWEVER there seem to be <a href="https://stackoverflow.com/questions/5525795/does-javascript-guarantee-object-property-order" target="_blank" rel="noopener noreferrer">some caveats to maintaining key order</a>. If you really need to be sure that your key/value pairs maintain their order for iteration, use a Map. This is the one reason I've used Maps in the past. I'm pretty into <a href="https://mostlyfocused.com/pages/articles/readable_code" target="_blank" rel="noopener noreferrer">writing readable code</a> and Maps can convey meaning simply by existing.
 </p>
 <p>
-  If there's an object in your code that you iterate through, and the order MUST be maintained, think about using a Map. It tells the other developers that we aren't just iterating through all the keys however we want, we care about order. And, if you have a coworker like mine who couldn't be bothered to look up what a Map was and didn't care, I still know that the code is locked in to maintain insertion order and nothing they can do can break it.
+  It tells the other developers that we aren't just iterating through all the keys however we want, we care about order. And, if you have a coworker like mine who couldn't be bothered to look up what a Map was and didn't care, I still know that the code is locked in to maintain insertion order and nothing they can do can break it.
 </p>
 
 <h3>You need non-string keys</h3>
 <p>
-  Objects will always stringify anything used as a key, but Maps don't do that. If you tried to use unique objects as object keys themselves, they would <i>all</i> get stringified into <code>'[Object object]'</code> and overwrite each other. Luckily with Maps, that's not a problem! Each object would function perfectly well as a unique key. And if you used the same object key with a new value, it would overwrite the original value, as you'd expect. It's not a super common scenario, but it's a good trick to know.
+  Objects will always stringify anything used as a key, but Maps don't do that. If you tried to use unique objects as object keys themselves, they would <i>all</i> get stringified into <code>'[object Object]'</code> and overwrite each other. Luckily with Maps, that's not a problem! Each object would function perfectly well as a unique key. And if you used the same object key with a new value, it would overwrite the original value, as you'd expect. It's not a super common scenario, but it's a good trick to know.
 </p>
 
 <h3>You have a truly massive dataset</h3>
