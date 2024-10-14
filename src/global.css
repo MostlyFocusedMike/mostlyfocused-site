@@ -8,7 +8,7 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; */
-  background: #1A1A1D;
+  background: rgb(30, 30, 30);
   scroll-padding-top: 50px;
 }
 
@@ -27,7 +27,7 @@ main {
   --background-purple: hsl(273.6, 40%, 30%);
   --lighter-gray: #D1D5DB;
   --purple-primary: #A78BFA; /* #7C3AED; */
-  --text-purple: #A78BFA;
+  --text-purple: #cdbeff;
   --terminal-output: #020617; /* slate 950 */
   --accent-primary: #FDE047; /* yellow 300 */
 }

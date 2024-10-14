@@ -38,22 +38,22 @@ main#home > section > p {
 
 main#home > section > p > a,
 main#home > section > p > a:visited {
-  color: var(--text-purple);
+  color: var(--foreground-primary);
 }
 
 main#home > section > p > a:hover {
-  color: var(--foreground-primary);
+  color: var(--text-purple);
 }
 
 #latest-section a,
 #latest-section a:visited {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.5rem;
-  color: var(--text-purple);
+  color: var(--foreground-primary);
 }
 
 #latest-section a:hover {
-  color: var(--foreground-primary);
+  color: var(--text-purple);
 }
 
 #latest-section > p {
