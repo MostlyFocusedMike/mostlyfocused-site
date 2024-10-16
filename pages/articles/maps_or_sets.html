@@ -190,6 +190,11 @@ myMap.clear() // empties Map
   Objects will always stringify anything used as a key, but Maps don't do that. If you tried to use unique objects as object keys themselves, they would <i>all</i> get stringified into <code>'[object Object]'</code> and overwrite each other. Luckily with Maps, that's not a problem! Each object would function perfectly well as a unique key. And if you used the same object key with a new value, it would overwrite the original value, as you'd expect. It's not a super common scenario, but it's a good trick to know.
 </p>
 
+<h3>You need a frequent O(1) size lookup</h3>
+<p>
+  If you're doing an algorithm challenge that needs you to keep track of the size of your key/value store, then the <code>.size</code> property will really come in handy. There's no need to iterate and count up all the keys, so your algorithm won't have it's time complexity impacted. This is a <i>super</i> specific use case, but it wouldn't surprise me if someone built a challenge just for this quirk.
+</p>
+
 <h3>You have a truly massive dataset</h3>
 <p>
   It varies by browser, but if you have over 10 million entries in an object, it may be worth it to to use a Map. The reason being is that some browsers allow about 5 million more entries in Maps than objects. But this is so browser specific, I'm not sure how long that will be the case. Also what are you doing with 15 million items in memory??
