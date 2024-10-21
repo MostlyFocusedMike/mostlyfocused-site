@@ -174,9 +174,9 @@ article #article-body {
 #article-body > p,
 #article-body li {
   font-family: "ui-sans-serif", "system-ui", "sans-serif";
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  color: rgba(255, 255, 245, .86);
+  color: var(--foreground-primary);
   line-height: 1.7rem;
 }
 
