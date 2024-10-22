@@ -21,7 +21,7 @@ export default class ArticleCard extends HTMLElement {
           <img class="preview-image" src="${imgUrl}" alt="" />
         </a>
 
-        <p>${description}</p>
+        <p class="preview-desc">${description}</p>
         <hr class="preview-hr" />
         <ul class="article-topics">
           ${$m(topics, (topic, idx) => /*html*/`

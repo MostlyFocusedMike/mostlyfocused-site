@@ -44,6 +44,10 @@
   gap: 0.25rem;
 }
 
+p.preview-desc {
+  color: var(--foreground-primary);
+}
+
 p.topic-badge {
   margin: 0;
   font-style: italic;
