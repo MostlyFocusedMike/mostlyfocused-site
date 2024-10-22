@@ -104,7 +104,7 @@ recursiveFunc(arr, 2);
 </my-code>
 
 <p>
-  You might notice that the way to log each value is to call it with the index that's one bigger. Right now we are the ones calling the function and incrementing the index, but what if the function itself did?
+  You might notice that the way to log each value is to call it with the index that's one bigger. Right now we are the ones calling the function and incrementing the index...what if the function itself did the incrementing?
 </p>
 
 <h2>Making the function recursive</h2>
@@ -122,7 +122,7 @@ const recursiveFunc = (arr, idx = 0) => {
 </my-code>
 
 <p>
-  There it is: a <b>recursive</b> function. It looks odd to see a function call itself, but all programming languages are more than capable of doing this. However, if we ran this as is, it would blow up. That's because we never tell it to stop at any point. We still need requirement #2, a stop condition:
+  There it is: a <b>recursive</b> function. It looks odd to see a function call itself, however all programming languages are more than capable of doing this. However, if we ran this as is, it would blow up. That's because we never tell it to stop at any point. We still need requirement #2, a stop condition:
 </p>
 
 <my-code><!--
@@ -145,11 +145,11 @@ recursiveFunc(['a', 'b', 'c']);
 </p>
 
 <h3>Guard clause</h3>
-<p>We could add a guard clause to remove the layer of nesting, but I think for illustrative purposes not using the inverse makes a little more intuitive sense. But it's a fun challenge for you to try yourself!</p>
+<p>We could add a guard clause to remove the layer of nesting, but I think for illustrative purposes not using the inverse makes a little more intuitive sense. It's a fun challenge for you to try yourself!</p>
 
 <h2>What's actually happening</h2>
 <p>
-  The secret sauce here is that our original "add one each time" logic is now being done <i>inside</i> the function with <code>idx + 1</code>. But what really helps is seeing this graphically
+  The secret sauce here is that our original "add one each time" logic is now being done <i>inside</i> the function with <code>idx + 1</code>. What really helps is seeing this graphically
 </p>
 <figure>
   <img src="/images/recursion_no_fibonacci/example-1.webp" alt="Each new call of the function is nested into a rectangle. Each new call has the idx incremented by one. It finally stops when there is no value at the index">
@@ -166,7 +166,7 @@ recursiveFunc(['a', 'b', 'c']);
 
 <h2>We can go deeper</h2>
 <p>
-  Our function meets our definition of recursion, but it can't iterate through <i>nested</i> arrays recursively. This is no good, since that's actually one of the real-world applications for recursion. The reason for that is simple: if it ever runs into a nested object, it can just call itself again, but this time from the start.
+  Our function meets our definition of recursion, but it can't iterate through <i>nested</i> arrays recursively. This is no good, since that's actually one of the real-world applications for recursion. The reason for that is simple: if it ever runs into a nested object, it can just call itself again, this time from the start.
 </p>
 
 <details>
@@ -210,7 +210,7 @@ recursiveFunc(['a', ['x', 'y'], 'b']);
 </figure>
 
 <p>
-  That new line is checking to see if the value is an array. If it is, look at how we pass in the new array <i>and</i> start a new index at 0 to restart the new sequence. But, once that sequence is done, we come back to our main chain. Also, notice that the final <code>recursiveFunc</code> call is after and <i>outside</i> of the array check. That's because after we go down into an array, we always want to keep going when we come back up.
+  That new line is checking to see if the value is an array. If it is, look at how we pass in the new array <i>and</i> start a new index at 0 to restart the new sequence. Then, once that sequence is done, we come back to our main chain. Also, notice that the final <code>recursiveFunc</code> call is after and <i>outside</i> of the array check. That's because after we go down into an array, we always want to keep going when we come back up.
 </p>
 <p>
   For simplicity, we passed in an array with only a single level of nesting. Once you understand what's going on here, try passing in another level of nesting and see if you can predict what will happen.
@@ -248,19 +248,24 @@ c
 
 <h2>Drawbacks to recursion</h2>
 <p>
-  If recursion is so simple, why don't we use it everywhere? Why are loops better for pure iterations? One of the reasons has to do with <a href="https://www.javascripttutorial.net/javascript-call-stack/" target="_blank" rel="noopener noreferrer">the JavaScript Call Stack</a>. I recommend checking it out, it's a fundamental part of programming. But the long and short of it is: when you call a function, it gets placed on the call stack. Once it's finished, it's removed. But, the problem with recursion is that the first call can't finish until all of the children functions finish. That means the call stack gets taller and taller. If it gets too high, it will all break.
+  If recursion is so simple, why don't we use it everywhere? Why are loops better for pure iterations? One of the reasons has to do with <a href="https://www.javascripttutorial.net/javascript-call-stack/" target="_blank" rel="noopener noreferrer">the JavaScript Call Stack</a>. I recommend checking it out, it's a fundamental part of programming. The long and short of it is: when you call a function, it gets placed on the call stack. Once it's finished, it's removed. However, the problem with recursion is that the first call can't finish until all of the children functions finish. That means the call stack gets taller and taller. If it gets too high, it will all break.
 </p>
 
 <p>
-  That's the issue with recursion, there is a maximum depth. You want one function that has a for loop that a million iterations? Neato. But a recursive function can start hitting issues way quicker. That doesn't mean loops are better. It just means we have to use recursion for more specific problems, like unknown depth or <a href="https://www.youtube.com/watch?v=t2CEgPsws3U" target="_blank" rel="noopener noreferrer">recursive data structures like Binary Search Trees</a>. It's just about finding the right tool for the problem.
+  That's the issue with recursion, there is a maximum depth. You want one function that has a for loop that a million iterations? Well that's all fine and dandy. But a recursive function can start hitting issues way quicker. That doesn't mean loops are better. It just means we have to use recursion for more specific problems, like unknown depth or <a href="https://www.youtube.com/watch?v=t2CEgPsws3U" target="_blank" rel="noopener noreferrer">recursive data structures like Binary Search Trees</a>. It's about finding the right tool for the problem.
 </p>
 
 <p>
-  But if we're being honest, the biggest reason developers don't use recursion is because it's harder to understand. But perhaps now you'll use it more after reading this article, eh?
+  If we're being honest though, the biggest reason developers don't use recursion is because it's harder to understand. Perhaps now you'll use it more after reading this article, eh?
 </p>
+
+
 
 <p>Happy coding everyone,</p>
 <p>Mike</p>
+
+<p><i><a href="https://www.reddit.com/r/mostlyfocused/comments/1g9jtsj/learn_recursion_without_using_fibonacci/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
+
 <chimp-form></chimp-form>
 </div><!-- END ARTICLE BODY -->
 </article>
