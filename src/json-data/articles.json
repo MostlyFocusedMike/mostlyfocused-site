@@ -124,6 +124,21 @@
         "tests"
       ]
     },
+    "recursion_no_fibonacci": {
+      "id": "recursion_no_fibonacci",
+      "title": "Learn Recursion Without Using Fibonacci",
+      "description": "Understand the fundamentals of recursion without bubbling values",
+      "relativeUrl": "/pages/articles/recursion_no_fibonacci",
+      "image": "https://mostlyfocused.com/images/recursion_no_fibonacci/preview.png",
+      "level": 0,
+      "publishedAt": "2024-10-22T03:09:50.781Z",
+      "modifiedAt": "2024-10-22T03:09:50.781Z",
+      "topics": [
+        "js",
+        "data-structures",
+        "algos"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -176,6 +191,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "recursion_no_fibonacci",
     "maps_or_sets",
     "readable_code",
     "understanding_data_layers",

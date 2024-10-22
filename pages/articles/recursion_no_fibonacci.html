@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Learn Recursion Without Using Fibonacci</title>
+  <meta property="og:title" content="Learn Recursion Without Using Fibonacci" />
+  <meta name="description" property="og:description" content="Understand the fundamentals of recursion without bubbling values" />
+
+  <meta property = "article:published_time" content="2024-10-22T03:09:50.781Z" />
+  <meta property = "article:modified_time" content="2024-10-22T03:09:50.781Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/recursion_no_fibonacci" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/recursion_no_fibonacci" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/recursion_no_fibonacci/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/recursion_no_fibonacci/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="data-structures" />
+	<meta property="article:tag" content="algos" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<h1>Learn Recursion Without Using Fibonacci</h1>
+<p>Arrays are the way to go</p>
+<hr>
+<by-line></by-line>
+<svg id="cover" style="visibility: hidden;" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_357_8)"><rect width="1720" height="965" fill="url(#paint0_radial_357_8)"/><rect x="427.026" y="419.503" width="759" height="443" rx="20" transform="rotate(-20.8402 427.026 419.503)" stroke="white" stroke-width="10"/><rect x="592.44" y="565.286" width="481" height="279" rx="20" transform="rotate(-45.5056 592.44 565.286)" stroke="white" stroke-width="10"/><rect x="713.908" y="604.304" width="320.597" height="184.587" rx="20" transform="rotate(-67.5101 713.908 604.304)" stroke="white" stroke-width="10"/><rect x="844.911" y="593.86" width="180.233" height="101.97" rx="20" transform="rotate(-110.84 844.911 593.86)" stroke="white" stroke-width="10"/><rect x="298.219" y="210.515" width="1085" height="635" rx="20" transform="rotate(-3.78607 298.219 210.515)" stroke="white" stroke-width="10"/><rect x="212.431" y="-19.9985" width="1424.53" height="834.996" rx="20" transform="rotate(7.9059 212.431 -19.9985)" stroke="white" stroke-width="10"/><rect x="162.08" y="-296.704" width="1816.59" height="1065.94" rx="20" transform="rotate(18.0527 162.08 -296.704)" stroke="white" stroke-width="10"/><rect x="156.701" y="-655.176" width="2320.33" height="1362.66" rx="20" transform="rotate(28.0351 156.701 -655.176)" stroke="white" stroke-width="10"/><text transform="translate(815 485.815) rotate(-20.8402)" fill="white" xml:space="preserve" style="white-space: pre" font-family="Roboto Condensed" font-size="36" letter-spacing="0em"><tspan x="0" y="25.5938">oh no</tspan></text></g><defs><radialGradient id="paint0_radial_357_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 482.5) rotate(-147.656) scale(860 1532.85)"><stop stop-color="#000325"/><stop offset="1" stop-color="#162046"/></radialGradient><clipPath id="clip0_357_8"><rect width="1720" height="965" fill="white"/></clipPath></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  If you've struggled to learn Recursion by using fibonacci or exponential JavaScript functions, then this article is for you. I had trouble with recursion at first because I couldn't quite wrap my head around the "bubbling up" return values. Luckily, if we remove the return values from the equation, things become much more straightforward. So today let's focus on the true fundamentals of recursion by <b>iterating</b> through an array.
+</p>
+
+<h2>What is recursion?</h2>
+<p>
+  For a function to be recursive, it only has to do 2 things:
+</p>
+<ol>
+  <li><b>Call itself</b></li>
+  <li><b>Know when to <i>stop</i> calling itself </b></li>
+</ol>
+<p>
+  That's it, that's all it takes. Technically, you don't even need the second one. Sure, without it your function will explode, but it'll explode <i>recursively</i>.
+</p>
+
+<h2>Let's build a simple function</h2>
+<p>
+  To start off, let's make a base function. All it does is log a value in an array:
+</p>
+<my-code><!--
+const recursiveFunc = (arr, idx) => {
+  console.log(`- ${arr[idx]}`);
+};
+const arr= ['a', 'b', 'c'];
+
+// this will log each value
+recursiveFunc(arr, 0);
+recursiveFunc(arr, 1);
+recursiveFunc(arr, 2);
+--><pre>- a
+- b
+- c
+</pre>
+</my-code>
+
+<p>
+  You might notice that the way to log each value is to call it with the index that's one bigger. Right now we are the ones calling the function and incrementing the index, but what if the function itself did?
+</p>
+
+<h2>Making the function recursive</h2>
+<p>
+  Let's add the incrementing and calling <i>inside</i> the function.
+</p>
+
+<my-code><!--
+// DO NOT WRITE THIS YET
+const recursiveFunc = (arr, idx = 0) => {
+  console.log(`- ${arr[idx]}`);
+  recursiveFunc(arr, idx + 1);
+};
+-->
+</my-code>
+
+<p>
+  There it is: a <b>recursive</b> function. It looks odd to see a function call itself, but all programming languages are more than capable of doing this. However, if we ran this as is, it would blow up. That's because we never tell it to stop at any point. We still need requirement #2, a stop condition:
+</p>
+
+<my-code><!--
+const recursiveFunc = (arr, idx = 0) => {
+  if (idx in arr) {
+    console.log(`- ${arr[idx]}`);
+    recursiveFunc(arr, idx + 1);
+  }
+};
+
+recursiveFunc(['a', 'b', 'c']);
+--><pre>- a
+- b
+- c
+</pre>
+</my-code>
+
+<p>
+  Now, once we hit an index that's not in the array, it won't do anything and the whole chain of recursive functions comes to an end.
+</p>
+
+<h3>Guard clause</h3>
+<p>We could add a guard clause to remove the layer of nesting, but I think for illustrative purposes not using the inverse makes a little more intuitive sense. But it's a fun challenge for you to try yourself!</p>
+
+<h2>What's actually happening</h2>
+<p>
+  The secret sauce here is that our original "add one each time" logic is now being done <i>inside</i> the function with <code>idx + 1</code>. But what really helps is seeing this graphically
+</p>
+<figure>
+  <img src="/images/recursion_no_fibonacci/example-1.webp" alt="Each new call of the function is nested into a rectangle. Each new call has the idx incremented by one. It finally stops when there is no value at the index">
+  <figcaption>How each new function works with the new arguments</figcaption>
+</figure>
+
+<p>
+  As you can see, we keep increasing the value of our index by one each time, so we move through the entire array. While the index value changes, the array does not. Once there is no value at the index, the function has nothing more to do, and it completes. And since each function finished by calling another, the completion moves back up the chain, and we can move on with our program.
+</p>
+
+<blockquote>
+  Take a minute to internalize what's happening here, because this is the heart of recursion
+</blockquote>
+
+<h2>We can go deeper</h2>
+<p>
+  Our function meets our definition of recursion, but it can't iterate through <i>nested</i> arrays recursively. This is no good, since that's actually one of the real-world applications for recursion. The reason for that is simple: if it ever runs into a nested object, it can just call itself again, but this time from the start.
+</p>
+
+<details>
+  <summary>
+    Can loops handle unknown depths?
+  </summary>
+  <p>
+    Yes! Pretty much anything that can be done with recursion can also be done with iteration. The problem is elegance. While you can loop to unknown depths, you'll need some other helper structure like a stack or queue.
+  </p>
+</details>
+
+<p>
+  To account for nesting, all we need to do is add a step where we check if the value is an array. If it is, we start over at index 0, if not, we carry on as we normally would:
+</p>
+
+<my-code><!--
+const recursiveFunc = (arr, idx = 0) => {
+  if (idx in arr) {
+    Array.isArray(arr[idx])
+      ? recursiveFunc(arr[idx])
+      : console.log(`- ${arr[idx]}`);
+
+    recursiveFunc(arr, idx + 1);
+  }
+};
+recursiveFunc(['a', ['x', 'y'], 'b']);
+--><pre>- a
+- x
+- y
+- b
+</pre>
+</my-code>
+
+<p>
+  Let's visualize what's going on here:
+</p>
+
+<figure>
+  <img src="/images/recursion_no_fibonacci/example-2.webp" alt="The same logic as before, but now we take a brief detour and recurse into the first nested array">
+  <figcaption>Our new recursive function showing the separate array step in another box</figcaption>
+</figure>
+
+<p>
+  That new line is checking to see if the value is an array. If it is, look at how we pass in the new array <i>and</i> start a new index at 0 to restart the new sequence. But, once that sequence is done, we come back to our main chain. Also, notice that the final <code>recursiveFunc</code> call is after and <i>outside</i> of the array check. That's because after we go down into an array, we always want to keep going when we come back up.
+</p>
+<p>
+  For simplicity, we passed in an array with only a single level of nesting. Once you understand what's going on here, try passing in another level of nesting and see if you can predict what will happen.
+</p>
+
+<h2>Double check by getting fancy</h2>
+<p>
+  To make absolutely sure you understand the main concept, why not try adding another parameter? Let's add a <code>level</code> parameter for nicer printing:
+</p>
+
+<my-code><!--
+const recursiveFancy = (arr, idx = 0, level = 0) => {
+  if (arr[idx]) {
+    Array.isArray(arr[idx])
+      ? recursiveFancy(arr[idx], 0, level + 1)
+      : console.log(`${'- '.repeat(level)}${arr[idx]}`);
+
+    recursiveFancy(arr, idx + 1, level);
+  }
+};
+
+recursiveFancy(['a', 'b', ['q', ['x'], 'r'], 'c']);
+--><pre>a
+b
+- q
+- - x
+- r
+c
+</pre>
+</my-code>
+
+<p>
+  Notice where we <code>+1</code> the <code>idx</code> vs <code>level</code>, it's not the same! We only increase <code>level</code> if we are dealing with a nested array, and we only increase <code>idx</code> if we are moving forward in an array, and <i>not</i> when we restart a new nested array. Now that the basics are done, it should be much easier to learn about recursive return values. Check out how they work with the <a href="https://medium.com/quick-code/fibonacci-sequence-javascript-interview-question-iterative-and-recursive-solutions-6a0346d24053" target="_blank" rel="noopener noreferrer">fibonacci interview question</a>.
+</p>
+
+<h2>Drawbacks to recursion</h2>
+<p>
+  If recursion is so simple, why don't we use it everywhere? Why are loops better for pure iterations? One of the reasons has to do with <a href="https://www.javascripttutorial.net/javascript-call-stack/" target="_blank" rel="noopener noreferrer">the JavaScript Call Stack</a>. I recommend checking it out, it's a fundamental part of programming. But the long and short of it is: when you call a function, it gets placed on the call stack. Once it's finished, it's removed. But, the problem with recursion is that the first call can't finish until all of the children functions finish. That means the call stack gets taller and taller. If it gets too high, it will all break.
+</p>
+
+<p>
+  That's the issue with recursion, there is a maximum depth. You want one function that has a for loop that a million iterations? Neato. But a recursive function can start hitting issues way quicker. That doesn't mean loops are better. It just means we have to use recursion for more specific problems, like unknown depth or <a href="https://www.youtube.com/watch?v=t2CEgPsws3U" target="_blank" rel="noopener noreferrer">recursive data structures like Binary Search Trees</a>. It's just about finding the right tool for the problem.
+</p>
+
+<p>
+  But if we're being honest, the biggest reason developers don't use recursion is because it's harder to understand. But perhaps now you'll use it more after reading this article, eh?
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<recommended-articles
+  article_names=""
+></recommended-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

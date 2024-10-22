@@ -200,9 +200,18 @@ figcaption {
 details {
   font-weight: bold;
   color: var(--background-primary);
-  background: var(--text-purple);
+  background: var(--foreground-primary);
   padding: 0.5rem 0.75rem;
   border-radius: 1rem;
+  transition: background 0.25s ease-in-out;
+}
+
+details:hover {
+  background-color: #BBB;
+}
+
+details[open]:hover {
+  background-color: var(--foreground-primary);
 }
 
 details p {
