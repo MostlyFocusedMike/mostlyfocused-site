@@ -1,6 +1,6 @@
-import { allTopics } from '../../../json-data/articles.json'
-import { ARTICLE_CARDS } from '../article-card-list';
-import { $m } from '../../utils';
+import { allTopics } from '../../json-data/articles.json'
+import { ARTICLE_CARDS } from '../article-previews/article-card-list';
+import { $m } from '../utils';
 import './styles.css';
 
 export const TOPIC_CHOICES = 'topic-choices';
