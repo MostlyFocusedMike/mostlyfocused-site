@@ -52,4 +52,8 @@
     <loc>https://mostlyfocused.com/pages/articles/recursion_no_fibonacci</loc>
     <lastmod>2024-10-22</lastmod>
   </url>
+  <url>
+    <loc>https://mostlyfocused.com/pages/articles/closures_in_js</loc>
+    <lastmod>2024-10-29</lastmod>
+  </url>
 </urlset>

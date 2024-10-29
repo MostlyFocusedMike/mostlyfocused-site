@@ -36,7 +36,7 @@ export default class CodeSnippet extends HTMLElement {
         </div>
         <pre><code class="language-${lang}">${escapeText(code.trim())}</code></pre>
       </div>
-      ${ output ? /*html*/`<pre class="code-output">OUTPUTS:\n${output}</pre>` : '' }
+      ${ output ? /*html*/`<pre class="code-output">OUTPUT:\n${output}</pre>` : '' }
     `;
 
     this.querySelector('button').onclick = this.handleCopy(code);

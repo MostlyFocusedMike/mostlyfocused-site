@@ -39,4 +39,8 @@ template = template.replace(/\[PAGE\]/g, id)
 const outputPath = path.join(__dirname, '..', 'pages', 'articles', `${id}.html`);
 fs.writeFileSync(outputPath, template);
 
+// Create the images directory
+const imagesPath = path.join(__dirname, '..', 'public', 'images', id);
+fs.mkdirSync(imagesPath, { recursive: true });
+
 console.log(`Article created successfully: ${outputPath}`);

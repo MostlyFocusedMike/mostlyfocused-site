@@ -187,12 +187,13 @@ figcaption {
 }
 
 #article-body p > code,
+#article-body li code,
 #article-body summary > code {
   display: inline-block;
   font-size: 0.9rem;
   line-height: 1.25rem;
-  padding: 0 0.1rem;
-  border-radius: 0.3em;
+  padding: 0 0.2rem;
+  border-radius: 0.3rem;
   background-color: var(--lighter-gray);
   color: var(--background-primary);
 }
@@ -215,7 +216,8 @@ details[open]:hover {
 }
 
 details p {
-  margin: 1rem 0 0;
+  margin: 1rem 1rem 0.25rem;
+  font-weight: normal;
 }
 
 #article-body hr {
@@ -252,7 +254,7 @@ h3.article-heading {
 
 blockquote {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: var(--text-purple);
   font-style: italic;
   text-align: center;

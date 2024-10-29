@@ -1,5 +1,20 @@
 {
   "articles": {
+    "closures_in_js": {
+      "id": "closures_in_js",
+      "title": "Closures In JS Explained For Beginners",
+      "description": "Understand how JavaScript closures work with examples",
+      "relativeUrl": "/pages/articles/closures_in_js",
+      "image": "https://mostlyfocused.com/images/closures_in_js/preview.png",
+      "level": 0,
+      "publishedAt": "2024-10-29T04:04:20.853Z",
+      "modifiedAt": "2024-10-29T04:04:20.853Z",
+      "topics": [
+        "js",
+        "algos",
+        "concepts"
+      ]
+    },
     "explaining_this_site": {
       "id": "explaining_this_site",
       "title": "How (And Why) I Made This Site Entirely In Vanilla",
@@ -135,8 +150,8 @@
       "modifiedAt": "2024-10-22T04:57:21.334Z",
       "topics": [
         "js",
-        "data-structures",
-        "algos"
+        "algos",
+        "concepts"
       ]
     },
     "stop_controlling_react_forms": {
@@ -168,7 +183,7 @@
       "topics": [
         "js",
         "html",
-        "data-structures"
+        "concepts"
       ]
     }
   },
@@ -177,6 +192,7 @@
     "algos",
     "async",
     "cheat-sheet",
+    "concepts",
     "css",
     "data-structures",
     "docker",
@@ -191,6 +207,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "closures_in_js",
     "recursion_no_fibonacci",
     "maps_or_sets",
     "readable_code",
