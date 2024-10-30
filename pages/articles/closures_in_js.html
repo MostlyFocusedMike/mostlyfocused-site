@@ -67,7 +67,7 @@
 <!-- ARTICLE BODY -->
 <div id="article-body">
 <p>
-  Closures are one of those topics that will probably pop up in your JavaScript interviews. Newer developers are usually scared of them (I know I was), but there's no reason to be. Like <a href="/pages/articles/recursion_no_fibonacci" target="_blank" rel="noopener noreferrer">recursion</a>, closures can be over explained in a way that makes them sound complex, yet at their core they couldn't be simpler. I'll prove it by writing one in 7 lines.
+  Closures are one of those topics that will probably pop up in your JavaScript interviews. Newer developers are usually scared of them (I know I was), but there's no reason to be. Like <a href="/pages/articles/recursion_no_fibonacci" target="_blank" rel="noopener noreferrer">recursion</a>, closures can be over-explained in a way that makes them sound complex, yet at their core they couldn't be simpler. I'll prove it by writing one in 7 lines.
 </p>
 
 <h2>A simple closure</h2>
@@ -88,11 +88,15 @@ setupClosure()(4);
 </p>
 
 <blockquote>
-  A closure is a function that has access to variables from a higher scope.
+  A closure is when a function uses variables from a higher scope.
 </blockquote>
 
 <p>
-  That inner function, <code>runClosure</code> is the closure, because it can access local variables from the outer scope <i>without</i> exposing them. That “exposed” part is a big reason why we even use closures. By only exposing the function, and not the variables it references, we essentially make them private. But before we talk about what closures are for, let's make sure we understand what we wrote.
+  If you want to be super specific: "A closure is the combination of a function bundled together (enclosed) with references to its surrounding state" <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">-mdn</a>. But what I said means the same thing. Also "A function forming a closure" and "a closure" are used interchangeably in common speech, so I'm just going to call the function a closure to save time.
+</p>
+
+<p>
+  That inner function, <code>runClosure</code> is the closure in this case, because it accesses variables from the outer scope <i>without</i> exposing them. That “exposed” part is a big reason why we even use closures. By only exposing the function, and not the variables it references, we essentially make them private. But before we talk about what closures are for, let's make sure we understand what we wrote.
 </p>
 
 <details>
@@ -240,12 +244,12 @@ counter(); // 4
 </p>
 
 <p>
-  As you can see the basics of closures are simple: they rely on function bodies being able to reach up the scope chain, but not down. These sorts of closures that only for privatizing a variable aren't super common though. What's a little more common is hitting closures when defining helper functions. So let's look at an example of that before we go.
+  As you can see the basics of closures are simple: they rely on function bodies being able to reach up the scope chain, but not down. These sorts of closures that are only for privatizing a variable aren't super common though. What's a little more common is hitting closures when defining helper functions. So let's look at an example of that before we go.
 </p>
 
 <h2>Real world examples</h2>
 <p>
-  Here we have a piece of code from a multiplication table app. You can click on buttons to see the multiplication results if a multiplier. The multiplier is saved on each button, and then when a user clicks on that, we display all the different values on a table row.
+  Here we have a piece of code from a multiplication table app. You can click on buttons to see the multiplication results of a multiplier. The multiplier is saved on each button, and then when a user clicks on that, we display all the different values on a table row.
 </p>
 
 <my-code><!--
@@ -261,7 +265,7 @@ button.addEventListener((e) => {
 </my-code>
 
 <p>
-  This code is already using a closure! Did you spot it? That's right, its the <code>forEach</code> callback with <code>multiplier</code>. Remember, if a function ever references a variable that <i>wasn't</i> passed in, that function is forming a closure.
+  This code is already using a closure! Did you spot it? That's right, it's the <code>forEach</code> callback with <code>multiplier</code>. Remember, if a function ever references a variable that <i>wasn't</i> passed in, that function is forming a closure.
 </p>
 <p>
   Let's refactor this code. We only reference <code>cells</code> once, what if we call <code>forEach</code> directly on the query result? And to keep our line length down, let's define an <code>updateTableRow</code> function and pass that to <code>forEach</code>:
@@ -322,7 +326,7 @@ button.addEventListener((e) => {
 
 <h3>Beware of side effects</h3>
 <p>
-  You've heard of "pure" functions, where the same inputs will always yield the same output, right? Well, closures break that, so be careful. By it's very definition, closure means that the input arguments of the function aren't the only pieces of data it's pulling in. Whenever you use closures, make sure the data that winds up affecting the function is <i>exactly</i> what you think it is.
+  You've heard of "pure" functions, where the same inputs will always yield the same output, right? Well, closures break that, so be careful. By its very definition, closure means that the input arguments of the function aren't the only pieces of data it's pulling in. Whenever you use closures, make sure the data that winds up affecting the function is <i>exactly</i> what you think it is.
 </p>
 
 <h2>Another tool in your belt</h2>
@@ -332,6 +336,9 @@ button.addEventListener((e) => {
 
 <p>Happy coding everyone,</p>
 <p>Mike</p>
+
+<p><i><a href="https://www.reddit.com/r/mostlyfocused/comments/1gfehpz/closures_in_js_explained_for_beginners/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
+
 <chimp-form></chimp-form>
 </div><!-- END ARTICLE BODY -->
 </article>
