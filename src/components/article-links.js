@@ -3,20 +3,18 @@ import { $m } from "./utils";
 export default class ArticleLinks extends HTMLElement {
   connectedCallback() {
     this.headings = [
-      ...document.querySelector('article').querySelectorAll('h1, h2, h3, h4')
+      ...document.querySelector('article').querySelectorAll('h2, h3, h4')
     ];
     this.setHeadingIds();
     this.render();
   }
 
   setHeadingIds() {
-    this.headings.forEach(headingEl => {
-      headingEl.classList.add('article-heading');
-      headingEl.id = headingEl.textContent.trim()
-        .toLocaleLowerCase()
-        .replace(/[\?\!\,\.\"\']/g, '')
-        .replace(/\s/g, '-');
-    });
+    const handleIds = headingEl => {
+      headingEl.id = headingEl.textContent
+        .trim().toLocaleLowerCase().replace(/[\?\!\,\.\"\']/g, '').replace(/\s/g, '-');
+    };
+    this.headings.forEach(handleIds);
   }
 
   render() {
@@ -27,7 +25,7 @@ export default class ArticleLinks extends HTMLElement {
           <li>
             <a aria-label="Top of Article" href="#${this.headings[0].id}">Top</a>
           </li>
-          ${$m(this.headings.slice(1), ({textContent, id, tagName}) => /*html*/`
+          ${$m(this.headings.slice(1), ({ textContent, id, tagName }) => /*html*/`
             <li class="${tagName}-link">
               <a aria-label="${textContent}" href="#${id}">${textContent.replace(/[\!\?]/g, '')}</a>
             </li>

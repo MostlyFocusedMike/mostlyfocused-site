@@ -18,7 +18,7 @@ export default class ArticleCard extends HTMLElement {
       <div class="${ARTICLE_CARD}">
         <a href="${relativeUrl}">
           <p class="preview-title">${title}</p>
-          <img class="preview-image" src="${imgUrl}" alt="" />
+          <img class="preview-image" src="${imgUrl}" height="161" width="268" alt="" />
         </a>
 
         <p class="preview-desc">${description}</p>
@@ -26,9 +26,9 @@ export default class ArticleCard extends HTMLElement {
         <ul class="article-topics">
           ${$m(topics, (topic, idx) => /*html*/`
             ${isInteractive
-              ? /*html*/`<li><button class="${TOPIC_CLASS}">${topic}</button></li>`
-              : /*html*/`<li><p class="${TOPIC_CLASS}">${topic}${idx < topics.length - 1 ? ',' : ''}</p></li>`
-            }
+        ? /*html*/`<li><button class="${TOPIC_CLASS}">${topic}</button></li>`
+        : /*html*/`<li><p class="${TOPIC_CLASS}">${topic}${idx < topics.length - 1 ? ',' : ''}</p></li>`
+      }
           `)}
         </ul>
       </div>

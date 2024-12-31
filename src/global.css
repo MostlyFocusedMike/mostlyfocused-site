@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   scroll-behavior: smooth;
   background-color: var(--background-primary);
   margin: 0;
@@ -13,10 +14,11 @@ html, body {
 }
 
 main {
-  margin: 3.5rem auto 0; /* handling the sliding header */
+  margin: 3.5rem auto 0;
+  /* handling the sliding header */
 }
 
-:root{
+:root {
   /* --foreground-primary: #FAFAF9; */
   --foreground-primary: #e1e1e1;
   --foreground-hover: #c6c6c6;
@@ -26,10 +28,13 @@ main {
   --background-secondary: #292524;
   --background-purple: hsl(273.6, 40%, 30%);
   --lighter-gray: #D1D5DB;
-  --purple-primary: #A78BFA; /* #7C3AED; */
+  --purple-primary: #A78BFA;
+  /* #7C3AED; */
   --text-purple: #cdbeff;
-  --terminal-output: #020617; /* slate 950 */
-  --accent-primary: #FDE047; /* yellow 300 */
+  --terminal-output: #020617;
+  /* slate 950 */
+  --accent-primary: #FDE047;
+  /* yellow 300 */
 }
 
 * {

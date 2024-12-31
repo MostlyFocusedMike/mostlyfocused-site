@@ -38,6 +38,28 @@ const createPageEntryPoints = () => {
   return articles.publishOrder.reduce(setEntryPoints, {})
 }
 
+function inlineCSS() {
+  return {
+    name: 'vite-inline-css',
+    apply: 'build',
+    enforce: 'post',
+    transformIndexHtml(html, context) {
+      for (const file in context.bundle) {
+        if (file.endsWith('.css')) {
+          const { fileName, source } = context.bundle[file];
+
+          html = html.replace(
+            `<link rel="stylesheet" href="/${fileName}">`,
+            `<style>${source}</style>`
+          );
+        }
+      }
+
+      return html;
+    }
+  };
+}
+
 const opts = {
   build: {
     outDir: 'build',
@@ -51,7 +73,8 @@ const opts = {
     },
   },
   plugins: [
-    HtmlExtFallbackPlugin({ rootDir: __dirname })
+    HtmlExtFallbackPlugin({ rootDir: __dirname }),
+    inlineCSS()
   ]
 };
 
