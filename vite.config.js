@@ -43,16 +43,12 @@ function inlineCSS() {
     name: 'vite-inline-css',
     apply: 'build',
     enforce: 'post',
-    transformIndexHtml(html, context) {
+    transformIndexHtml(html, context) { // this will add it to ALL entry points, not just index.html
       for (const file in context.bundle) {
-        if (file.endsWith('.css')) {
-          const { fileName, source } = context.bundle[file];
-
-          html = html.replace(
-            `<link rel="stylesheet" href="/${fileName}">`,
-            `<style>${source}</style>`
-          );
-        }
+        if (!file.endsWith('.css')) continue;
+        const { fileName, source } = context.bundle[file];
+        const linkTag = `<link rel="stylesheet" href="/${fileName}">`;
+        html = html.replace(linkTag, `<style>${source}</style>`);
       }
 
       return html;
