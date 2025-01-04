@@ -1,10 +1,7 @@
-
-
-main#home > section > h2 {
+main#home>section>h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-
 
 #hero-logo {
   width: 95%;
@@ -15,6 +12,9 @@ main#home > section > h2 {
 
 #main-subtitle {
   font-size: 2rem;
+  margin: 0.2rem;
+  font-family: "Roboto Condensed", sans-serif;
+  text-align: center;
 }
 
 #main-hr {
@@ -23,25 +23,25 @@ main#home > section > h2 {
   border: 0.5px solid var(--purple-primary);
 }
 
-main#home > section {
+main#home>section {
   width: 100%;
   max-width: 45rem;
   margin: 1rem auto;
   padding: 0.5rem 1rem;
 }
 
-main#home > section > p {
+main#home>section>p {
   font-family: sans-serif;
   color: var(--foreground-primary);
   line-height: 1.7rem;
 }
 
-main#home > section > p > a,
-main#home > section > p > a:visited {
+main#home>section>p>a,
+main#home>section>p>a:visited {
   color: var(--foreground-primary);
 }
 
-main#home > section > p > a:hover {
+main#home>section>p>a:hover {
   color: var(--text-purple);
 }
 
@@ -56,7 +56,7 @@ main#home > section > p > a:hover {
   color: var(--text-purple);
 }
 
-#latest-section > p {
+#latest-section>p {
   padding: 0.5rem 0 1rem;
 }
 
@@ -77,8 +77,8 @@ main#home > section > p > a:hover {
   background: var(--background-darkest);
 }
 
-#favorites-section > h2,
-#favorites-section > p {
+#favorites-section>h2,
+#favorites-section>p {
   width: 100%;
   max-width: 45rem;
   margin: 1rem auto;
