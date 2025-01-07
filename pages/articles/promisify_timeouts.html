@@ -72,7 +72,7 @@
 <p>
   If you've ever wanted to <code>await</code> JavaScript's <code>setTimeout</code> or <code>setInterval</code> functions, you're not alone. I've had to use these methods a lot at work to deal with some <i>interesting</i> third party behavior, so I've finally become familiar with promisifying functions. <a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout" target="_blank" rel="noopener noreferrer">setTimeout</a> is simple, but <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" target="_blank" rel="noopener noreferrer">setInterval</a> is a tad trickier, so make sure you understand <a href="https://javascript.info/promise-basics" target="_blank" rel="noopener noreferrer">promises</a> before diving in here.
 </p>
-<h2>TL:DR; The Code</h2>
+<h2>TL;DR: The Code</h2>
 <p>If you want to see where we're heading, here are the two utility functions. Read on for explanations, or take this and be on your way!</p>
 <my-code><!--
 const sleep = (ms) => {
@@ -237,7 +237,7 @@ const asyncInterval = async (callback, ms = 250, triesLeft = 5) => {
 </div><!-- END ARTICLE BODY -->
 </article>
 </main>
-<latest-articles></recommended-articles>
+<latest-articles></latest-articles>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="module" src="/src/main.js"></script>

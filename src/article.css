@@ -267,3 +267,8 @@ blockquote {
   border-right: 0.1rem solid var(--text-purple);
   border-top: 0.1rem solid var(--text-purple);
 }
+
+.call-out p {
+  margin: 0;
+  line-height: 1.5;
+}
