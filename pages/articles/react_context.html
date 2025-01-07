@@ -72,13 +72,13 @@
 <!-- ARTICLE BODY -->
 <div id="article-body">
 <p>
-  <a href="https://react.dev/learn/passing-data-deeply-with-context#context-an-alternative-to-passing-props" target="_blank" rel="noopener noreferrer">React context</a> is the perfect tool for managing those little bits of state that just pop up everywhere. Like getting the current user or dealing with shopping cart data. It's great when you don't want to prop drill 9 components deep, but also don't think your project doesn't need to bring in the big guns like <a href="https://www.npmjs.com/package/redux" target="_blank" rel="noopener noreferrer">Redux</a>, or some 3rd party manager like <a href="https://www.npmjs.com/package/zustand" target="_blank" rel="noopener noreferrer">Zustand</a>.
+  <a href="https://react.dev/learn/passing-data-deeply-with-context#context-an-alternative-to-passing-props" target="_blank" rel="noopener noreferrer">React context</a> is the perfect tool for managing those little bits of state that just pop up everywhere. Like getting the current user or dealing with shopping cart data. It's great when you don't want to prop drill 9 components deep, but also don't want to bring in the big guns like <a href="https://www.npmjs.com/package/redux" target="_blank" rel="noopener noreferrer">Redux</a>, or some 3rd party manager like <a href="https://www.npmjs.com/package/zustand" target="_blank" rel="noopener noreferrer">Zustand</a>.
 </p>
 
 <div class="call-out">
   <p>
     <strong>What about React 19?</strong>
-    React 19 is finally here, and luckily the changes dealing with context are super small. For now, I'm going to assume you <em>aren't</em> running 19 yet, and will include the updates alongside the previous defaults.
+    It's finally here, and luckily the changes for context are super small. For now, I'm going to assume you <em>aren't</em> running 19 yet, and will include the updates alongside the previous defaults.
   </p>
 </div>
 
@@ -187,7 +187,7 @@ export default function Child() {
 </p>
 
 <h3>Setup</h3>
-<p>We're just going to use Vite to create a basic TS React project, and we're only going to have a few components. Here are the basic ones to start. Just <code>App</code>, <code>Parent</code>, and <code>Child</code>, and the only point of them is to show that when <code>Child</code> eventually uses context, it doesn't trigger any re-renders of the parents. Here's the starting code:</p>
+<p>We're just going to use Vite to create a basic TS React project, and we're only going to have a few components. It's only <code>App</code>, <code>Parent</code>, and <code>Child</code>, and the point of them is to show that when <code>Child</code> eventually uses context, it doesn't trigger any re-renders of the parents. Here's the starting code:</p>
 
 <my-code snip_lang="tsx"><!--
 /* src/components/Child.tsx */
@@ -237,7 +237,7 @@ src/
 
 <h2>Creating a context</h2>
 <p>
-  Contexts are meant to be relatively small and focused, so it's common to have a few (we're going to stick to only creating one for now though). I don't have a ton of creativity, so we're just going to call ours <code>ExampleContext</code> (it's convention that contexts are capitalized). There are 2 parts:
+  Contexts are meant to be relatively small and focused, so it's common to have a few, but we'll stick with one for now. I don't have a ton of creativity, so we're going to call ours <code>ExampleContext</code> (it's convention that contexts are capitalized). There are 2 parts:
 </p>
 
 <ul>
@@ -245,13 +245,13 @@ src/
   <li>The context component: This is the provider that actually defines what the context value is</li>
 </ul>
 
-<p>Now, you <em>can</em> combine them into one file, but then the <a href="https://github.com/vitejs/vite-plugin-react-swc#consistent-components-exports" target="_blank" rel="noopener noreferrer">Vite Hot Module lint rule</a> will yell at you. I like to split them out into an index file and then the provider component. Feels like a nice separation of concerns to me.</p>
+<p>You <em>can</em> combine them into one file, but then the <a href="https://github.com/vitejs/vite-plugin-react-swc#consistent-components-exports" target="_blank" rel="noopener noreferrer">Vite hot module lint rule</a> will yell at you. I like to split them out into an index file and then the provider component. Feels like a nice separation of concerns to me.</p>
 
 <h3>The index file</h3>
 
 <p>All this file contains is the type and <code>createContext</code></p>
 
-<my-code file="/src/contexts/ExampleContext/index.tsx" snip_lang="tsx"><!--
+<my-code file="/src/contexts/ExampleContext/index.tsx" snip_lang="ts"><!--
 import { createContext, Dispatch, SetStateAction } from 'react';
 
 export type ExampleContextType = {
@@ -266,12 +266,12 @@ export default ExampleContext;
 </my-code>
 
 <p>
-  Here's an example where TS can trip you up. <code>createContext</code> forces you to pass in a default value, but it will always be written over by the provider component. You can do some hullabaloo with <code>null</code> and then a bunch of <code>as</code> modifiers in your code, but that feels so clunky to me. I like this approach as the typing works out of the box and I can define my <em>true</em> default in the provider component.
+  Careful, here's where TS can trip you up. <code>createContext</code> forces you to pass in a default value, but it will always be written over by the provider component (more on that during the <a href="#testing-a-context-component">testing section</a>). You can do some hullabaloo with <code>null</code> and then a bunch of <code>as</code> modifiers in your code, but that feels so clunky to me. I like the approach shown here since the typing works out of the box, and I can define my <em>true</em> default values in the provider component.
 </p>
 
 <h3>The provider component</h3>
 
-<p>Now we need to import that context (and its typing) into a wrapper component. This is where all the logic really goes, but as you'll see: context is basically just a component with state.</p>
+<p>Next, we need to import that context (and its typing) into the wrapper component. This is where all the logic really goes, but as you'll see: context is basically just a component with state.</p>
 
 <my-code file="/src/contexts/ExampleContext/ExampleContextProvider.tsx" snip_lang="tsx"><!--
 import { useState, ReactNode } from 'react';
@@ -295,22 +295,22 @@ export default function ExampleContextProvider({ children }: Props) {
 </my-code>
 
 <p>
-  See? Nothing too crazy here. I do want to call out that right now we have to use <code>ExampleContext.Provider</code>, but as of v19, you can just do <code>ExampleContext</code>. Also be sure to set the type of <code>context</code> explicitly, this will ensure your types always stay true to your actual context values.
+  Nothing too crazy here. I do want to call out that right now we have to use <code>ExampleContext.Provider</code>, but as of v19, you can just do <code>ExampleContext</code>. Also be sure to set the type of <code>context</code> explicitly, this will ensure your types always stay true to your actual context values.
 </p>
 
 <p>
-  You can also make your own mini-redux by using <code>useReducer</code> instead of <code>useState</code>, and have more in depth functions and values, but for the point of the tutorial, this is all we need. I do encourage you to keep your contexts "dumb" and really only store simple things. Adding things like async behaviors and complex functions are better left to custom hooks that use the context.
+  You can also make your own mini-redux by using <code>useReducer</code> instead of <code>useState</code>, and have more in depth functions and values. But, for the point of the tutorial, this is all we need. I do encourage you to keep your contexts "dumb" though. Things like async behaviors and complex functions are better left to custom hooks that use the context.
 </p>
 
 <h3>Always use props.children</h3>
 <p>
-  One last thing to call out before we move on: YOU MUST USE <code>children</code> OR ELSE YOU WILL OBLITERATE PERFORMANCE. Some tutorials just slap the context provider in another component. Never do that. That would trigger every child component in the <em>entire</em> tree to re-render every time you change anything. That's just prop drilling by another name.
+  One last piece to call out before we move on: YOU MUST USE <code>children</code> OR ELSE YOU WILL OBLITERATE PERFORMANCE. Some tutorials just slap the context provider in another component. Never do that. That would trigger every child component in the <em>entire</em> tree to re-render every time you change anything. That's just prop drilling by another name.
 </p>
 
 <h2>Adding the context to the app</h2>
 
 <p>
-  Believe it or not, that was the hard part. Now all we need to do is add that wrapper into our main app.
+  Believe it or not, that was the hard part. Now all we need to do is add that wrapper component into our main app.
 </p>
 
 <my-code file="/src/main.tsx" snip_lang="tsx"><!--
@@ -343,14 +343,14 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </ExampleContextProvider>
   </React.StrictMode>,
 );
---><pre></pre>
+-->
 </my-code>
 
 <p>
   Typically, your context provider will go in the root of your app, that way every component will have access to it. You can have a context provider lower in your project, but then you'll have to be careful to make <em>sure</em> that the components that need it are children <a href="https://github.com/facebook/react/issues/17912" target="_blank" rel="noopener noreferrer">to avoid weird behavior</a>.
 </p>
 
-<p>Anyway, let's actually use our context!</p>
+<p>Anyway, let's finally use our context!</p>
 
 <h2>Using context in a component</h2>
 <p>Modify the <code>Child</code> component to pull in the context using the <code>useContext</code> hook. Remember, the components themselves import the <em>actual</em> context from the index, not the wrapper component.</p>
@@ -379,16 +379,16 @@ export default function Child() {
 </p>
 
 <p>
-  Also, this is the other React 19 change. In the future, you'll use <a href="https://www.reddit.com/r/reactjs/comments/1h9qmr8/react_19_is_usecontext_obsolete_what_are_the/?rdt=37588" target="_blank" rel="noopener noreferrer">the <code>use</code> hook instead of <code>useContext</code></a>.
+  Also, this is the other React 19 change. In the future, you'll use <a href="https://www.reddit.com/r/reactjs/comments/1h9qmr8/react_19_is_usecontext_obsolete_what_are_the/?rdt=37588" target="_blank" rel="noopener noreferrer">the <code>use</code> API instead of <code>useContext</code></a>. It behaves identically in this case, so it's an easy swap.
 </p>
 
 <p>
-  And that's pretty much it when it comes to using context in your apps! It's just a floating store with values and functions that you can access through the context hook. You can play around with this, and notice that even though the state is changing in the context provider, the <code>App</code> and <code>Parent</code> components never re-render.
+  And that's pretty much it when it comes to using context in your apps! It's just a floating store with values and functions that you can access through the context hook/API. You can play around with this code, and notice that even though the state is changing in the context provider, the <code>App</code> and <code>Parent</code> components never re-render.
 </p>
 
 <h2>Testing a context component</h2>
 <p>
-  The last little hiccup with context is making sure you test it properly. Luckily, it's not that hard. You just need to wrap whatever components you're testing in some kind of provider. Here I'm demonstrating using the actual provider component we made, as well as making a new provider with custom values.
+  The last little hiccup with context is making sure you test it properly. Good news: it's not that hard. You just need to wrap whatever components you're testing in some kind of provider. Here I'm demonstrating using the actual provider component we made, as well as making a new provider with custom values.
 </p>
 
 <my-code file="/src/components/Child.test.tsx" snip_lang="tsx"><!--
@@ -434,21 +434,21 @@ describe('Child Tests', () => {
 </my-code>
 
 <p>
-  Personally, I would recommend <em>not</em> using a custom context provider, and instead just mimic whatever user actions you need in the test to get the state how you want it. Frustratingly, if you <em>don't</em> use some kind of provider, the component won't crash, it'll simply use whatever default context value you gave in the initial setup. This is very likely not what you ever want since we just used a <code>{}</code> which will be missing values and functions.
+  Honestly, I would <em>not</em> recommend using a custom context provider like the second example. Instead, mimic whatever user actions you need in the test to get the state how you want it. But, the option is there if you need it and know what you're doing.
 </p>
 
 <p>
-  It's actually common in more mature codebases that you'll have custom <code>render</code> helpers that do things like add routers and contexts, so once you have enough tests, consider making one for yourself.
+  Be warned, if you <em>don't</em> use some kind of provider, the component won't crash, it'll simply use whatever default context value you gave in the initial setup. This is almost never what you want since we used a <code>{}</code> which will be missing values and functions. So always be sure to add a provider in your tests. To make things easier, it's common to have custom <code>render</code> helpers in your tests that do things like add routers and contexts.
 </p>
 
 <h2>You're all set!</h2>
 <p>
-  Alright, that is <em>more</em> than enough to get you started with contexts. I encourage you to <a href="https://github.com/MostlyFocusedMike/react-context-article-code" target="_blank" rel="noopener noreferrer">check out and play with the full GitHub code</a>. So give context a shot before you reach for a third party library on your next project. It can be helpful to build your own systems instead of using someone else's, it teaches you a lot about things you can usually ignore.
+  Alright, that is <em>more</em> than enough to get you started with context. Why not give it a shot before you reach for a third party library on your next project? Even if you do replace it later as your app grows, it can be helpful to build your own systems instead of always using someone else's, it teaches you a lot about things you can usually ignore.
 </p>
 <p>Happy coding everyone,</p>
 <p>Mike</p>
 
-<p><i><a href="https://www.reddit.com/r/mostlyfocused/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
+<p><i><a href="https://www.reddit.com/r/mostlyfocused/comments/1hvji6i/how_to_use_react_context_v19_and_typescript/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
 
 
 <chimp-form></chimp-form>
