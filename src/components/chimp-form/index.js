@@ -5,7 +5,7 @@ export default class ChimpForm extends HTMLElement {
     this.render();
     const form = this.querySelector('.newsletter-form');
 
-    for (const input of form.querySelectorAll('[name]')){
+    for (const input of form.querySelectorAll('[name]')) {
       input.addEventListener('input', this.handleError);
       input.addEventListener('invalid', this.handleError);
     }
@@ -62,7 +62,7 @@ export default class ChimpForm extends HTMLElement {
     script.src = fullUrl;
     document.body.appendChild(script);
 
-    window[jsonpCallbackName]= ({ result, msg }) => {
+    window[jsonpCallbackName] = ({ result, msg }) => {
       const resultsEl = document.getElementById(this.getId('chimp-results'));
       resultsEl.classList.add(`jsonp-${result}`);
       resultsEl.textContent = msg
@@ -81,7 +81,7 @@ export default class ChimpForm extends HTMLElement {
     this.innerHTML = /*html*/`
       <div class="${isSideBar ? 'side-bar' : ''} ${isAlways ? "always-visible" : ""} newsletter-container" >
         <form class="newsletter-form" aria-label="Get the monthly newsletter ${isSideBar ? 'sidebar' : ''}">
-          <h2 class="${tinyClass}">
+          <h2 class="chimp-h2 ${tinyClass}">
             Get The Monthly Newsletter
           </h2>
           <div aria-hidden="true" style="position: absolute; left: -5000px;">

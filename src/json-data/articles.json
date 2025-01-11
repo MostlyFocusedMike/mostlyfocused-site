@@ -32,6 +32,20 @@
         "updates"
       ]
     },
+    "good_comment": {
+      "id": "good_comment",
+      "title": "How To Write A Good Code Comment",
+      "description": "The art of writing code comments that will make it through a PR without annoying any sr. devs",
+      "relativeUrl": "/pages/articles/good_comment",
+      "image": "https://mostlyfocused.com/images/good_comment/preview.png",
+      "level": 0,
+      "publishedAt": "2025-01-10T12:47:47.105Z",
+      "modifiedAt": "2025-01-10T12:47:47.105Z",
+      "topics": [
+        "concepts",
+        "js"
+      ]
+    },
     "how_to_reverse_linked_list": {
       "id": "how_to_reverse_linked_list",
       "title": "How To Reverse A Linked List With Animated Examples",
@@ -225,6 +239,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "good_comment",
     "react_context",
     "closures_in_js",
     "recursion_no_fibonacci",
