@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>What Is The N+1 Problem In GraphQL?</title>
+  <meta property="og:title" content="What Is The N+1 Problem In GraphQL?" />
+  <meta name="description" property="og:description" content="Learn what the N+1 problem is and how to solve it." />
+
+  <meta property = "article:published_time" content="2024-06-12T23:09:15.194Z" />
+  <meta property = "article:modified_time" content="2024-06-12T23:09:15.194Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/n_plus_1_graphql" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/n_plus_1_graphql" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/n_plus_1_graphql/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/n_plus_1_graphql/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="sql" />
+	<meta property="article:tag" content="graphql" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading><header><a id="logo" href="/">mostlyFOCUSED</a></header></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<hgroup>
+  <h1>What Is The N+1 Problem In GraphQL?</h1>
+  <p>A crash course on a surprisingly common problem</p>
+</hgroup>
+<hr>
+<by-line><p id="by-line">By Mike Cronin</p></by-line>
+
+<svg id="cover" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1720" height="965" fill="#020617"/><rect transform="rotate(135 660.7 600.46)" x="660.7" y="600.46" width="290.21" height="290.21" stroke="#FAFAF9" stroke-width="10"/><rect transform="rotate(135 626.18 600.18)" x="626.18" y="600.18" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(135 532.84 693.52)" x="532.84" y="693.52" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(135 438.8 599.48)" x="438.8" y="599.48" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(135 532.14 506.14)" x="532.14" y="506.14" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(135 894.32 366.28)" x="894.32" y="366.28" width="290.21" height="290.21" stroke="#FAFAF9" stroke-width="10"/><rect transform="rotate(135 859.81 366)" x="859.81" y="366" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(135 766.47 459.34)" x="766.47" y="459.34" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(135 672.42 365.29)" x="672.42" y="365.29" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(135 765.76 271.96)" x="765.76" y="271.96" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(-45 829.07 591.15)" x="829.07" y="591.15" width="290.21" height="290.21" stroke="#FAFAF9" stroke-width="10"/><rect transform="rotate(-45 863.59 591.43)" x="863.59" y="591.43" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(-45 956.93 498.09)" x="956.93" y="498.09" width="109" height="109" fill="#5E1F91"/><rect transform="rotate(-45 1051 592.14)" x="1051" y="592.14" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(-45 957.63 685.48)" x="957.63" y="685.48" width="109" height="108" fill="#5E1F91"/><rect transform="rotate(-45 1072.5 355.37)" x="1072.5" y="355.37" width="121.69" height="121.69" fill="#5E1F91"/><rect transform="rotate(-45 1177 250.8)" x="1177" y="250.8" width="121.69" height="121.69" fill="#5E1F91"/><rect transform="rotate(-45 1281.6 355.37)" x="1281.6" y="355.37" width="121.69" height="122.53" fill="#5E1F91"/><rect transform="rotate(-45 1177 459.94)" x="1177" y="459.94" width="121.69" height="122.53" fill="#5E1F91"/><rect transform="rotate(-45 1275 354.78)" x="1275" y="354.78" width="131.06" height="131.9" stroke="#FAFAF9" stroke-width="5"/><rect transform="rotate(-45 1169.8 459.94)" x="1169.8" y="459.94" width="131.9" height="131.9" stroke="#FAFAF9" stroke-width="5"/><rect transform="rotate(-45 1170.4 250.2)" x="1170.4" y="250.2" width="131.06" height="131.9" stroke="#FAFAF9" stroke-width="5"/><rect transform="rotate(-45 1065.2 355.37)" x="1065.2" y="355.37" width="131.9" height="131.9" stroke="#FAFAF9" stroke-width="5"/><path d="m205 361.37c19.5 0 34 13 53.5 67.5 24.5-73.333 101.6-200.4 166-220" stroke="#22C55E" stroke-linecap="round" stroke-width="30"/><line x1="1344.4" x2="1494.2" y1="547.27" y2="738.04" stroke="#EF4444" stroke-width="30"/><line x1="1497" x2="1340.9" y1="514.73" y2="772.39" stroke="#EF4444" stroke-width="30"/>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  Once you get beyond the basics of GraphQL, you'll likely hear people talk about the “N+1 problem.” This might seem scary, it does sound like O(N) notation, which is usually the last thing you hear before your whiteboard interview implodes. But, rest assured this is a simple concept hiding behind a computer science-y name.
+</p>
+
+<h2>The problem with queries</h2>
+<p>
+  Let's say I have a DB of authors and their books, a simple “has many” relationship. Now, I want to get all my authors, and all their books. In REST, you'd make a route that uses your <a href="https://www.prisma.io" target="_blank" rel="noopener noreferrer">ORM</a> choice to do something along the lines of:
+</p>
+
+<my-code><!--
+route: '/authors/books',
+method: 'GET',
+handler: async () => ORM.getAuthors().getTheirBooks();
+-->
+</my-code>
+
+<p>
+  Under the hood (and simplifying for the sake of explaining), it would execute 2 queries: one to get all the authors, and one to get all their books. To use pseudo SQL it would be like:
+</p>
+
+<my-code snip_lang="SQL"><!--
+SELECT *
+FROM authors;
+-- pretend this returns 3 authors
+
+SELECT *
+FROM books
+WHERE author_id in (1, 2, 3); -- an array of the author's ids
+--><pre></pre>
+</my-code>
+
+<p>
+  2 queries. Boom. Done. Since the ORM gets all the ids from the first query, matching all the relationships is easy with the second.
+</p>
+
+<h2>Why GraphQL has trouble with this</h2>
+
+<p>
+  Here's the issue, the above approach only works because the second query already had a list of every <code>author_id</code>. GraphQL doesn't work that way since each resolver function really only knows about its own parent object (<a href="https://www.apollographql.com/docs/apollo-server/data/context" target="_blank" rel="noopener noreferrer">don't worry about context right now</a>). That means your ORM won't have the luxury of a list of author IDs anymore.
+</p>
+
+<p>
+  So if we took that same request from above and put it into a GraphQL query:
+</p>
+<my-code snip_lang="graphql"><!--
+{
+  query {
+    authors {
+      name
+      books {
+        title
+      }
+    }
+  }
+}
+--><pre></pre>
+</my-code>
+
+<p>
+  The first layer could have a resolver that hits the DB once and gets all the authors, but that's it. In the next layer the <code>books</code> resolver can't use all those results at once to find all the books. Each book resolver would only get it's own parent author. This means our ORM would have to hit the DB from one resolver at a time. Here's some pseudo code for the GraphQL version:
+</p>
+
+<my-code><!--
+const schema = `{
+  type Query {
+    authors: [Author]
+  }
+
+  type Author {
+    id: Int
+    name: String
+    books: [Book]
+  }
+  type Book {
+    id: Int
+    title: String
+  }
+}`;
+
+const resolvers = {
+  Query: {
+    authors: async () => {
+      return ORM.getAllAuthors()
+    }
+  }
+  Author: {
+    books:  async (authorObj, args) => {
+      return ORM.getBooksBy(authorObj.id)
+    }
+  },
+};
+-->
+</my-code>
+
+<p>
+  And that would create pseudo SQL like this:
+</p>
+
+<my-code snip_lang="sql"><!--
+SELECT *
+FROM authors;
+
+SELECT *
+FROM books
+WHERE author_id in (1);
+
+SELECT *
+FROM books
+WHERE author_id in (2);
+
+SELECT *
+FROM books
+WHERE author_id in (3);
+-->
+</my-code>
+
+<p>
+  Remember when we used to be efficient? That was nice. This is where the name comes from, by the way. We will always make 1 initial query to the DB and return N results, which means we will have to make N additional DB queries. Personally, I think that means it should be called “1+N” but starting formulas with variables is what all the cool kids do.
+</p>
+
+<h2>What's the solution?</h2>
+<p>
+  Is this the achilles heel of GraphQL? Is the cost of a nice interface all our efficiency? Of course not. There's a really handy tool that came out right alongside GraphQL called <a href="https://www.npmjs.com/package/dataloader" target="_blank" rel="noopener noreferrer">DataLoader</a>. Essentially what it does is wait for all your resolvers to load in their individual keys. Once it has them, it hits the DB once with the keys, and returns a promise that resolves an array of the values. It batches our queries instead of making one at a time.
+</p>
+
+<p>
+  New solutions often have new problems, but as long as you learn about all your tools, there's nothing you won't be able to fix. So on that note, go check out the next <a href="/pages/articles/graphql_dataloader">article on DataLoaders</a>!
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<latest-articles></latest-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js" integrity="sha512-sijCOJblSCXYYmXdwvqV0tak8QJW5iy2yLB1wAbbLc3OOIueqymizRFWUS/mwKctnzPKpNdPJV3aK1zlDMJmXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-graphql.min.js" integrity="sha512-p8unDhIpF714XoC64kGk5Tesd/nr25DYJ33lqIofO8WwHrt/7iXhQyOL9pY8Pr/zpKqDK5gg0axhacrtD8Nadg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

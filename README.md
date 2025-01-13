@@ -5,6 +5,9 @@ https://tailwindcolor.com
 https://webaim.org/resources/contrastchecker
 https://swizec.com/blog/how-to-wait-for-dom-elements-to-show-up-in-modern-browsers/
 
+https://cdnjs.com/libraries/prism/1.29.0
+- languages for highlighting
+
 # The PRISM.jS nonsense
 OK, so the BIGGEST ISSUE by far was that html was reading the text as html, which is a huge problem for me since i want to show html and jsx code. The only HTML native solution i could find was nesting all text in script tag. The type [type attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type#any_other_value) needs to be the valid MIME type of 'text/plain'. But this is super nice because it actually solves another problem that google tries to visit links, even if they're in a template. However, my code snippets are now script tags not links, so problem solved there.
 
