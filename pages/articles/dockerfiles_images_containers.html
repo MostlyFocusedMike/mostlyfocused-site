@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Use Docker Images, Containers, And Dockerfiles</title>
+  <meta property="og:title" content="How To Use Docker Images, Containers, And Dockerfiles" />
+  <meta name="description" property="og:description" content="See the differences between the three docker foundations" />
+
+  <meta property = "article:published_time" content="2025-01-18T06:12:25.276Z" />
+  <meta property = "article:modified_time" content="2025-01-18T06:12:25.276Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/dockerfiles_images_containers" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/dockerfiles_images_containers" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/dockerfiles_images_containers/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/dockerfiles_images_containers/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="docker" />
+	<meta property="article:tag" content="cheat-sheet" />
+	<meta property="article:tag" content="graphics" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading><header><a id="logo" href="/">mostlyFOCUSED</a></header></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<hgroup>
+  <h1 style="max-width: 50rem;">How To Use Docker Images, Containers, And Dockerfiles</h1>
+  <p>With cheat sheets and infographics</p>
+</hgroup>
+<hr>
+<by-line><p id="by-line">By Mike Cronin</p></by-line>
+
+<img id="cover" src="/images/dockerfiles_images_containers/preview.webp"/>
+<br><br>
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  Getting started with Docker can be a bit confusing, there's a lot of jargon like "images", "containers", and "Dockerfiles" thrown at you. Even after you watch a few tutorials, the purpose of each thing can still be unclear. This article is intended for people who have installed Docker and played around a bit, but could use some clarification. We're going to make all three core pieces of Docker and give some helpful other commands. It's going to cover a lot, be sure to click the links.
+</p>
+
+<p>Refer to this graphic as a guide as we work through everything:</p>
+
+<img src="/images/dockerfiles_images_containers/infographic.webp" alt="Keep reading the article for a better breakdown of this graphic. But here we see the blue prints showing a Dockerfile being 'built' into an Image. This image either has a 'create' command run to turn it into a 'created container.' Then you can 'start' that container to turn it into a 'running container,' which can then be 'attached' so you can see logs. You can also just 'run' an image to created an 'attached, running container.'"/>
+
+<blockquote>
+  <a href="#the-cheat-sheet">Skip to the end for a cheat sheet of every command we'll use</a>
+</blockquote>
+
+<p>
+  We're going to step through every piece of this graphic, but it's helpful to see the three main stages upfront as a roadmap. In short, <em>Dockerfiles</em> are used to <code>build</code> images. <em>Images</em> are used to <code>create</code> containers. You then have to <code>start</code> and <code>attach</code> to <em>containers</em>. The <code>run</code> command allows you to combine the <code>create</code>, <code>start</code>, and <code>attach</code> commands all at once.
+</p>
+
+<p>
+  All of the code we need for this project should stay in the same directory. That shouldn't be hard because we'll only have a <code>server.js</code> file and next to it a <code>Dockerfile</code>. All that <code>server.js</code> file will do is send a simple text response and log the hit. This is the only Node code in the tutorial. <em>You do not need to know Node</em>, we just need some long standing process so our container doesn't immediately shut down.
+</p>
+
+<my-code file="/server.js"><!-- const http = require("http");
+const app = (req, res) => {
+  console.log("ping!", req.url);
+  res.end("Hello there.", "utf-8");
+};
+
+http.createServer(app).listen(3000, () => {
+  console.log("server started");
+});
+-->
+</my-code>
+
+<h2>What are Dockerfiles?</h2>
+<p>
+  A Dockerfile is simply a text file with instructions that Docker will interpret to make an image. It is relatively short most of the time and primarily consists of individual lines that build on one another. It is expected to be called <code>Dockerfile</code> (case sensitive) and does not have a file extension. Here is a simple example:
+</p>
+
+
+<my-code file="/Dockerfile" snip_lang="docker"><!-- FROM node:23.6.0
+
+COPY server.js server.js
+
+CMD ["node", "server.js"]
+-->
+</my-code>
+
+<p>
+  This isn't a tutorial on <a href="https://docs.docker.com/build/building/best-practices/" target="_blank" rel="noopener noreferrer">how to write Dockerfiles</a>, but let's talk about this for a second. What our Dockerfile is doing is pulling down the Node image called <a href="https://hub.docker.com/_/node" target="_blank" rel="noopener noreferrer"> "node:23.6.0"</a> <code>FROM</code> DockerHub (or your machine) so we can build our custom image on top of it. <a href="https://www.docker.com/products/docker-hub/" target="_blank" rel="noopener noreferrer">DockerHub is an online repository of images</a>; kind of like NPM or Pip. Then we're <code>COPY</code>ing our <code>server.js</code> into the environment so our eventual container will have access to it. The last thing in a Dockerfile is usually a <code>CMD</code> (command) for the container to run once it's made. In our case it's going to start our server.
+</p>
+
+<div class="call-out">
+  <strong><p>NOTE: It is crucial that each piece of the <code>CMD</code> array <a href="https://docs.docker.com/reference/dockerfile/#cmd" target="_blank" rel="noopener noreferrer">is surrounded by double quotes or else it won't work properly.</a></p></strong>
+</div>
+
+<h2>Building our image</h2>
+
+<p>
+  Intuitively, the way to build an image from a Dockerfile is to run the <code>build</code> command. The following command assumes we're in the same directory as our <code>server.js</code> and <code>Dockerfile</code>:
+</p>
+
+<my-code snip_lang="bash"><!-- docker build -t my-node-img .
+--><pre></pre>
+</my-code>
+
+<p>
+  The <code>.</code> tells Docker to build from the Dockerfile in the current directory. As a bonus, we gave our image a tag of <code>my-node-img</code>. This will help us specify which image we are using without having to use an id. Here's <a href="https://www.freecodecamp.org/news/an-introduction-to-docker-tags-9b5395636c2a/" target="_blank" rel="noopener noreferrer">a guide on image tags</a>. You should know that you can use image and container IDs instead of tags and names, but words are easier to remember. Building can take a minute, but once done, we will have our image! See it by running:
+</p>
+
+<my-code snip_lang="bash"><!-- docker image ls my-node-img
+
+# to see all images on your machine
+docker image ls
+--><pre></pre>
+</my-code>
+
+<h2>What is a Docker image?</h2>
+
+<p>
+  If a Dockerfile is a set of instructions used to create an image, it's helpful to think that an image is just a template used to create a container. An image is responsible for setting up the application and environment that will exist inside the container. The important thing to understand is that <strong>images are read-only</strong>. You do not make edits to an image, you make edits to the Dockerfile and then build a new image.
+</p>
+
+<p>
+  One of the features that makes Docker so powerful is that images can be layered. In every Dockerfile, you'll be pulling down a base image to start from. And those base images are probably built from others, it's images all the way down. This layering effect helps with things like <a href="https://docs.semaphoreci.com/using-semaphore/optimization/docker#caching" target="_blank" rel="noopener noreferrer">caching for CI/CD purposes</a>. But anyway, images aren't good for much besides creating containers, so let's do that!
+</p>
+
+<h2>Create a container</h2>
+<p>
+  Finally, we're getting to the good stuff. This is technically all you need to do to <a href="https://docs.docker.com/reference/cli/docker/container/create/" target="_blank" rel="noopener noreferrer">create a container</a>:
+</p>
+
+<my-code snip_lang="bash"><!-- # don't type this yet
+docker create my-node-img
+--><pre></pre>
+</my-code>
+
+<p>
+  <em>However</em>, for our server example, that's kind of useless. We'll need to add some flags:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker create --name my-app --init -p 3000:3000 my-node-img
+--><pre></pre>
+</my-code>
+
+<p>
+  The <code>--name</code> lets us assign our own name to our container. Docker will auto generate a name for the container if we don't, but they're long and terrible. The <code>--init</code> means we're using the <a href="https://github.com/krallin/tini" target="_blank" rel="noopener noreferrer">Tini</a> package that comes built in with Docker. It handles <kbd>ctrl</kbd>-<kbd>C</kbd> and keeps us from getting stuck in our container. Next up is <code>-p</code>, which connects our host machine's port 3000 to the Docker container's port 3000. Without this, we wouldn't be able to connect to our server. The last argument is the actual image tag that will create our container.
+</p>
+
+
+<img src="/images/dockerfiles_images_containers/interlude.webp" alt="">
+
+<h2>What is a container?</h2>
+<p>
+  The container is what actually <i>runs</i> our app. Think of the container like an isolated Linux box. It's essentially a <a href="https://www.docker.com/resources/what-container/" target="_blank" rel="noopener noreferrer">lighter weight virtual machine.</a> The point of having a container is standardization. An application only has to care about the container it's run in. No more, “But it works on my machine!” If an app runs in a container, it will work the same way no matter where the container itself is hosted*. This makes both local development and production deployments much, much easier.
+</p>
+
+<div class="call-out">
+  <p>* That's <em>mostly</em> true, maybe like 99.9% of the time. But in fact, docker does utilize system level caching so it's possible that a change in the caches on two machines will lead to different behaviors. It's exceedingly rare, but I have hit it. So if your docker containers behave differently on one machine, check the caches.</p>
+</div>
+
+<h2>Starting a container</h2>
+<p>
+  All <code>create</code> did was create the container, it didn't <em>start</em> it. You can still <a href="https://docs.docker.com/reference/cli/docker/container/ls/" target="_blank" rel="noopener noreferrer">see that it exists</a> with <code>docker ps</code> and some extra filters:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker ps -a --filter "name=my-app"
+-->
+</my-code>
+
+<p>
+  But, if you go to "localhost:3000", nothing happens. Our container still isn't active, <a href="https://stackoverflow.com/questions/43734412/what-does-created-container-mean-in-docker" target="_blank" rel="noopener noreferrer">it just...exists</a>; its status is merely <code>created</code>. Start it by running:
+</p>
+<my-code snip_lang="bash"><!--
+docker start my-app
+-->
+</my-code>
+
+<p>
+  Now when you go to localhost:3000, it responds! Since our container is officially “running” we can also see it with a regular <code>docker ps</code>, which by default only shows running containers.
+</p>
+
+<h2>Attaching to a container</h2>
+<p>
+  How do we see our container's outputs and logs? Well, there's technically a command you can run, but hang on before typing it:
+</p>
+
+<pre style="max-width: 20rem; margin: 1rem auto">
+  docker attach my-app
+</pre>
+
+<p>
+  Be warned: if you run <code>attach</code>, your terminal is going to get stuck displaying the container logs. Worse, if you attach and then <kbd>ctrl</kbd>-<kbd>C</kbd> to get out, it will actually stop the container on exit. Or worse, it will just ignore the <kbd>ctrl</kbd>-<kbd>C</kbd> and trap your terminal. If that ever happens to you, you'll have to open a new terminal and stop the container (more on that later). That's why in your applications you should handle the SIGTERM or use the Tini package like we have in our example. A better way to see output is the Docker logs command:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker logs -f my-app
+-->
+</my-code>
+
+<p>
+  That will show you the logs as they print from your container, continuously. <kbd>ctrl</kbd>-<kbd>C</kbd> to get out of this with no interruptions to your container. If you just want the logs to print out statically, omit the <code>-f</code> flag.
+</p>
+
+<h2>Exploring the container</h2>
+
+<p>
+  If you want to go into the container to explore the file system, you'd want to run this:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker exec -it my-app bash
+-->
+</my-code>
+
+<p>
+  <code>exec</code> <a href="https://docs.docker.com/reference/cli/docker/container/exec/" target="_blank" rel="noopener noreferrer">executes any command on a running container</a>. If it's going to be an interactive one, like opening a bash shell, <a href="https://stackoverflow.com/questions/35550694/what-is-the-purpose-of-the-i-and-t-options-for-the-docker-exec-command/35551071#35551071" target="_blank" rel="noopener noreferrer">you must include the <code>-it</code> flags</a>. Also, heads up that some containers may not have <code>bash</code> installed, so you might need to try <code>sh</code> if it doesn't work (sh is an older, smaller shell program than bash).
+</p>
+
+<h2>Stop and remove containers</h2>
+<p>
+  Before you can move on to the <code>run</code> shortcut, you'll need to remove the running container. Luckily it's straightforward to stop and remove containers:
+</p>
+
+<my-code snip_lang="bash"><!--
+# stop a container
+docker stop my-app
+
+# remove it
+docker rm my-app
+-->
+</my-code>
+
+<p>And to stop <em>all</em> running containers:</p>
+
+<my-code snip_lang="bash"><!--
+docker stop $(docker ps -q)
+--><pre></pre>
+</my-code>
+
+<p>The <a href="https://unix.stackexchange.com/questions/442692/is-a-subshell" target="_blank" rel="noopener noreferrer">subshell</a> is using the <code>-q</code> (quiet) flag to only return the container ids, which are then fed into the <code>stop</code> command.</p>
+
+<h2>Shortcut with run</h2>
+<p>
+  As you remember with the infographic, <code>run</code> is a shortcut that takes care of <code>create</code>, <code>start</code>, and <code>attach</code> all at once:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker run --name my-app -p 3000:3000 --init --rm my-node-img
+-->
+</my-code>
+
+<p>
+  However, like we talked about, attaching takes up the terminal, which is probably not what you want. Run the command with the <code>-d</code> flag (detached mode) so the container starts in the background:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker run -d --name my-app -p 3000:3000 --init --rm my-node-img
+-->
+</my-code>
+
+<p>
+  All the options are still doing the same thing they were doing with <code>create</code>, with the exception of the new <code>--rm</code> flag. This simply removes our container from our machine when we stop the container. That will allow you to run the same command without namespace issues; it's mainly for practicing.
+</p>
+
+
+
+<h2>DockerHub image and run commands</h2>
+<p>
+  <code>run</code> doesn't actually need the image to be on the host machine. If Docker can't find the specified image locally, it will try to find it on DockerHub. This is useful when paired with another feature of <code>run</code>: it can execute a command on the newly created container. For example, you could spin up a Node image and then start it in bash instead of the default Node repl:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker run -it node:23.6.0 bash
+--><pre></pre>
+</my-code>
+
+<p>
+  Remember, you only need the <code>-it</code> flags if the command is interactive. If you just wanted to see the Linux version for example, no flags are necessary:
+</p>
+
+<my-code snip_lang="bash"><!--
+docker run node:23.6.0 cat /etc/issue
+--><pre>Debian GNU/Linux 12 \n \l</pre>
+</my-code>
+
+<h2>Next steps</h2>
+<p>
+  We've had one container, yes, but what about a second container? That's another powerful feature of Docker: you can easily network containers together. But once you have 2 or more containers to manage, I wouldn't recommend that you try to control them from the command line. In fact, even if you have only one container, the command line interface isn't great. No, what you'll want to start using is a container orchestration system, usually it'll be Docker Compose for local development and Kubernetes for actual production. I recommend watching this video to pick up the basics of <a href="https://www.youtube.com/watch?v=HG6yIjZapSA" target="_blank" rel="noopener noreferrer">Docker Compose</a> and this series to take a deeper dive with <a href="https://www.youtube.com/watch?v=d6WC5n9G_sM" target="_blank" rel="noopener noreferrer">Kubernetes</a>.
+</p>
+
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<h2>The Cheat Sheet</h2>
+<p><a href="#how-to-use-docker-images-containers-and-dockerfiles">Back to the start of the article</a></p>
+<my-code snip_lang="bash"><!--
+# Build your image
+docker build -t my-node-img .
+
+# Show specific image
+docker image ls my-node-img
+
+# to see all images on your machine
+docker image ls
+
+# Create a container with the tiny package, a name, and port
+docker create --init --name my-app -p 3000:3000 my-node-img
+
+# Show newly created container
+docker ps -a --filter "name=my-app"
+
+# Start your container
+docker start my-app
+
+# Attach to container (not recommended)
+docker attach my-app
+
+# See containers logs (recommended)
+docker logs -f my-app
+
+# access container's system
+docker exec -it my-app bash
+
+# using the run shortcut
+docker run --name my-app -p 3000:3000 -d --init --rm my-node-img
+
+# Stop a running container
+docker stop my-app
+
+# Remove a non-running container
+docker rm my-app
+
+# see all running containers
+docker ps
+
+# stop all running containers
+docker stop $(docker ps -q)
+
+# Check version of linux for container
+docker run node:23.6.0 cat /etc/issue
+--><pre></pre>
+</my-code>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<latest-articles></latest-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-docker.min.js" integrity="sha512-9k3cElbQmGrx87BKL+FCoFtorWth0yIMAvi4CZFv0xRmrL1Bfn6/X2dPJKMQSFibxNgMqo/FKoz/eyAOOKZgOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js" integrity="sha512-whYhDwtTmlC/NpZlCr6PSsAaLOrfjVg/iXAnC4H/dtiHawpShhT2SlIMbpIhT/IL/NrpdMm+Hq2C13+VKpHTYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

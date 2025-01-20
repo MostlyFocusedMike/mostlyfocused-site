@@ -15,6 +15,21 @@
         "concepts"
       ]
     },
+    "dockerfiles_images_containers": {
+      "id": "dockerfiles_images_containers",
+      "title": "How To Use Docker Images, Containers, And Dockerfiles",
+      "description": "See the differences between the three docker foundations",
+      "relativeUrl": "/pages/articles/dockerfiles_images_containers",
+      "image": "https://mostlyfocused.com/images/dockerfiles_images_containers/preview.png",
+      "level": 0,
+      "publishedAt": "2025-01-18T06:12:25.276Z",
+      "modifiedAt": "2025-01-18T06:12:25.276Z",
+      "topics": [
+        "docker",
+        "cheat-sheet",
+        "graphics"
+      ]
+    },
     "explaining_this_site": {
       "id": "explaining_this_site",
       "title": "How (And Why) I Made This Site Entirely In Vanilla",
@@ -256,6 +271,7 @@
     "data-structures",
     "docker",
     "forms",
+    "graphics",
     "graphql",
     "html",
     "js",
@@ -269,6 +285,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "dockerfiles_images_containers",
     "good_comment",
     "react_context",
     "closures_in_js",
