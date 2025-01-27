@@ -61,6 +61,19 @@
         "js"
       ]
     },
+    "good_pull_request": {
+      "id": "good_pull_request",
+      "title": "How To Make A Good Pull Request, Tips For Jr. Devs",
+      "description": "Some tips and guidelines to submitting pull requests that get approved",
+      "relativeUrl": "/pages/articles/good_pull_request",
+      "image": "https://mostlyfocused.com/images/good_pull_request/preview.png",
+      "level": 0,
+      "publishedAt": "2025-01-27T00:01:28.551Z",
+      "modifiedAt": "2025-01-27T00:01:28.551Z",
+      "topics": [
+        "concepts"
+      ]
+    },
     "graphql_dataloader": {
       "id": "graphql_dataloader",
       "title": "How To Use DataLoaders In GraphQL",
@@ -285,6 +298,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "good_pull_request",
     "dockerfiles_images_containers",
     "good_comment",
     "react_context",

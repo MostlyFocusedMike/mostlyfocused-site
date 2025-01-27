@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Make A Good Pull Request, Tips For Jr. Devs</title>
+  <meta property="og:title" content="How To Make A Good Pull Request, Tips For Jr. Devs" />
+  <meta name="description" property="og:description" content="Some tips and guidelines to submitting pull requests that get approved" />
+
+  <meta property = "article:published_time" content="2025-01-27T00:01:28.551Z" />
+  <meta property = "article:modified_time" content="2025-01-27T00:01:28.551Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/good_pull_request" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/good_pull_request" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/good_pull_request/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/good_pull_request/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="concepts" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading><header><a id="logo" href="/">mostlyFOCUSED</a></header></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<hgroup>
+  <h1 style="max-width: 45rem">How To Make A Good Pull Request, Tips For Jr. Devs</h1>
+  <p>Code reviews don't have to be difficult</p>
+</hgroup>
+<hr>
+<by-line><p id="by-line">By Mike Cronin</p></by-line>
+
+<svg id="cover" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#b)"><rect width="1720" height="965" fill="url(#a)"/><circle cx="844" cy="377" r="203" fill="#F2F2F2"/><circle cx="844" cy="377" r="168" fill="#F2F2F2" stroke="#000" stroke-width="20"/><path d="m188 680.5c420.4 0 0-250 413-250" stroke="#17B450" stroke-width="30"/><path d="m1535 680c-456.03 0 0-250-448-250" stroke="#17B450" stroke-width="30"/><path d="m1623 680-150-86.603v173.2l150-86.602zm-1640 15h1505v-30h-1505v30z" fill="#18C858"/><path d="m1091 338c227.57 0 227.57 0 227.57-112" stroke="#DF4142" stroke-width="30"/><line x1="1272.6" x2="1363.8" y1="117.39" y2="208.61" stroke="#CA3132" stroke-width="30"/><line x1="1363.5" x2="1272.3" y1="116.61" y2="207.82" stroke="#DF4142" stroke-width="30"/><path d="m826.54 428.54v-1.363c0.152-14.47 1.667-25.985 4.546-34.546 2.879-8.56 6.97-15.492 12.273-20.795s11.666-10.189 19.091-14.659c4.469-2.727 8.484-5.947 12.045-9.659 3.561-3.788 6.364-8.144 8.409-13.068 2.121-4.925 3.182-10.379 3.182-16.364 0-7.424-1.743-13.864-5.227-19.318-3.485-5.455-8.144-9.659-13.978-12.614-5.833-2.954-12.31-4.432-19.431-4.432-6.213 0-12.197 1.288-17.955 3.864s-10.568 6.629-14.432 12.159c-3.863 5.53-6.098 12.765-6.704 21.705h-28.637c0.606-12.879 3.94-23.902 10-33.069 6.137-9.166 14.205-16.174 24.205-21.022 10.076-4.849 21.25-7.273 33.523-7.273 13.333 0 24.924 2.651 34.772 7.954 9.925 5.303 17.576 12.576 22.955 21.819 5.454 9.242 8.182 19.772 8.182 31.591 0 8.333-1.288 15.871-3.864 22.613-2.5 6.743-6.136 12.765-10.909 18.068-4.697 5.303-10.379 10-17.046 14.091-6.666 4.167-12.007 8.561-16.022 13.182-4.015 4.546-6.932 9.962-8.75 16.25s-2.803 14.129-2.955 23.523v1.363h-27.273zm14.546 67.273c-5.606 0-10.417-2.007-14.432-6.023-4.015-4.015-6.023-8.825-6.023-14.431s2.008-10.417 6.023-14.432 8.826-6.023 14.432-6.023 10.417 2.008 14.432 6.023 6.022 8.826 6.022 14.432c0 3.712-0.947 7.121-2.84 10.227-1.819 3.106-4.281 5.606-7.387 7.5-3.03 1.818-6.439 2.727-10.227 2.727z" fill="#000"/></g><defs><radialGradient id="a" cx="0" cy="0" r="1" gradientTransform="translate(860 482.5) rotate(198.86) scale(994.41 957.4)" gradientUnits="userSpaceOnUse"><stop stop-color="#434343" offset="0"/><stop offset="1"/></radialGradient><clipPath id="b"><rect width="1720" height="965" fill="#fff"/></clipPath></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  Asking people to code review your pull requests can be terrifying when you’re starting out. You don’t want to bother anyone, but your work has to be reviewed! Part of growing as a developer is asserting yourself more and putting your work out there, but there are steps you can take to make your code an easy review. And once you start being in charge of projects, having easy to review code can be the thing that saves you from missing deadlines.
+</p>
+
+<h2>Leave PR line comments yourself</h2>
+<p>
+  If you take nothing else from this article, take this: <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request" target="_blank" rel="noopener noreferrer">line comments</a> are a phenomenal way to tell people what you were thinking without having to get into the “is this comment necessary?” debate. You can leave overly mechanical comments on the PR itself that will speed up the review, without cluttering the codebase with things that can be figured out. Like this:
+</p>
+
+<p>Related: <a href="https://mostlyfocused.com/pages/articles/good_comment" target="_blank" rel="noopener noreferrer">How To Write A Good Code Comment</a></p>
+
+<p class="no-copy-code">
+  We have to add an "aria-labelledby" or "aria-label" to each one of these sections. Otherwise, they are seen as divs and not proper landmarks by the accessibility tree.
+</p>
+
+<p>
+  That would be a terrible comment to actually add to the code. It’s way too long, could be figured out by reading enough of the code, and talks about QA on the ticket. But as a PR line comment, it’s great. It answers a question your reviewer might have and explains what behavior it should lead to during testing. You should add these comments when:
+</p>
+
+<ol>
+  <li>
+    The logic might take a second to work through, so a hint would help
+  </li>
+  <li>
+    It requires knowledge of best practices that reviewers might not have
+  </li>
+  <li>
+    It takes information from other, non-altered files that don’t appear in the review (eg, telling the review the shape of the object that a pulled in function returns, so they don’t have to read the other file)
+  </li>
+</ol>
+
+<p>
+  All these comments do is speed things up and decrease the number of questions the reviewer will have. You don't have to go crazy though, you don't want to explain <em>everything</em> in detail, but these could be helpful hints to your reviewers.
+</p>
+
+<h2>Keep your PRs under 200 lines*</h2>
+<p>
+  This tip is more along the lines of “Ok we all know it, now actually do it.” There’s a joke that says if you give programers 10 lines, they’ll find 10 issues, but if you give them 1000, they’ll say, “looks good!” It’s funny because it’s soul-crushingly true. If you start to get into the several hundred line territory, or even the thousands, there’s literally no way that someone will be able to understand it without taking days to figure it out. By keeping it to 100-200 line territory, there’s a decent chance that a reviewer can isolate your work against the previous code and find critiques to give. But the real trick to keeping your PRs small, starts with the ticket.
+</p>
+
+<p><em>*That total doesn’t include tests, snapshots, or generated files</em></p>
+
+<h2>Anything else goes in a new ticket</h2>
+<p>
+  This is kind of crucial because adding in a few unrelated lines here and there is probably the most common way that scope creep hits your work. It can be tempting to refactor things as you see them, but that can cause confusion when it comes to review. Did that function NEED to be refactored for your new ticket to work, or is it just something you happened to fix while you were in the file? Remember, it won’t always be clear to your reviewer.
+</p>
+<p>
+  Instead, if you notice anything unrelated to your current ticket, you should categorize the work into a new ticket and throw it into the backlog. That keeps all your tickets tightly focused and easier to work on. And if your original ticket turns out to encompass more work than you thought, break it up into multiple tickets or multiple PRs. The bottom line is: keep your chunks of work small and only refactor functions you are <em>directly</em> changing anyway.
+</p>
+
+<h3>"But they don't let us do maintenance!"</h3>
+<p>
+  I have heard, and unfortunately experienced myself, how sometimes the only way to get any sort of maintenance or refactoring work done is by slipping it into other tickets. It's not great, and I'll never advocate for it. I've also done it. Just know that by doing this you're treating the symptom and not the disease. You need to work with the product teams to convey the value of this sort of maintenance work on its own. But ultimately, you gotta do what you gotta do to keep the app running.
+</p>
+
+<h2>Write tests like user stories</h2>
+<p>
+  The reason that tests get a soft pass on that line limit is because they should be helpful to a reviewer. If they see tests like “renders a new modal when button is clicked,” “has the ‘next’ button disabled when modal first appears,” and “doesn’t enable submission until all fields have valid entries,” it’s pretty clear what your code is supposed to be doing. In addition to giving more explanations, lots of tests will take some of the pressure off of your reviewer. They are no longer the only thing between production and your code, there are a bunch of new tests that programmatically take the guesswork out of your feature. This diffusion of responsibility will make your PRs less stressful, so people will be more likely to pick them up.
+</p>
+
+<h2>Context is king</h2>
+<p>
+  These next two points should really live in the ticket for the work itself, but the keyword there is "should." If your team has vague tickets, you should still include this kind of information in the description of the pr. And it's a PR description, not a ticket, which means you can get much more technical if need be.
+</p>
+
+<h3>Explain exactly how to test and QA it</h3>
+<p>
+  A good reviewer should always pull down the code, and verify that it does what you say it should. This is not full blown QA, more like a smoke test. However, there are often things that could be helpful to set the system up or specific edge cases you want to test. Make sure details like that are written down in the PR description itself. You want to make the confirmation process super fast and easy on your reviewer, so a few sentences here can make all the difference.
+</p>
+
+<h3>Acceptance Criteria is a must</h3>
+<p>
+  If your team doesn’t have “Acceptance Criteria” on your tickets by default, I strongly recommend adding it in. This will give your reviewers concrete examples of what to look for when running your code. Ideally, those situations will also be put into tests as well. Also, if you’re doing anything on the front end, adding screenshots of the before and after will help. Especially if there are several different outcomes that a user can see. If this information would be helpful to your actual QA team, you can also put them into the comments on the ticket.
+</p>
+
+<h2>Assume no one knows what you’re doing</h2>
+<p>
+  Weird tip, but stay with me. Whenever you do a ticket, there’s always some aspect of discovery. But, there’s no reason to assume your future reviewer also had those revelations. Sometimes, people are asked to review work in projects they aren’t that familiar with. If you had some epiphany that allowed you to complete the work, leave a sparknotes version of that as a line comment.
+</p>
+<p>
+  I know on one project I did there were two indexes that kept popping up. But, it turns out, only the first one was an index, the second was actually an op-code that got called several functions deeper. I added some named variables to remove the index assumption, but I also added a PR comment mentioning the exact function that the op code was used in, and what that function returned. I solidified the fix in code, but sped up the review with a hint.
+</p>
+
+<h2>Listen to critiques</h2>
+<p>
+  This is probably the MOST important one of all, because no matter how good your stuff is, no one will want to review it if you’re an ass. Disagreements are fine, but always remain professional and courteous when getting feedback. You never want to become that dev who can’t take constructive criticism. When someone points out an issue or question, assume they are right, and work from there. Don’t instantly brush them off or ignore them. If you’re right, prove it with examples, references, and business needs. And if it turns out you’re wrong, that’s ok! The point of a review is to use the team to come up with the best code, not just use your code.
+</p>
+
+<p>Remember, any review where you learn something is a good review.</p>
+
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<latest-articles></latest-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

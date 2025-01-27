@@ -11,7 +11,7 @@ article {
   padding: 3rem 0.5rem 1rem;
   align-self: flex-end;
   width: 100%;
-  max-width: 54rem;
+  max-width: 50rem;
 }
 
 hgroup h1 {
@@ -170,7 +170,8 @@ article #article-body {
   padding-left: 1rem;
 }
 
-#article-body ul li {
+#article-body ul li,
+#article-body ol li {
   margin: 0.8rem;
 }
 
@@ -271,4 +272,17 @@ blockquote {
 .call-out p {
   margin: 0;
   line-height: 1.5;
+}
+
+#article-body .no-copy-code {
+  font-family: monospace;
+  line-height: 1.25rem;
+  color: black;
+  background-color: lightgray;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  display: block;
+  max-width: 40rem;
+  border-radius: 1rem;
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, .5);
 }
