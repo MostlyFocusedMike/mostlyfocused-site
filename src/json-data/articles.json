@@ -241,6 +241,26 @@
         "concepts"
       ]
     },
+    "router_tailwind_tanstack_start": {
+      "id": "router_tailwind_tanstack_start",
+      "title": "React Router, Tanstack Query, Tailwind, And Context Quickstart",
+      "description": "Cheat sheets and quick starts",
+      "relativeUrl": "/pages/articles/router_tailwind_tanstack_start",
+      "image": "https://mostlyfocused.com/images/router_tailwind_tanstack_start/preview.png",
+      "level": 0,
+      "publishedAt": "2025-03-17T03:02:23.034Z",
+      "modifiedAt": "2025-03-17T03:02:23.034Z",
+      "topics": [
+        "js",
+        "ts",
+        "react",
+        "css",
+        "react",
+        "tailwind",
+        "vite",
+        "cheat-sheet"
+      ]
+    },
     "stop_controlling_react_forms": {
       "id": "stop_controlling_react_forms",
       "title": "Stop Controlling EVERY Form In React, Use FormData!",
@@ -290,6 +310,7 @@
     "js",
     "react",
     "sql",
+    "tailwind",
     "testing",
     "tests",
     "ts",
@@ -298,6 +319,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "router_tailwind_tanstack_start",
     "good_pull_request",
     "dockerfiles_images_containers",
     "good_comment",

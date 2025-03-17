@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>React Router, Tanstack Query, Tailwind, And Context Quickstart</title>
+  <meta property="og:title" content="React Router, Tanstack Query, Tailwind, And Context Quickstart" />
+  <meta name="description" property="og:description" content="Cheat sheets and quick starts" />
+
+  <meta property = "article:published_time" content="2025-03-17T03:02:23.034Z" />
+  <meta property = "article:modified_time" content="2025-03-17T03:02:23.034Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/router_tailwind_tanstack_start" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/router_tailwind_tanstack_start" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/router_tailwind_tanstack_start/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/router_tailwind_tanstack_start/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="ts" />
+	<meta property="article:tag" content="react" />
+	<meta property="article:tag" content="css" />
+	<meta property="article:tag" content="react" />
+	<meta property="article:tag" content="tailwind" />
+	<meta property="article:tag" content="vite" />
+	<meta property="article:tag" content="cheat-sheet" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading><header><a id="logo" href="/">mostlyFOCUSED</a></header></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<hgroup>
+  <h1>React Router, Tanstack Query, Tailwind, And Context Quickstart</h1>
+  <p>Get going with your next Vite project quickly</p>
+</hgroup>
+<hr>
+<by-line><p id="by-line">By Mike Cronin</p></by-line>
+
+<svg id="cover" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="url(#paint0_linear_429_8)"/><rect x="551" y="312" width="619" height="342" rx="17" stroke="#A78BFA" stroke-width="10"/><rect x="512" y="31" width="697" height="903" rx="17" stroke="#A78BFA" stroke-width="10"/><rect x="583" y="188" width="555" height="93" fill="#D9D9D9"/><rect x="583" y="69" width="555" height="93" fill="#D9D9D9"/><rect x="583" y="804" width="555" height="93" fill="#D9D9D9"/><rect x="583" y="685" width="555" height="93" fill="#D9D9D9"/><defs><linearGradient id="paint0_linear_429_8" x1="994.5" y1="965" x2="715.5" y2="5.32617e-05" gradientUnits="userSpaceOnUse"><stop stop-color="#0F172A"/><stop offset="1" stop-color="#020617"/></linearGradient></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  Starting a new Vite project can be hard as you pick your "stack," mine is React Router 7 (declarative), Tailwind, TanStack Query, and React Context (for the state not handled by Query). This article will have all the setup and config, as well as some cheat sheets for common functions and components that aren't used every time. You can also just <a href="https://github.com/MostlyFocusedMike/react-quickstart" target="_blank" rel="noopener noreferrer">copy from the GitHub.</a>
+</p>
+
+<p>
+  I'm not really going to overly explain any of this stack, so I'll assume you already know how each of these work and are just copy pasting bits and bobs.
+</p>
+
+
+<details>
+  <summary>
+    Why not just use Tanstack Start?
+  </summary>
+  <p>
+  Because I find the "Declarative" syntax of React Router the most natural to me. That being said, I have finally come around to using TanStack query, so I fully own this front-stack being a bit of a mish-mash.
+  </p>
+</details>
+
+<h2>Installation</h2>
+<p>
+  It's a vite project so first do `npm create vite` and I selected TS, so all the options below will have the right types for your convenience. And then here's the install commands:
+</p>
+
+<my-code snip_lang="bash"><!--
+npm i tailwindcss @tailwindcss/vite react-router @tanstack/react-query
+npm i -D @tanstack/eslint-plugin-query
+-->
+</my-code>
+
+<p>Here they are individually as well if you're not installing everything I am:</p>
+
+<my-code snip_lang="bash"><!--
+npm i tailwindcss @tailwindcss/vite
+npm i react-router
+npm i @tanstack/react-query
+npm i -D @tanstack/eslint-plugin-query
+--><pre></pre>
+</my-code>
+
+<h3>Eventual file structure</h3>
+<p>Here's the file structure I'll eventually make</p>
+
+<pre style="width: 20rem; margin: 1rem auto;">
+src/
+  api/
+    fetch-util.ts
+    resource.ts
+  components/
+    MainHeader.tsx
+  contexts/
+    Example/
+      ExampleProvider.tsx
+      index.tsx
+  pages/
+    Error404/index.tsx
+    Home/index.tsx
+App.tsx
+index.css
+main.tsx
+</pre>
+
+<h2>Root and src files</h2>
+<p>
+  Here's the <code>vite.config.ts</code>. I just commented out the proxy server setup because I don't know if you'll use it or need it, but I always find myself re-looking up that syntax.
+</p>
+
+<my-code file="vite.config.ts"><!--
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:3000',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, '/')
+  //     }
+  //   }
+  // },
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})
+-->
+</my-code>
+
+<p>
+  Next, let's get all the root <code>src</code> files. Simplest is the base tailwind setup in <code>/src/index.css</code>:
+</p>
+
+<my-code file="/src/index.css" snip_lang="css"><!--
+@import "tailwindcss";
+--><pre></pre>
+</my-code>
+
+<p>
+  Then <code>main.tsx</code> is where I put all my contexts to keep <code>App.tsx</code> a little less cluttered. Remember to remove the bits you don't need (like vanilla context).
+</p>
+
+<my-code file="/src/main.tsx"><!--
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter } from "react-router";
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import ExampleContextProvider from './contexts/Example/ExampleProvider.tsx';
+import App from './App.tsx'
+import './index.css'
+
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <ExampleContextProvider>
+          <App />
+        </ExampleContextProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+)
+-->
+</my-code>
+
+<p>I also put my primary router in <code>App</code> so I know where all my actual pages are. I don't split up the routes unless I absolutely have to.</p>
+
+<my-code src="/src/App.tsx"><!--
+import { Routes, Route } from "react-router";
+import HomePage from "./pages/Home";
+import './index.css';
+import MainHeader from "./components/MainHeader";
+import Error404Page from "./pages/Error404";
+
+export default function App() {
+  return (
+    <>
+      <MainHeader />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<Error404Page />} />
+        </Routes>
+      </main>
+    </>
+  )
+}
+
+--><pre></pre>
+</my-code>
+
+<h2>Components and the header</h2>
+<p>
+  The <code>components</code> folder is for any component that's shared outside/between pages. The only thing to start is a <code>Header</code>. The little snippet I like here is the Tailwind bit that catches the <code>.active</code> class for <code>NavLinks</code>. Of course replace "More" with your actual pages, this is just a piece you can copy and paste to start.
+</p>
+
+<my-code file="src/components/MainHeader.tsx"><!--
+import { NavLink } from "react-router";
+
+export default function MainHeader() {
+  const linkClass = "[&.active]:underline"
+
+  return <header className="w-full bg-slate-950 text-slate-50 p-2 flex justify-end border-b-2 border-slate-400">
+    <nav>
+      <ul className="flex gap-2">
+        <li><NavLink to="/" className={linkClass} end>Home</NavLink></li>
+        <li><NavLink to="/more" className={linkClass} end>More</NavLink></li>
+      </ul>
+    </nav>
+  </header>
+}
+-->
+</my-code>
+
+<h2>Page stubs</h2>
+<p>I like to have a page folder that has all the primary routes. These folders can hold utils, types, and components on their own, so the main <code>components</code> doesn't get too cluttered. Here are some stubs to match the router I just gave you:</p>
+
+<my-code file="/src/pages/Error404/index.tsx"><!--
+export default function Error404Page() {
+  return <div className="m-2">
+    <h1 className="text-3xl font-bold">Not Found</h1>
+    <p>Try again?</p>
+  </div>
+}
+-->
+</my-code>
+
+<p>And the basic landing page:</p>
+
+<my-code file="/src/pages/Home/index.tsx"><!--
+export default function HomePage() {
+  return <div className="m-2">
+    <h1 className="text-3xl font-bold">
+      hello_world
+    </h1>
+  </div>
+}
+-->
+</my-code>
+
+<h2>The api folder</h2>
+<p>
+  This is where all the adapters for your API will go. I have a nice little fetch handler that I think works nicely with TanStack Query. But, what our query hooks will actually use are the router adapters in their own named files (stubbed here as <code>resource.ts</code>). So like <code>posts.ts</code> and <code>users.ts</code>. Each one would have all the route adapters for that route family. The idea is you want to keep the <code>queryFn</code> property as <i>simple</i> as possible.
+</p>
+
+<p>So here's the fetch util function (which assumes simple auth with cookies via credentials):</p>
+
+<my-code file="/src/api/fetch-util.ts"><!--
+const headers = { 'Content-Type': 'application/json' };
+const credentials = 'include';
+
+const fetchDefaults: RequestInit = { method: 'GET', headers, credentials };
+
+export const deleteOpts = { method: 'DELETE', headers, credentials };
+
+export const makeMutateOpts = <T>(data: T, method = 'POST',): RequestInit => ({
+  method, headers, credentials, body: JSON.stringify(data),
+});
+
+export default async function fetchHelper<T>(
+  route: string,
+  opts = fetchDefaults
+): Promise<T> {
+  const host = '/api';
+
+  const response = await fetch(host + route, opts);
+  const { ok, status, statusText, headers } = response;
+  if (!ok) throw new Error(`${status} - Fetch failed`, { cause: { status, statusText } });
+
+  const isJson = (headers.get('content-type') || '').includes('application/json');
+  const result = await (isJson ? response.json() : response.text());
+
+  return result;
+}
+-->
+</my-code>
+
+<p>That function would then get imported into the adapter files. Here is a stub to copy and edit as a pattern (obviously replace <code>unknown</code> and the routes).</p>
+
+<my-code file="/src/api/resource.ts"><!--
+import fetchHelper, { makeMutateOpts } from "./fetch-util";
+
+export const getAllITEMS = async () => {
+  return await fetchHelper<unknown>('/ITEMS');
+};
+
+export const createITEM = async (newData: unknown) => {
+  return await fetchHelper<unknown>('/ITEMS', makeMutateOpts(newData));
+}
+-->
+</my-code>
+<p>
+  This pattern would let you do, for example, <code>queryFn: getAllPosts</code> and all the types are perfectly handled without cluttering up your TanStack Query options object.
+</p>
+
+<h2>Context</h2>
+<p>Finally, the last bit of setup is the context. You might not even need this if your state is managed by TanStack Query. I've written an <a href="https://mostlyfocused.com/pages/articles/react_context" target="_blank" rel="noopener noreferrer">entire article on setting up React Context</a> and this is basically just that.</p>
+
+<my-code file="/src/contexts/Example/index.ts"><!--
+import { createContext, Dispatch, SetStateAction } from 'react';
+
+export type ExampleContextType = {
+  example: string;
+  setExample: Dispatch<SetStateAction<string>>;
+}
+
+const ExampleContext = createContext<ExampleContextType>({} as ExampleContextType);
+
+export default ExampleContext;
+-->
+</my-code>
+
+<p>Then the actual context logic:</p>
+
+<my-code file="/src/contexts/Example/ExampleProvider"><!--
+import { useState, ReactNode } from 'react';
+import ExampleContext, { ExampleContextType } from '.';
+
+type Props = { children: ReactNode }
+
+export default function ExampleContextProvider({ children }: Props) {
+  const [example, setExample] = useState('I am the context value');
+
+  const context: ExampleContextType = { setExample, example };
+
+  return (
+    // <ExampleContext value={context}> // v19
+    <ExampleContext.Provider value={context}>
+      {children}
+    </ExampleContext.Provider>
+  );
+}
+-->
+</my-code>
+
+<p>And finally, here's how you'd use that in a component</p>
+
+<my-code><!--
+import { useContext } from 'react'
+// import { use } from 'react' // v19
+import ExampleContext from "contexts/Example"
+
+export default function HomePage() {
+  // const { example } = use(ExampleContext); // v19
+  const { example } = useContext(ExampleContext);
+  console.log('example:', example);
+--><pre></pre>
+</my-code>
+
+<h2>Cheat sheets</h2>
+<p>
+  Here are pieces of syntax that you might not need for every project, but are still common enough to need in one place.
+</p>
+
+<h3>React Router</h3>
+<p>Here's the main section of <a href="https://reactrouter.com/start/declarative/installation" target="_blank" rel="noopener noreferrer">the React Router Declarative docs</a></p>
+<my-code><!--
+// setting and using params
+<Route path="/concerts/:city" element={<City />} />
+const { city } = useParams();
+
+// search params
+const [searchParams] = useSearchParams();
+const question = searchParams.get('q')
+
+// route via component
+<Link to="/">route</Link>
+
+// imperative routing via hook
+const navigate = useNavigate();
+navigate("/dashboard");
+navigate(-1) // go back
+
+// show nested children routed
+<Outlet />
+--><pre></pre>
+</my-code>
+
+<h3>Tanstack Query</h3>
+<p>TanStack's docs are of course impeccable, and here is the <a href="https://tanstack.com/query/v5/docs/framework/react/quick-start" target="_blank" rel="noopener noreferrer">quick start section</a>. First, here's the "read" query base:</p>
+
+<my-code><!--
+import { useQuery } from "@tanstack/react-query"
+import { useRef } from "react";
+
+const { data, isPending, isError, error } = useQuery<ITEMType>({
+  queryKey: ['ITEMS', id],
+  queryFn: () => getITEM(id),
+});
+
+if (isPending) return <p>Loading...</p>;
+if (isError) return <p>Error: {error.message}</p>;
+
+//  TS knows data is available
+const { someProp } = data;
+}
+--><pre></pre>
+</my-code>
+
+<p>And then the mutation base:</a></p>
+
+<my-code><!--
+import { useQueryClient, useMutation } from "@tanstack/react-query"
+import { useRef } from "react";
+
+const formRef = useRef<HTMLFormElement>(null);
+const queryClient = useQueryClient();
+
+const { mutate } = useMutation({
+  mutationFn: createITEM,
+  onSuccess: (newData, variables) => {
+    // queryClient.invalidateQueries({ queryKey: ['ITEMS'] });
+    // queryClient.setQueryData<ITEM[]>(['ITEMS'], (oldData = []) => [...oldData, newData]);
+
+    // formRef.current?.reset();
+  },
+});
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  // always the element the lister is bound to
+  const form = e.currentTarget;
+  const data = Object.fromEntries(new FormData(form)) as unknown as ITEM;
+
+  mutate(data);
+};
+--><pre></pre>
+</my-code>
+<p>I've also included the uncontrolled form handler as well, see this <a href="https://mostlyfocused.com/pages/articles/stop_controlling_react_forms" target="_blank" rel="noopener noreferrer">uncontrolled forms article for more info.</a></p>
+
+<h3>Tailwind</h3>
+<p>Not really a cheat sheet per se, but here's some tailwind resources I can't do without.</p>
+
+<ul>
+  <li>The <a href="https://marketplace.visualstudio.com/items?itemName=austenc.tailwind-docs" target="_blank" rel="noopener noreferrer">VSCode extension that lets you have the tailwind docs in your workspace</a></li>
+  <li>The <a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss" target="_blank" rel="noopener noreferrer">intellisense tailwind plugin</a></li>
+  <li>The <a href="https://tailwindcolor.com/" target="_blank" rel="noopener noreferrer">color picker site I love</a></li>
+</ul>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<p><i><a href="https://www.reddit.com/r/mostlyfocused/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<latest-articles></latest-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
