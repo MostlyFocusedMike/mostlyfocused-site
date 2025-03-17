@@ -76,20 +76,20 @@
 <!-- ARTICLE BODY -->
 <div id="article-body">
 <p>
-  Starting a new Vite project can be hard as you pick your "stack," mine is React Router 7 (declarative), Tailwind, TanStack Query, and React Context (for the state not handled by Query). This article will have all the setup and config, as well as some cheat sheets for common functions and components that aren't used every time. You can also just <a href="https://github.com/MostlyFocusedMike/react-quickstart" target="_blank" rel="noopener noreferrer">copy from the GitHub.</a>
+  Deciding on what libraries to use in your Vite React SPA project can be hard, but my go tos are React Router 7 (declarative), Tailwind, TanStack Query, and React Context (for the state not handled by Query). This article will have all the setup and config, as well as some cheat sheets for common functions and components that aren't used every time. You can also <a href="https://github.com/MostlyFocusedMike/react-quickstart" target="_blank" rel="noopener noreferrer">copy direct from the GitHub.</a>
 </p>
 
 <p>
-  I'm not really going to overly explain any of this stack, so I'll assume you already know how each of these work and are just copy pasting bits and bobs.
+  I'm not really going to overly explain any of this stack, I'm assuming you already know how each of these work and are just copy pasting bits and bobs.
 </p>
 
 
 <details>
   <summary>
-    Why not just use Tanstack Start?
+    Why not use Tanstack Start?
   </summary>
   <p>
-  Because I find the "Declarative" syntax of React Router the most natural to me. That being said, I have finally come around to using TanStack query, so I fully own this front-stack being a bit of a mish-mash.
+  Because I find the "Declarative" syntax of React Router the most natural to me. That being said, I have finally come around to using TanStack query, so I fully own the fact that this stack being a bit of a mish-mash.
   </p>
 </details>
 
@@ -231,7 +231,7 @@ export default function App() {
 
 <h2>Components and the header</h2>
 <p>
-  The <code>components</code> folder is for any component that's shared outside/between pages. The only thing to start is a <code>Header</code>. The little snippet I like here is the Tailwind bit that catches the <code>.active</code> class for <code>NavLinks</code>. Of course replace "More" with your actual pages, this is just a piece you can copy and paste to start.
+  The <code>components</code> folder is for any component that's shared outside/between pages. The only thing to start is a <code>Header</code>. The little snippet I like here is the Tailwind bit that catches the <code>.active</code> class for <code>NavLinks</code>. Of course replace "More" with your actual pages, this snippet is simply to get you started.
 </p>
 
 <my-code file="src/components/MainHeader.tsx"><!--
