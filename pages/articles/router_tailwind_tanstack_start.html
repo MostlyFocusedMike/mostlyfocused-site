@@ -280,10 +280,10 @@ export default function HomePage() {
 
 <h2>The api folder</h2>
 <p>
-  This is where all the adapters for your API will go. I have a nice little fetch handler that I think works nicely with TanStack Query. But, what our query hooks will actually use are the router adapters in their own named files (stubbed here as <code>resource.ts</code>). So like <code>posts.ts</code> and <code>users.ts</code>. Each one would have all the route adapters for that route family. The idea is you want to keep the <code>queryFn</code> property as <i>simple</i> as possible.
+  This is where all the adapters for your API will go. I have a nice little fetch handler that I think works well with TanStack Query. But, what our query hooks will actually use are the router adapters in their own named files (stubbed here as <code>resource.ts</code>). So like <code>posts.ts</code> and <code>users.ts</code>. Each one would have all the route adapters for that route family. The idea is to keep the <code>queryFn</code> property in your query hook options as <i>simple</i> as possible.
 </p>
 
-<p>So here's the fetch util function (which assumes simple auth with cookies via credentials):</p>
+<p>Here's the fetch util function (which assumes simple auth with cookies via credentials):</p>
 
 <my-code file="/src/api/fetch-util.ts"><!--
 const headers = { 'Content-Type': 'application/json' };
@@ -330,7 +330,7 @@ export const createITEM = async (newData: unknown) => {
 -->
 </my-code>
 <p>
-  This pattern would let you do, for example, <code>queryFn: getAllPosts</code> and all the types are perfectly handled without cluttering up your TanStack Query options object.
+  This pattern would let you do, for example, <code>queryFn: getAllPosts</code> and all the types are perfectly handled without cluttering up your main code.
 </p>
 
 <h2>Context</h2>
