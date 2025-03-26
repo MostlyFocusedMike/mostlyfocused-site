@@ -71,31 +71,31 @@
 <!-- ARTICLE BODY -->
 <div id="article-body">
 <p>
-  When I first started learning TypeScript, I remember feeling more frustrated than usual. Some other devs I talked to felt the same way and oddly enough, I think it’s because it’s a superset of JS, so there’s not as much syntax to learn. Usually when you learn a new language, you have to go back to crawling before you can run. But If you’re a seasoned JS dev, learning TS means you can still run, it’s just that now there’s someone next to you who seems to keep tripping you every five feet.
+  TypeScript was my first dip into the "typed" languages pool, and I remember feeling incredibly frustrated. More than I did even when learning completely different languages from scratch. Oddly enough, after talking with some more seasoned devs, I realized it's <em>because</em> it's a superset of JS. Usually when you learn a new language, you have to go back to crawling before you can run. But If you're a seasoned JS dev, learning TS means you can still run; it's just that now there's a compiler next to you that keeps tripping you up.
 </p>
 
-<h2>Remember why you’re doing it</h2>
+<h2>Remember why you're doing it</h2>
 <p>
-  TypeScript slows you down at first. But you aren’t using it to be <em>faster</em>, you are using it to be <em>better</em>. By its very definition, you have to take precious moments to create and add proper types to everything. That takes time. Keep reminding yourself that the slowdown at the beginning will be worth it once your codebase is practically self documenting and blocks silly mistakes automatically. Plus, this really is the future of the JS ecosystem. Many runtimes now support native TS with more on the way, and TS is soon going to be 10x faster (in terms of build time).
+  TypeScript slows you down at first, that's a fact. But, you aren't using it to be <em>faster</em>, you are using it to be <em>better</em>. By its very definition, you have to take precious moments to add proper types to everything. That takes time. Keep reminding yourself that the slowdown at the beginning will be worth it once your codebase is practically self documenting and blocks silly mistakes automatically. Plus, this really is the future of the JS ecosystem. Many runtimes now support native TS with more on the way, and TS is soon going to be 10x faster (in terms of build time).
 </p>
 
 <p>
   So take heart, the growing pains will be worth it! And in the meantime while you have those code-shin-splints, here are some tips that really helped me.
 </p>
 
-<h2>Enable "strict" mode</h2>
+<h2>Don't turn off "strict" mode</h2>
 <p>
-  That’s right, I’m saying use <a href="https://dev.to/briwa/how-strict-is-typescript-s-strict-mode-311a" target="_blank" rel="noopener noreferrer">the strict mode</a> to make things even more difficult. That sounds extremely counter intuitive, but hear me out; there's a reason it's on by default for most configs (like vite). The faster you force yourself to do TypeScript the right way, the faster you will see its benefits and get less frustrated. TypeScript’s main hurdle is incorporating the types, so the sooner that becomes muscle memory, the better. But, there is a minor exception:
+  That's right, I'm saying use <a href="https://dev.to/briwa/how-strict-is-typescript-s-strict-mode-311a" target="_blank" rel="noopener noreferrer">the strict mode</a> to make things even more difficult. That sounds extremely counter intuitive, but hear me out; there's a reason it's on by default for most configs (like vite). The faster you force yourself to do TypeScript the right way, the faster you will see its benefits and get less frustrated. TypeScript's main hurdle is incorporating the types, so the sooner that becomes muscle memory, the better. But, there is a minor exception:
 </p>
 
-<h3>Use the ‘any’ keyword for exploring</h3>
+<h3>Use the 'any' keyword for exploring</h3>
 <p>
-  While you should generally avoid the <code>any</code> keyword, it does have a role to play. When you’re in the “exploratory” phase of coding, it can be annoying to set the types. You may not know them yourself yet! This is a perfect opportunity to use any. Throw some in and figure out what your doing. Once you’re satisfied that the function works as you intend, then put in the proper types. I recommend the any only stay in for a commit or two, and don’t include them in code reviews.
+  While you should generally avoid the <code>any</code> keyword, it does have a role to play. When you're in the “exploratory” phase of coding, it can be annoying to set the types. You may not know them yourself yet! This is a perfect opportunity to use <code>any</code>. Throw some in and figure out what your doing. Once you're satisfied that the function works as you intend, then put in the proper types. I recommend the <code>any</code> only stay in for a commit or two, and don't include them in code reviews (if you must, use <code>unknown</code>).
 </p>
 
 <h2>Default to types over interfaces</h2>
 <p>
-  This one is annoying because it seems like every few years the experts change their mind. But you know what? It really doesn't matter which you choose, just pick one and stay consistent. To me, <code>type</code> was always the choice since VSCode will display the actual properties with the peak popup, vs <code>interface</code> which...tells you the name.
+  This one is annoying because it seems like every few years the experts change their mind. But you know what? It really doesn't matter which you choose, just pick one and stay consistent. It seems that these days I do align with the experts, who recommend types over interfaces. See, <code>type</code> was always the choice since VSCode will display the actual properties with the peak popup, vs <code>interface</code> which...tells you the name.
 </p>
 
 <pre style="max-width: 20rem; margin: 1rem auto; border-radius: 0.5rem">
@@ -105,7 +105,6 @@ type Person = {
   age: number;
   hobbies: string[];
 }
-
 
 Compared to an interface:
 interface Person
@@ -121,22 +120,22 @@ interface Person
 </p>
 
 <ul>
-  <li>Used once: Right next to the function or variable used</li>
+  <li>Used once: Right next to the function or variable used (e.g. React props)</li>
   <li>Used 2-3 times: Still next to the main place it's used, but exported</li>
   <li>More than 3 times: <em>Now</em> you can break it out into a general types file</li>
 </ul>
 
 <p>
-  I've found that this keeps you from having to sift through large files of types where really everything is is only used in a single place. TS will have you swapping files more often to check out nested types, and that can be annoying when you're in the "flow." This tries to minimize that, while still keeping your code DRY and navigable.
+  I've found that this keeps you from having to sift through large files of types where really everything is only used in a single place. TS will have you swapping files more often to check out nested types, and that can be annoying when you're in the <em>flow</em>. This "rule" tries to minimize that, while still keeping your code DRY and navigable.
 </p>
 
 <h2>Take breaks</h2>
 <p>
-  When you’re first starting out with TypeScript, you might feel a little restrained. So go back to your other projects in standard JS and just <em>code</em>. These little breathers will allow you to stop worrying about types. But the crazy part is, after you use TS for a while, when you go back to JS you’ll start to wish you were in TS. You might find you miss getting those helpful warnings and types, and of course, not getting <code>undefined</code> errors.
+  When you're first starting out with TypeScript, you'll feel a little restrained. So go back to your other projects in standard JS and just <em>code</em>. These little breathers will allow you to stop worrying about types. But the crazy part is, after you use TS for a while, when you go back to JS you'll start to wish you were in TS. You might find you miss getting those helpful warnings and types, and of course, not getting <code>undefined</code> errors.
 </p>
 
 <p>
-  And once you find yourself missing TS, then you congratulations: you're hooked now kid. It's kind of like the first time you realize you really enjoy eating well cooked vegetables compared to the steamed ones you had to choke down as a kid. Or not, maybe you just like vegetables. But the point is, feeling the benefits of TypeScript is so much more visceral than just having someone explain it. You have to <em>experience</em> it.
+  And once you find yourself missing TS, then you congratulations: you're hooked. It's kind of like the first time you realize you really enjoy eating well cooked vegetables as an adult compared to the steamed ones you had to choke down as a child. Or not, maybe you always liked vegetables. My convoluted point is, feeling the benefits of TypeScript is so much more visceral than just having someone explain it. You have to <em>experience</em> it.
 </p>
 
 <p>Happy coding everyone,</p>
