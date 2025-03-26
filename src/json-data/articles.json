@@ -281,7 +281,7 @@
     "typescript_learning_curve": {
       "id": "typescript_learning_curve",
       "title": "Let's Talk About TypeScript's Learning Curve",
-      "description": "Some tips for getting starte with TypeScript",
+      "description": "Some tips to keep in mind while learning TypeScript",
       "relativeUrl": "/pages/articles/typescript_learning_curve",
       "image": "https://mostlyfocused.com/images/typescript_learning_curve/preview.png",
       "level": 0,
