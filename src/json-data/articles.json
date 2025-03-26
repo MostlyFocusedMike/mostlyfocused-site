@@ -278,6 +278,21 @@
         "web-standards"
       ]
     },
+    "typescript_learning_curve": {
+      "id": "typescript_learning_curve",
+      "title": "Let's Talk About TypeScript's Learning Curve",
+      "description": "Some tips for getting starte with TypeScript",
+      "relativeUrl": "/pages/articles/typescript_learning_curve",
+      "image": "https://mostlyfocused.com/images/typescript_learning_curve/preview.png",
+      "level": 0,
+      "publishedAt": "2025-03-26T02:33:47.865Z",
+      "modifiedAt": "2025-03-26T02:33:47.865Z",
+      "topics": [
+        "js",
+        "ts",
+        "concepts"
+      ]
+    },
     "understanding_data_layers": {
       "id": "understanding_data_layers",
       "title": "Understanding Data Layers (Without Databases)",
@@ -319,6 +334,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "typescript_learning_curve",
     "router_tailwind_tanstack_start",
     "good_pull_request",
     "dockerfiles_images_containers",

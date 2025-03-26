@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Let's Talk About TypeScript's Learning Curve</title>
+  <meta property="og:title" content="Let's Talk About TypeScript's Learning Curve" />
+  <meta name="description" property="og:description" content="Some tips to keep in mind while learning TypeScript" />
+
+  <meta property = "article:published_time" content="2025-03-26T02:33:47.865Z" />
+  <meta property = "article:modified_time" content="2025-03-26T02:33:47.865Z" />
+
+  <link rel="canonical" href="https://mostlyfocused.com/pages/articles/typescript_learning_curve" />
+  <meta name="url" property="og:url" content="https://mostlyfocused.com/pages/articles/typescript_learning_curve" />
+  <meta name="image" property="og:image" content="https://mostlyfocused.com/images/typescript_learning_curve/preview.png" />
+  <meta property="og:image:secure_url" content="https://mostlyfocused.com/images/typescript_learning_curve/preview.png" />
+  <meta property="og:image:type" content="image/png" />
+
+  <meta property="article:tag" content="js" />
+	<meta property="article:tag" content="ts" />
+	<meta property="article:tag" content="concepts" />
+
+  <meta property="level" content="0" />
+
+  <meta property="og:site_name" content="Mostly Focused" />
+  <meta property="og:type" content="article" />
+  <meta property="article:author" content="Mike Cronin" />
+  <meta property="article:section" content="Coding" />
+  <meta name="theme-color" content="#252525" />
+  <meta name="color-scheme" content="dark">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="none"
+    onload="this.media='all'"
+  />
+</head>
+<body>
+<site-heading><header><a id="logo" href="/">mostlyFOCUSED</a></header></site-heading>
+<traffic-analyzer></traffic-analyzer>
+<main>
+<div id="page-scrollers">
+  <article-links></article-links>
+  <code-jump-buttons></code-jump-buttons>
+  <chimp-form side_bar></chimp-form>
+</div>
+<article>
+<hgroup>
+  <h1>Let's Talk About TypeScript's Learning Curve</h1>
+  <p>Some tips for getting started with TypeScript</p>
+</hgroup>
+<hr>
+<by-line><p id="by-line">By Mike Cronin</p></by-line>
+
+<svg id="cover" fill="none" viewBox="0 0 1720 965" xmlns="http://www.w3.org/2000/svg">
+<rect width="1720" height="965" fill="url(#paint0_radial_0_1)"/><line x1="575" y1="667.5" x2="1151" y2="667.5" stroke="white"/><line x1="575" y1="667" x2="1151" y2="667" stroke="#D9D9D9" stroke-width="2"/><line x1="575" y1="416" x2="1151" y2="416" stroke="#D9D9D9" stroke-width="2"/><line x1="573" y1="289" x2="1148" y2="289" stroke="#D9D9D9" stroke-width="2"/><line x1="575" y1="544" x2="1151" y2="544" stroke="#D9D9D9" stroke-width="2"/><path d="M842.517 343.346L840.704 336.069L826.448 339.62L837.686 349.083L842.517 343.346ZM1145 268L1061.76 244.111L1082.69 328.145L1145 268ZM574.056 779.849C673.164 735.622 787.267 665.589 854.057 586.921C887.459 547.578 909.686 505.303 911.37 462.419C913.071 419.1 893.764 376.696 847.348 337.609L837.686 349.083C881.386 385.882 897.862 424.12 896.382 461.831C894.884 499.977 874.964 539.119 842.622 577.212C777.926 653.415 666.153 722.325 567.944 766.151L574.056 779.849ZM844.33 350.624L1081.31 291.593L1077.69 277.038L840.704 336.069L844.33 350.624Z" fill="#DC2626"/><path d="M1151 781.5H1158.5V766.5H1151V781.5ZM569 766.5C564.858 766.5 561.5 769.858 561.5 774C561.5 778.142 564.858 781.5 569 781.5V766.5ZM1151 766.5L569 766.5V781.5L1151 781.5V766.5Z" fill="white"/><path d="M576.5 192L576.5 184.5L561.5 184.5L561.5 192L576.5 192ZM561.5 774C561.5 778.142 564.858 781.5 569 781.5C573.142 781.5 576.5 778.142 576.5 774L561.5 774ZM561.5 192L561.5 774L576.5 774L576.5 192L561.5 192Z" fill="white"/><defs><radialGradient id="paint0_radial_0_1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 482.5) rotate(163.629) scale(794.721 1416.5)"><stop stop-color="#1F0001"/><stop offset="1" stop-color="#330101"/></radialGradient></defs>
+</svg>
+
+<!-- ARTICLE BODY -->
+<div id="article-body">
+<p>
+  When I first started learning TypeScript, I remember feeling more frustrated than usual. Some other devs I talked to felt the same way and oddly enough, I think it’s because it’s a superset of JS, so there’s not as much syntax to learn. Usually when you learn a new language, you have to go back to crawling before you can run. But If you’re a seasoned JS dev, learning TS means you can still run, it’s just that now there’s someone next to you who seems to keep tripping you every five feet.
+</p>
+
+<h2>Remember why you’re doing it</h2>
+<p>
+  TypeScript slows you down at first. But you aren’t using it to be <em>faster</em>, you are using it to be <em>better</em>. By its very definition, you have to take precious moments to create and add proper types to everything. That takes time. Keep reminding yourself that the slowdown at the beginning will be worth it once your codebase is practically self documenting and blocks silly mistakes automatically. Plus, this really is the future of the JS ecosystem. Many runtimes now support native TS with more on the way, and TS is soon going to be 10x faster (in terms of build time).
+</p>
+
+<p>
+  So take heart, the growing pains will be worth it! And in the meantime while you have those code-shin-splints, here are some tips that really helped me.
+</p>
+
+<h2>Enable "strict" mode</h2>
+<p>
+  That’s right, I’m saying use <a href="https://dev.to/briwa/how-strict-is-typescript-s-strict-mode-311a" target="_blank" rel="noopener noreferrer">the strict mode</a> to make things even more difficult. That sounds extremely counter intuitive, but hear me out; there's a reason it's on by default for most configs (like vite). The faster you force yourself to do TypeScript the right way, the faster you will see its benefits and get less frustrated. TypeScript’s main hurdle is incorporating the types, so the sooner that becomes muscle memory, the better. But, there is a minor exception:
+</p>
+
+<h3>Use the ‘any’ keyword for exploring</h3>
+<p>
+  While you should generally avoid the <code>any</code> keyword, it does have a role to play. When you’re in the “exploratory” phase of coding, it can be annoying to set the types. You may not know them yourself yet! This is a perfect opportunity to use any. Throw some in and figure out what your doing. Once you’re satisfied that the function works as you intend, then put in the proper types. I recommend the any only stay in for a commit or two, and don’t include them in code reviews.
+</p>
+
+<h2>Default to types over interfaces</h2>
+<p>
+  This one is annoying because it seems like every few years the experts change their mind. But you know what? It really doesn't matter which you choose, just pick one and stay consistent. To me, <code>type</code> was always the choice since VSCode will display the actual properties with the peak popup, vs <code>interface</code> which...tells you the name.
+</p>
+
+<pre style="max-width: 20rem; margin: 1rem auto; border-radius: 0.5rem">
+Here's what the type peak looks like:
+type Person = {
+  name: string;
+  age: number;
+  hobbies: string[];
+}
+
+
+Compared to an interface:
+interface Person
+</pre>
+
+<p>
+  I know you can command click into anything to see more, but it's hard to beat the simple hover. Slightly related, <a href="https://www.youtube.com/@mattpocockuk" target="_blank" rel="noopener noreferrer">Mathew Pocock</a> has a neat <code>prettify</code> utility type you might want to look into. <a href="https://www.youtube.com/watch?v=q5DFpyIN5Xs&list=LL&index=1" target="_blank" rel="noopener noreferrer">Check out prettify and some other helpful tips in this TS video</a> (oddly enough, not by Matt Pocock).
+</p>
+
+<h2>Where to define types</h2>
+<p>
+  My rule is this:
+</p>
+
+<ul>
+  <li>Used once: Right next to the function or variable used</li>
+  <li>Used 2-3 times: Still next to the main place it's used, but exported</li>
+  <li>More than 3 times: <em>Now</em> you can break it out into a general types file</li>
+</ul>
+
+<p>
+  I've found that this keeps you from having to sift through large files of types where really everything is is only used in a single place. TS will have you swapping files more often to check out nested types, and that can be annoying when you're in the "flow." This tries to minimize that, while still keeping your code DRY and navigable.
+</p>
+
+<h2>Take breaks</h2>
+<p>
+  When you’re first starting out with TypeScript, you might feel a little restrained. So go back to your other projects in standard JS and just <em>code</em>. These little breathers will allow you to stop worrying about types. But the crazy part is, after you use TS for a while, when you go back to JS you’ll start to wish you were in TS. You might find you miss getting those helpful warnings and types, and of course, not getting <code>undefined</code> errors.
+</p>
+
+<p>
+  And once you find yourself missing TS, then you congratulations: you're hooked now kid. It's kind of like the first time you realize you really enjoy eating well cooked vegetables compared to the steamed ones you had to choke down as a kid. Or not, maybe you just like vegetables. But the point is, feeling the benefits of TypeScript is so much more visceral than just having someone explain it. You have to <em>experience</em> it.
+</p>
+
+<p>Happy coding everyone,</p>
+<p>Mike</p>
+
+<p><i><a href="https://www.reddit.com/r/mostlyfocused/" target="_blank" rel="noopener noreferrer">Join the conversation on Reddit</a> to leave a comment!</i></p>
+
+<chimp-form></chimp-form>
+</div><!-- END ARTICLE BODY -->
+</article>
+</main>
+<latest-articles></latest-articles>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js" integrity="sha512-m3JYEI6gx5fh9jF10FjGoMzVKcV2N6nchcDcqPCdI1L3R2WQV7br2XVNR8iTLb2daOMRl3zldbcfT40xU2ntVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
