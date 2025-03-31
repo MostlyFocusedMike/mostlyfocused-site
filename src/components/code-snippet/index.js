@@ -36,16 +36,16 @@ export default class CodeSnippet extends HTMLElement {
         </div>
         <pre><code class="language-${lang}">${escapeText(code.trim())}</code></pre>
       </div>
-      ${ output ? /*html*/`<pre class="code-output">OUTPUT:\n${output}</pre>` : '' }
+      ${output ? /*html*/`<pre class="code-output">OUTPUT:\n${output}</pre>` : ''}
     `;
 
     this.querySelector('button').onclick = this.handleCopy(code);
   }
 
   handleCopy = (code) => ({ target }) => {
-    copyToClipboard(code);
-      target.textContent = COPIED;
-      setTimeout(() => target.textContent = COPY_CODE, 1000);
+    copyToClipboard(code.trim());
+    target.textContent = COPIED;
+    setTimeout(() => target.textContent = COPY_CODE, 1000);
   }
 }
 
