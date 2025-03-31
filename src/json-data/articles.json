@@ -121,6 +121,23 @@
         "a11y"
       ]
     },
+    "js_snippets": {
+      "id": "js_snippets",
+      "title": "10 Neat JavaScript Snippets For Algorithms And More",
+      "description": "Impress on your next JS interview",
+      "relativeUrl": "/pages/articles/js_snippets",
+      "image": "https://mostlyfocused.com/images/js_snippets/preview.png",
+      "level": 0,
+      "publishedAt": "2025-03-30T22:43:42.059Z",
+      "modifiedAt": "2025-03-30T22:43:42.059Z",
+      "topics": [
+        "js",
+        "ts",
+        "algos",
+        "forms",
+        "cheat-sheet"
+      ]
+    },
     "maps_or_sets": {
       "id": "maps_or_sets",
       "title": "Should You Use JavaScript Maps And Sets?",
@@ -193,7 +210,7 @@
         "react",
         "js",
         "ts",
-        "testing"
+        "tests"
       ]
     },
     "react_lazy_suspense": {
@@ -326,7 +343,6 @@
     "react",
     "sql",
     "tailwind",
-    "testing",
     "tests",
     "ts",
     "updates",
@@ -334,6 +350,7 @@
     "web-standards"
   ],
   "publishOrder": [
+    "js_snippets",
     "typescript_learning_curve",
     "router_tailwind_tanstack_start",
     "good_pull_request",
