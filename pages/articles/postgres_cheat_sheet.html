@@ -283,23 +283,31 @@ $ pg_restore -C -d postgres -U postgres backup.sql
 
 <my-code snip_lang="text"><!--
 services:
-  practice_pg:
-    container_name: practice_pg
-    image: postgres
-    ports:
-      - "5431:5432"
+  pg_db:
+    image: postgres:16
+    restart: always
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: postgres
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432" # Maps host port 5432 to container port 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Mount a named volume for data persistence
+
+volumes:
+  postgres_data:
+
 --><pre></pre>
 </my-code>
 
 <p>
-  That will create a default db with a user and database of "postgres" and you can start playing with it by running these from the command line:
+  That will create a default db with a user and database of "mydatabase" and you can start playing with it by running these from the command line:
 </p>
 
 <my-code snip_lang="text"><!--
 docker compose up -d
-docker compose exec practice_pg psql -U postgres
+docker compose exec pg_db psql -U postgres
 --><pre></pre>
 </my-code>
 
